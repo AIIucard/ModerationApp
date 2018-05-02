@@ -1,10 +1,12 @@
+# use glob syntax.
+syntax: glob
+
+.gitignore
 *.iml
-.gradle
-/local.properties
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
+.gradle/**
+.idea/**
+local.properties
+build/**
+gen/**
+.externalNativeBuild/**
+.DS_Store/**
