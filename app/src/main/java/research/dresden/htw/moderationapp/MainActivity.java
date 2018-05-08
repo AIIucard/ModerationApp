@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mt.execute();
 
         Toast.makeText(getApplicationContext(), "Data send", Toast.LENGTH_LONG).show();
-
     }
-
 
     class myTask extends AsyncTask<Void, Void, Void> {
 
