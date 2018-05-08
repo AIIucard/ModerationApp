@@ -1,62 +1,27 @@
 package research.dresden.htw.moderationapp;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
-
-    EditText e1;
-    private static Socket s;
-    private static PrintWriter printWriter;
-    String message = "";
-    private static String ip = "141.56.235.59"; //Achtung eigene IP-Adresse verwenden
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        e1 = (EditText)findViewById(R.id.editText);
-    }
-
-    public void send_text(View v) {
-        message = e1.getText().toString();
-
-        myTask mt = new myTask();
-        mt.execute();
-
-        Toast.makeText(getApplicationContext(), "Data send", Toast.LENGTH_LONG).show();
-    }
-
-    class myTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                s = new Socket(ip, 5000);       // connect to the socket at port 50000
-                printWriter = new PrintWriter(s.getOutputStream()); // set the output stream
-                printWriter.write(message);         // send the message through the socket
-                printWriter.flush();
-                printWriter.close();
-                s.close();
-
-
-
-
-            }catch (IOException e) {
-                e.printStackTrace();
+        findViewById(R.id.button_start_add_keyword_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                button_start_add_keyword_activity();
             }
+        });
+    }
 
-            return null;
-        }
+    private void button_start_add_keyword_activity() {
+        startActivity(new Intent(getBaseContext(), AddKeywordActivity.class));
     }
 
     @Override
