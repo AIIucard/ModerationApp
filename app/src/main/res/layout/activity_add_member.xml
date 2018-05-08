@@ -6,4 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".AddMemberActivity">
 
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="384dp"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Member Administration"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <EditText
+        android:id="@+id/id/contact_name"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="Member Name"
+        android:ems="10"
+        android:hint="Member Name"
+        android:inputType="textPersonName"
+        android:text="Name:"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="Member Email Adress"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Email:"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="108dp" />
 </android.support.constraint.ConstraintLayout>
