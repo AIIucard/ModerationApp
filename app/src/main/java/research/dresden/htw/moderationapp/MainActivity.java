@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getBaseContext(), AddKeywordActivity.class));
     }
 
-    @Override
+   /* @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
@@ -36,5 +36,5 @@ public class MainActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
-    }
+    } */
 }
