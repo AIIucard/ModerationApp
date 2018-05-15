@@ -6,4 +6,5 @@
     <string name="teilnehmerverwaltung">Teilnehmerverwaltung</string>
     <string name="disskusionsverwaltung">Disskusionsverwaltung</string>
     <string name="einstellungen">Einstellungen</string>
+    <string name="button_next">Weiter</string>
 </resources>

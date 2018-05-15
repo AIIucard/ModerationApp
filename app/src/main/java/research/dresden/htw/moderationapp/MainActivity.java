@@ -18,10 +18,20 @@ public class MainActivity extends AppCompatActivity {
                 button_start_add_keyword_activity();
             }
         });
+        findViewById(R.id.button_new_discussion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                button_start_new_disussion_activity();
+            }
+        });
     }
 
     private void button_start_add_keyword_activity() {
         startActivity(new Intent(getBaseContext(), AddKeywordActivity.class));
+    }
+
+    private void button_start_new_disussion_activity() {
+        startActivity(new Intent(getBaseContext(), NewDiscussionActivity.class));
     }
 
    /* @Override
