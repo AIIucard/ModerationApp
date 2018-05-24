@@ -49,9 +49,7 @@ public class AddKeywordActivity extends AppCompatActivity {
                 s.close();
 
 
-
-
-            }catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -59,7 +57,7 @@ public class AddKeywordActivity extends AppCompatActivity {
         }
     }
 
-  /*  @Override
+    /*@Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
@@ -71,5 +69,5 @@ public class AddKeywordActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
-    } */
+    }*/
 }
