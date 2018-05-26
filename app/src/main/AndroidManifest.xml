@@ -11,14 +11,24 @@
         android:roundIcon="@mipmap/moderationicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddKeywordActivity" />
+        <activity android:name=".activities.emulator.EmulatorActivity"
+            android:label="@string/title_activity_emulator" />
+        <activity android:name=".activities.members.AddMemberActivity"
+            android:label="@string/title_activity_discussion_administration_add_new_member">
+        </activity>
+        <activity android:name=".activities.members.EditMemberActivity"
+            android:label="@string/title_activity_member_administration_edit_member">
+        </activity>
+        <activity android:name=".activities.members.MemberAdministratonActivity"
+            android:label="@string/title_activity_member_administration">
+        </activity>
     </application>
 
 </manifest>

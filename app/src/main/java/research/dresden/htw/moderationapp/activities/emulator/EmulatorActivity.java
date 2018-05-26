@@ -15,7 +15,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import research.dresden.htw.moderationapp.R;
-import research.dresden.htw.moderationapp.activities.AddKeywordActivity;
 import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.SocketSingleton;
 import research.dresden.htw.moderationapp.model.Title;
@@ -51,7 +50,7 @@ public class EmulatorActivity extends AppCompatActivity {
             Member member = new Member(Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
             ArrayList<Member> members = new ArrayList<Member>();
             members.add(member);
-            JSONObject message = JSONUtils.createStartDiscussion("RunderTisch", 360, members);
+            JSONObject message = JSONUtils.createNewDiscussion("RunderTisch", 360, members);
             webSocket.emit("message", message);
             return null;
         }

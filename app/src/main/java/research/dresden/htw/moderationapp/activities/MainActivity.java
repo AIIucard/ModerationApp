@@ -15,6 +15,7 @@ import com.github.nkzawa.socketio.client.Socket;
 import java.net.URISyntaxException;
 
 import research.dresden.htw.moderationapp.R;
+import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.model.SocketSingleton;
 import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void button_start_add_keyword_activity() {
-        startActivity(new Intent(getBaseContext(), AddKeywordActivity.class));
+        startActivity(new Intent(getBaseContext(), EmulatorActivity.class));
     }
 
     private void button_start_new_disussion_activity() {

@@ -7,19 +7,6 @@
     tools:context=".activities.discussion.AddDiscussionActivity">
 
     <TextView
-        android:id="@+id/textView_titel_new_discussion"
-        android:layout_width="387dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:gravity="center_horizontal"
-        android:text="Neue Diskussion"
-        android:textIsSelectable="false"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView_thema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/editText_thema"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_titel_new_discussion" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_date"
@@ -65,11 +52,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_titel_new_discussion" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText_discussion_date"

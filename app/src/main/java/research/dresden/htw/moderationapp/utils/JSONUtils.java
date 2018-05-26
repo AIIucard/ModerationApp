@@ -12,7 +12,7 @@ import research.dresden.htw.moderationapp.model.Member;
 
 public class JSONUtils {
 
-    public static JSONObject createStartDiscussion(String title, int duration, ArrayList<Member> memberList){
+    public static JSONObject createNewDiscussion(String title, int duration, ArrayList<Member> memberList){
         JSONObject message = new JSONObject();
         try {
             message.put("topic", Topic.DISCUSSION);
@@ -37,10 +37,10 @@ public class JSONUtils {
             discussion.put("members",members);
             message.put("payload", discussion);
         } catch (JSONException je) {
-            Log.e("createStartDiscussion", "JSONException! " + je.getLocalizedMessage());
+            Log.e("createNewDiscussion", "JSONException! " + je.getLocalizedMessage());
             return null;
         }
-        Log.d("createStartDiscussion", "JSON Message: " + message.toString());
+        Log.d("createNewDiscussion", "JSON Message: " + message.toString());
         return message;
     }
 }
