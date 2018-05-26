@@ -1,9 +1,11 @@
-package research.dresden.htw.moderationapp;
+package research.dresden.htw.moderationapp.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import research.dresden.htw.moderationapp.R;
 
 public class NewDiscussionActivity extends AppCompatActivity {
 

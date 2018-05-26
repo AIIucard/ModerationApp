@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MemberAdministratonActivity">
+    tools:context=".activities.MemberAdministratonActivity">
 
     <ListView
+        android:id="@+id/_dynamic"
         android:layout_width="384dp"
         android:layout_height="450dp"
         android:layout_marginEnd="8dp"
@@ -23,7 +24,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Teilnehmer Verwaltung"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

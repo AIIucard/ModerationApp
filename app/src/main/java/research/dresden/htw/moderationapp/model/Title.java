@@ -1,4 +1,4 @@
-package research.dresden.htw.moderationapp;
+package research.dresden.htw.moderationapp.model;
 
 public class Title {
     public static final String DIPLOMA_OF_ARTS = "Dip.Arts";

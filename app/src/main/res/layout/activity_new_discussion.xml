@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewDiscussionActivity">
+    tools:context=".activities.NewDiscussionActivity">
 
     <TextView
         android:id="@+id/textView_titel_new_discussion"
         android:layout_width="387dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:gravity="center_horizontal"
         android:text="Neue Diskussion"
         android:textIsSelectable="false"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_thema"
@@ -37,45 +38,27 @@
         android:id="@+id/textView_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Datum"
         app:layout_constraintBottom_toTopOf="@+id/textView_start_time"
         app:layout_constraintEnd_toStartOf="@+id/editText_discussion_date"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView_start_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="8dp"
         android:text="Beginn"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_discussion_start"
         app:layout_constraintEnd_toStartOf="@+id/editText_discussion_start"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="184dp" />
-
-    <TextView
-        android:id="@+id/textView_end_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:text="Ende"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_start_time" />
-
-    <TextView
-        android:id="@+id/textView_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="40dp"
-        android:text="Ort"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_end_time" />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editText_thema"
@@ -103,39 +86,15 @@
         android:id="@+id/editText_discussion_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/button_new_discussion_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_discussion_date" />
-
-    <EditText
-        android:id="@+id/editText_discussion_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.377"
-        app:layout_constraintStart_toEndOf="@+id/textView_end_time"
-        app:layout_constraintTop_toBottomOf="@+id/editText_discussion_start" />
-
-    <EditText
-        android:id="@+id/editText_discussion_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.308"
-        app:layout_constraintStart_toEndOf="@+id/textView_place"
-        app:layout_constraintTop_toBottomOf="@+id/editText_discussion_end" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_discussion_date"
+        app:layout_constraintVertical_bias="0.038" />
 
     <Button
         android:id="@+id/button_new_discussion_next"
@@ -147,8 +106,6 @@
         android:text="@string/button_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_discussion_place"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

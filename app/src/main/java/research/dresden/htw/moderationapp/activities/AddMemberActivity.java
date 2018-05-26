@@ -1,7 +1,9 @@
-package research.dresden.htw.moderationapp;
+package research.dresden.htw.moderationapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import research.dresden.htw.moderationapp.R;
 
 public class AddMemberActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package research.dresden.htw.moderationapp;
+package research.dresden.htw.moderationapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,23 +9,25 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.neovisionaries.ws.client.OpeningHandshakeException;
-import com.neovisionaries.ws.client.WebSocket;
-import com.neovisionaries.ws.client.WebSocketAdapter;
-import com.neovisionaries.ws.client.WebSocketException;
-import com.neovisionaries.ws.client.WebSocketFactory;
+import com.github.nkzawa.socketio.client.IO;
+import com.github.nkzawa.socketio.client.Socket;
 
-import java.io.IOException;
+import java.net.URISyntaxException;
+
+import research.dresden.htw.moderationapp.R;
+import research.dresden.htw.moderationapp.model.SocketSingleton;
+import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private WebSocket webSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        createWebSocket();
 
         findViewById(R.id.button_start_add_keyword_activity).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.button_new_discussion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                button_start_new_disussion_activity();
+            }
+        });
+
+        // Burger Menu
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -52,14 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        findViewById(R.id.button_new_discussion).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                button_start_new_disussion_activity();
-            }
-        });
-        createWebSocket();
-        new ConnectionTask().execute(webSocket);
+        new ConnectionTask().execute(SocketSingleton.getSocket());
     }
 
     private void button_start_add_keyword_activity() {
@@ -71,25 +74,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createWebSocket() {
-        try{
-            WebSocketFactory factory = new WebSocketFactory().setConnectionTimeout(5000);
-            webSocket = factory.createSocket("ws://141.56.224.171:8989/socket.io/?EIO=4&transport=websocket");
-            //ws://141.56.224.171:8989/socket.io/?EIO=4&transport=websocket
+        try {
+            Socket mSocket = IO.socket("http://141.56.224.171:8989/");
 
-            webSocket.addListener(new WebSocketAdapter() {
-                @Override
-                public void onTextMessage(WebSocket websocket, String message) throws Exception {
-                    // Received a text message
-                    Log.d("onCreate", "Got Message: " + message);
-                }
-            });
-        } catch (IOException ioe) {
-            Log.e("onCreate", "IOException! " + ioe.getLocalizedMessage());
+            SocketSingleton.setSocket(mSocket);
+            if(mSocket.connected()){
+                Log.d("onCreate", "Connection detected!");
+            }
+        } catch (URISyntaxException ue) {
+            Log.e("onCreate", "URISyntaxException! " + ue.getLocalizedMessage());
         }
-    }
-
-    private void startWebSocket() {
-
     }
 
    /* @Override

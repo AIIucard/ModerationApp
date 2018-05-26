@@ -1,4 +1,4 @@
-package research.dresden.htw.moderationapp;
+package research.dresden.htw.moderationapp.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,17 +7,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.github.nkzawa.socketio.client.Socket;
+
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.Socket;
+import java.util.ArrayList;
+
+import research.dresden.htw.moderationapp.R;
+import research.dresden.htw.moderationapp.model.Member;
+import research.dresden.htw.moderationapp.model.SocketSingleton;
+import research.dresden.htw.moderationapp.model.Title;
+import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class AddKeywordActivity extends AppCompatActivity {
 
     EditText e1;
-    private static Socket s;
     private static PrintWriter printWriter;
     String message = "";
-    private static String ip = "141.56.235.59"; //Achtung eigene IP-Adresse verwenden
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +48,12 @@ public class AddKeywordActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            try {
-                //s = new Socket(ip, 5000);       // connect to the socket at port 50000
-                printWriter = new PrintWriter(s.getOutputStream()); // set the output stream
-                printWriter.write(message);         // send the message through the socket
-                printWriter.flush();
-                printWriter.close();
-                s.close();
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            Socket webSocket = SocketSingleton.getSocket();
+            Member member = new Member(Title.DIPLOMA_OF_ARTS.toString(), "Simon" ,"HTW ", "Helper");
+            ArrayList<Member> members = new ArrayList<Member>();
+            members.add(member);
+            JSONObject message = JSONUtils.createStartDiscussion("RunderTisch", 360, members);
+            webSocket.emit("message", message);
             return null;
         }
     }
