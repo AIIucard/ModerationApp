@@ -5,12 +5,22 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.neovisionaries.ws.client.OpeningHandshakeException;
+import com.neovisionaries.ws.client.WebSocket;
+import com.neovisionaries.ws.client.WebSocketAdapter;
+import com.neovisionaries.ws.client.WebSocketException;
+import com.neovisionaries.ws.client.WebSocketFactory;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private WebSocket webSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 button_start_new_disussion_activity();
             }
         });
+        createWebSocket();
+        new ConnectionTask().execute(webSocket);
     }
 
     private void button_start_add_keyword_activity() {
@@ -56,6 +68,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void button_start_new_disussion_activity() {
         startActivity(new Intent(getBaseContext(), NewDiscussionActivity.class));
+    }
+
+    private void createWebSocket() {
+        try{
+            WebSocketFactory factory = new WebSocketFactory().setConnectionTimeout(5000);
+            webSocket = factory.createSocket("ws://141.56.224.171:8989/socket.io/?EIO=4&transport=websocket");
+            //ws://141.56.224.171:8989/socket.io/?EIO=4&transport=websocket
+
+            webSocket.addListener(new WebSocketAdapter() {
+                @Override
+                public void onTextMessage(WebSocket websocket, String message) throws Exception {
+                    // Received a text message
+                    Log.d("onCreate", "Got Message: " + message);
+                }
+            });
+        } catch (IOException ioe) {
+            Log.e("onCreate", "IOException! " + ioe.getLocalizedMessage());
+        }
+    }
+
+    private void startWebSocket() {
+
     }
 
    /* @Override

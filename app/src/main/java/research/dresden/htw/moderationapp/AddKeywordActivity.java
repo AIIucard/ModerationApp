@@ -41,7 +41,7 @@ public class AddKeywordActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                s = new Socket(ip, 5000);       // connect to the socket at port 50000
+                //s = new Socket(ip, 5000);       // connect to the socket at port 50000
                 printWriter = new PrintWriter(s.getOutputStream()); // set the output stream
                 printWriter.write(message);         // send the message through the socket
                 printWriter.flush();
