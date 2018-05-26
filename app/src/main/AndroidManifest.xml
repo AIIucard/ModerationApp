@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.AddKeywordActivity" />
-        <activity android:name=".activities.NewDiscussionActivity"></activity>
     </application>
 
 </manifest>

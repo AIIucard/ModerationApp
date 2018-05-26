@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void button_start_new_disussion_activity() {
-        startActivity(new Intent(getBaseContext(), NewDiscussionActivity.class));
+
     }
 
     private void createWebSocket() {

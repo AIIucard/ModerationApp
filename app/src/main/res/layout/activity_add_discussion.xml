@@ -7,20 +7,104 @@
     tools:context=".activities.discussion.AddDiscussionActivity">
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="380dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/title_discussion_administration_add_discussion"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:id="@+id/textView_titel_new_discussion"
+        android:layout_width="387dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_horizontal"
+        android:text="Neue Diskussion"
+        android:textIsSelectable="false"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_thema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Thema"
+        app:layout_constraintBottom_toTopOf="@+id/textView_date"
+        app:layout_constraintEnd_toStartOf="@+id/editText_thema"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_titel_new_discussion" />
+
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Datum"
+        app:layout_constraintBottom_toTopOf="@+id/textView_start_time"
+        app:layout_constraintEnd_toStartOf="@+id/editText_discussion_date"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Beginn"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_discussion_start"
+        app:layout_constraintEnd_toStartOf="@+id/editText_discussion_start"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_thema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_titel_new_discussion" />
+
+    <EditText
+        android:id="@+id/editText_discussion_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_thema" />
+
+    <EditText
+        android:id="@+id/editText_discussion_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/button_new_discussion_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_discussion_date"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <Button
+        android:id="@+id/button_new_discussion_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/button_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
