@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">ModerationApp</string>
     <string name="send_to_pc">Send to PC</string>
-    <string name="start_add_keyword_activity">Starte Keyword Activity</string>
+    <string name="start_add_keyword_activity">Test TCP Verbindung</string>
+    <string name="neue_disskusion">Neue Disskusion</string>
+    <string name="teilnehmerverwaltung">Teilnehmerverwaltung</string>
+    <string name="disskusionsverwaltung">Disskusionsverwaltung</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="button_next">Weiter</string>
 </resources>
