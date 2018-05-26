@@ -1,4 +1,4 @@
-package research.dresden.htw.moderationapp.activities;
+package research.dresden.htw.moderationapp.activities.members;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

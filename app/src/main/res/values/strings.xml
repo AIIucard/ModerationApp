@@ -7,4 +7,7 @@
     <string name="disskusionsverwaltung">Disskusionsverwaltung</string>
     <string name="einstellungen">Einstellungen</string>
     <string name="button_next">Weiter</string>
+    <string name="title_member_administration">Member Administration</string>
+    <string name="title_member_administration_add_member">Member Administration: Add Member</string>
+    <string name="title_member_administration_edit_member">Member Administration: Edit Member</string>
 </resources>
