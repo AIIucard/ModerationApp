@@ -1,16 +1,25 @@
 package research.dresden.htw.moderationapp.model;
 
 public class Member {
+    private Integer id;
     private String title;
     private String name;
     private String organisation;
     private String description;
 
-    public Member(String title, String name, String organisation, String description){
+    public Member(Integer id, String title, String name, String organisation, String description){
         this.title = title;
         this.name = name;
         this.organisation = organisation;
         this.description = description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {

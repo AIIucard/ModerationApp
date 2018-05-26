@@ -47,7 +47,7 @@ public class EmulatorActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             Socket webSocket = SocketSingleton.getSocket();
-            Member member = new Member(Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
+            Member member = new Member(1, Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
             ArrayList<Member> members = new ArrayList<Member>();
             members.add(member);
             JSONObject message = JSONUtils.createNewDiscussion("RunderTisch", 360, members);
