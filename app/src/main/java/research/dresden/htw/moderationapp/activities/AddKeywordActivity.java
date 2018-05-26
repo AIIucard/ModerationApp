@@ -49,7 +49,7 @@ public class AddKeywordActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             Socket webSocket = SocketSingleton.getSocket();
-            Member member = new Member(Title.DIPLOMA_OF_ARTS.toString(), "Simon" ,"HTW ", "Helper");
+            Member member = new Member(Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
             ArrayList<Member> members = new ArrayList<Member>();
             members.add(member);
             JSONObject message = JSONUtils.createStartDiscussion("RunderTisch", 360, members);

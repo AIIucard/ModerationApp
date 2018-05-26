@@ -44,4 +44,11 @@ public class Member {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String toJsonString() {
+        return "{ \"country\": \"ES\",\n" +
+                "    \"name\": \"Valencia\",\n" +
+                "    \"latitude\": 39.466667,\n" +
+                "    \"longitude\": -.366667}";
+    }
 }
