@@ -8,6 +8,12 @@
     <string name="einstellungen">Einstellungen</string>
     <string name="button_next">Weiter</string>
     <string name="title_member_administration">Member Administration</string>
-    <string name="title_member_administration_add_member">Member Administration: Add Member</string>
+    <string name="title_member_administration_add_member">Member Administration: Add new Member</string>
     <string name="title_member_administration_edit_member">Member Administration: Edit Member</string>
+    <string name="title_discussion_administration">Discussion Administration</string>
+    <string name="title_discussion_administration_add_discussion">Discussion Administration: Add new Discussion</string>
+    <string name="title_discussion_administration_add_member_administration">Discussion Administration: Add Member Administration</string>
+    <string name="title_discussion_administration_add_existiong_member">Discussion Administration: Add Existing Member</string>
+    <string name="title_discussion_administration_add_new_member">Discussion Administration: Add New Member</string>
+    <string name="title_discussion_administration_place_assignment">Discussion Administration: Place Assignment</string>
 </resources>
