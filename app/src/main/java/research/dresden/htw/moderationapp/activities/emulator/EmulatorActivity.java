@@ -1,5 +1,6 @@
 package research.dresden.htw.moderationapp.activities.emulator;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,56 +19,70 @@ import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.SocketSingleton;
 import research.dresden.htw.moderationapp.model.Title;
+import research.dresden.htw.moderationapp.tasks.SendEndDiscussionTask;
+import research.dresden.htw.moderationapp.tasks.SendEndPauseTask;
+import research.dresden.htw.moderationapp.tasks.SendNewDiscussionTask;
+import research.dresden.htw.moderationapp.tasks.SendRemainingTimeTask;
+import research.dresden.htw.moderationapp.tasks.SendSilenceTask;
+import research.dresden.htw.moderationapp.tasks.SendStartDiscussionTask;
+import research.dresden.htw.moderationapp.tasks.SendStartPauseTask;
+import research.dresden.htw.moderationapp.tasks.SendTopicTask;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class EmulatorActivity extends AppCompatActivity {
 
-    EditText e1;
+    EditText inputTextField;
     private static PrintWriter printWriter;
-    String message = "";
+    static String message = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emulator);
-
-        e1 = findViewById(R.id.editText);
+        inputTextField = findViewById(R.id.inputTextField);
     }
 
-    public void send_text(View v) {
-        message = e1.getText().toString();
-        EmulatorActivity.myTask mt = new EmulatorActivity.myTask();
-        mt.execute();
-
-        Toast.makeText(getApplicationContext(), "Data send", Toast.LENGTH_LONG).show();
+    public void send_new_discussion(View v) {
+        Member member = new Member(1, Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
+        ArrayList<Member> members = new ArrayList<Member>();
+        members.add(member);
+        new SendNewDiscussionTask("RunderTisch", 360, members).execute();
+        Toast.makeText(getApplicationContext(), "New Disscusion sended...", Toast.LENGTH_LONG).show();
     }
 
-    class myTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Socket webSocket = SocketSingleton.getSocket();
-            Member member = new Member(1, Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
-            ArrayList<Member> members = new ArrayList<Member>();
-            members.add(member);
-            JSONObject message = JSONUtils.createNewDiscussion("RunderTisch", 360, members);
-            webSocket.emit("message", message);
-            return null;
-        }
+    public void send_start_discussion(View v) {
+        new SendStartDiscussionTask().execute();
+        Toast.makeText(getApplicationContext(), "Start Disscusion sended...", Toast.LENGTH_LONG).show();
     }
 
-    /*@Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        }
-    }*/
+    public void send_end_discussion(View v) {
+        new SendEndDiscussionTask().execute();
+        Toast.makeText(getApplicationContext(), "End Disscusion sended...", Toast.LENGTH_LONG).show();
+    }
 
+    public void send_remaining_time(View v) {
+        new SendRemainingTimeTask("Noch 10 Minuten!").execute();
+        Toast.makeText(getApplicationContext(), "Remaining Time sended...", Toast.LENGTH_LONG).show();
+    }
+
+    public void send_start_pause(View v) {
+        new SendStartPauseTask().execute();
+        Toast.makeText(getApplicationContext(), "Start Pause sended...", Toast.LENGTH_LONG).show();
+    }
+
+    public void send_end_pause(View v) {
+        new SendEndPauseTask().execute();
+        Toast.makeText(getApplicationContext(), "End Pause sended...", Toast.LENGTH_LONG).show();
+    }
+
+    public void send_topic(View v) {
+        message = inputTextField.getText().toString();
+        new SendTopicTask(message).execute();
+        Toast.makeText(getApplicationContext(), "Topic with Message: " + message + " sendet...", Toast.LENGTH_LONG).show();
+    }
+
+    public void send_silence(View v) {
+        new SendSilenceTask().execute();
+        Toast.makeText(getApplicationContext(), "Silence sended...", Toast.LENGTH_LONG).show();
+    }
 }

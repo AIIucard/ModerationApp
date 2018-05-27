@@ -28,5 +28,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.github.nkzawa:socket.io-client:0.3.0'
-
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
 }
