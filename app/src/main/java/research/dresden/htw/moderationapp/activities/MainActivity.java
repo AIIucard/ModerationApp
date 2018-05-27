@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
 
 import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
+import research.dresden.htw.moderationapp.manager.MemberManager;
 import research.dresden.htw.moderationapp.model.SocketSingleton;
 import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
@@ -27,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TODO: Test XMLblablabla
+        MemberManager memberManager = MemberManager.getInstance();
+        memberManager.writeToAddressBookXml(getBaseContext().getApplicationContext());
 
         createWebSocket();
 
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private void button_start_new_disussion_activity() {
 
     }
+
 
     private void createWebSocket() {
         try {

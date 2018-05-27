@@ -1,7 +1,15 @@
 package research.dresden.htw.moderationapp.manager;
 
+import android.util.Xml;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.StringWriter;
+import java.util.ArrayList;
+
 import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.Member;
+import research.dresden.htw.moderationapp.model.Title;
 
 public class DiscussionManager {
     private static Object lock = new Object();
@@ -21,29 +29,31 @@ public class DiscussionManager {
         }
         return (instance);
     }
-    public void marshalDiscussionList() {
+    public void writeToDiscussionXml() {
+        ArrayList<Member> memberArrayList = new ArrayList<>();
+        memberArrayList.add(new Member(1, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
+        memberArrayList.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
+        Discussion discussion = new Discussion(1, "Runder Tisch", 360, memberArrayList);
 
-       // log.debug("Initialize JAXB context...");
-        // JAXBContext jaxbContext = JAXBContext.newInstance(AreaList.class);
+        XmlSerializer serializer = Xml.newSerializer();
+        StringWriter writer = new StringWriter();
 
-        // log.debug("Create marshaller...");
-        // Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        // jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        try {
+            serializer.setOutput(writer);
+            serializer.startDocument("UTF-8", true);
 
-        // log.info("Marshaling areas...");
-        // jaxbMarshaller.marshal(areaList, new File(AREAS_XML_FILE));
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     public Discussion unMarshalDiscussionList() {
 
-        // log.debug("Initialize JAXB context...");
-        // JAXBContext jaxbContext = JAXBContext.newInstance(AreaList.class);
 
-        // log.debug("Create unmarshaller...");
-        // Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
-        // log.info("Unmarshaling areas...");
-        // return (AreaList) jaxbUnmarshaller.unmarshal(new File(AREAS_XML_FILE));
         return null;
     }
 
