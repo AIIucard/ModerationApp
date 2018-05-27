@@ -37,7 +37,7 @@ public class AppDataViewModel {
     }
 
     public void setWebSocketURI(String webSocketURI) {
-        this.webSocketURI.postValue(webSocketURI);
+        this.webSocketURI.setValue(webSocketURI);
     }
 
     public Socket getSocket() {
@@ -54,7 +54,7 @@ public class AppDataViewModel {
     }
 
     public void setDiscussionList(ArrayList<Discussion> discussionList) {
-        this.discussionList.postValue(discussionList);
+        this.discussionList.setValue(discussionList);
     }
 
     public MutableLiveData<ArrayList<Member>> getMemberList() {
@@ -62,6 +62,6 @@ public class AppDataViewModel {
     }
 
     public void setMemberList(ArrayList<Member> memberList) {
-        this.memberList.postValue(memberList);
+        this.memberList.setValue(memberList);
     }
 }

@@ -45,6 +45,15 @@ public class MemberManager {
 
             FileInputStream fis = null;
             fis = context.openFileInput(FILENAME);
+
+            InputStreamReader isr = new InputStreamReader(fis);
+            char[] inputBuffer = new char[fis.available()];
+            isr.read(inputBuffer);
+            String data = new String(inputBuffer);
+            isr.close();
+
+            /*// String data ist da...
+            // TODO: Fix parser durch anderen parser...
             XmlPullParserFactory factory = null;
             XmlPullParser parser = null;
             try {
@@ -97,7 +106,7 @@ public class MemberManager {
                 e.printStackTrace();
             }
             fis.close();
-            return memberList;
+            return memberList;*/
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -113,7 +122,7 @@ public class MemberManager {
         try {
             serializer.setOutput(writer);
             serializer.startDocument("UTF-8", true);
-            serializer.startTag("", "MemberList");
+            serializer.startTag("", "address_book");
             for (Member member : memberList) {
                 serializer.startTag("", "member");
                 serializer.attribute("", "id", ""+member.getId());
@@ -136,7 +145,7 @@ public class MemberManager {
 
                 serializer.endTag("", "member");
             }
-            serializer.endTag("", "addressbook");
+            serializer.endTag("", "address_book");
             serializer.endDocument();
             serializer.flush();
             String result = writer.toString();
