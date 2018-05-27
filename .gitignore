@@ -5,6 +5,7 @@ syntax: glob
 *.iml
 .gradle/**
 .idea/**
+.idea/caches/**
 local.properties
 build/**
 gen/**
