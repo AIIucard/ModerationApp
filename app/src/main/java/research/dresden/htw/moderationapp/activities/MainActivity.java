@@ -1,5 +1,6 @@
 package research.dresden.htw.moderationapp.activities;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,28 +14,32 @@ import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.activities.discussion.AddDiscussionActivity;
 import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdministrationActivity;
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.activities.members.MemberAdministratonActivity;
-import research.dresden.htw.moderationapp.manager.MemberManager;
+import research.dresden.htw.moderationapp.model.DataViewModel;
+import research.dresden.htw.moderationapp.model.Discussion;
+import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.SocketSingleton;
+import research.dresden.htw.moderationapp.model.Title;
 import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private static DataViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewModel = ViewModelProviders.of(this).get(DataViewModel.class);
 
-        //TODO: Test XMLblablabla
-        // MemberManager memberManager = MemberManager.getInstance();
-        // memberManager.writeToAddressBookXml(getBaseContext().getApplicationContext());
+        initializeDataViewModelFromXML();
 
         createWebSocket();
 
@@ -88,6 +93,32 @@ public class MainActivity extends AppCompatActivity {
                 });
         new ConnectionTask().execute(SocketSingleton.getSocket());
     }
+
+    private void initializeDataViewModelFromXML(){
+        ArrayList<Member> members = new ArrayList<Member>();
+        ArrayList<Discussion> discussion = new ArrayList<Discussion>();
+        String webSocketURL = "";
+
+        // TODO: Remove this later
+        Member newMember = new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Sklave");
+        members.add(newMember);
+        webSocketURL = "http://141.56.232.9:8989/";
+
+        //TODO: Load Members from XML
+
+        //TODO: Load Discussion from XML
+
+        //TODO: Socket URI from XML
+
+        //TODO: Test XMLblablabla
+        // MemberManager memberManager = MemberManager.getInstance();
+        // memberManager.writeToAddressBookXml(getBaseContext().getApplicationContext());
+
+        viewModel.setMemberList(members);
+        viewModel.setDiscussionList(discussion);
+        viewModel.setWebSocketURI(webSocketURL);
+    }
+
     private void button_start_new_disussion_activity() {
         startActivity(new Intent(getBaseContext(), AddDiscussionActivity.class));
     }
@@ -106,9 +137,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void createWebSocket() {
         try {
-            Socket mSocket = IO.socket("http://141.56.224.27:8989/");
+            //Socket mSocket = IO.socket(viewModel.getWebSocketURI().getValue());
+            Socket mSocket = IO.socket("http://141.56.232.9:8989/");
 
-            SocketSingleton.setSocket(mSocket);
+            viewModel.setSocket(mSocket);
             if(mSocket.connected()){
                 Log.d("onCreate", "Connection detected!");
             }
@@ -116,18 +148,4 @@ public class MainActivity extends AppCompatActivity {
             Log.e("onCreate", "URISyntaxException! " + ue.getLocalizedMessage());
         }
     }
-
-   /* @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        }
-    }*/
 }

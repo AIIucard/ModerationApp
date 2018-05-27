@@ -2,7 +2,6 @@ package research.dresden.htw.moderationapp.manager;
 
 import android.content.Context;
 import android.util.Xml;
-import android.view.View;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -93,7 +92,7 @@ public class MemberManager {
             serializer.startTag("", "addressbook");
             for (Member member : memberArrayList) {
                 serializer.startTag("", "member");
-                serializer.attribute("", "id", member.getId().toString());
+                serializer.attribute("", "id", ""+member.getId());
 
                 serializer.startTag("", "title");
                 serializer.text(member.getTitle());
@@ -108,7 +107,7 @@ public class MemberManager {
                 serializer.endTag("", "organisation");
 
                 serializer.startTag("", "description");
-                serializer.text(member.getDescription());
+                serializer.text(member.getRole());
                 serializer.endTag("", "description");
 
                 serializer.endTag("", "member");

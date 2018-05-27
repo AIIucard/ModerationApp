@@ -43,7 +43,7 @@ public class EmulatorActivity extends AppCompatActivity {
     }
 
     public void send_new_discussion(View v) {
-        Member member = new Member(1, Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper");
+        Member member = new Member(1, Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper", 2);
         ArrayList<Member> members = new ArrayList<Member>();
         members.add(member);
         new SendNewDiscussionTask("RunderTisch", 360, members).execute();

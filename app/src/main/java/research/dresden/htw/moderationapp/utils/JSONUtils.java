@@ -31,8 +31,11 @@ public class JSONUtils {
                 memberOrganisation.put("organisation", currentMember.getOrganisation());
                 members.put(memberOrganisation);
                 JSONObject memberDescription = new JSONObject();
-                memberDescription.put("description", currentMember.getDescription());
+                memberDescription.put("description", currentMember.getRole());
                 members.put(memberDescription);
+                JSONObject memberPlaceNumber = new JSONObject();
+                memberPlaceNumber.put("placeNumber", currentMember.getPlaceNumber());
+                members.put(memberPlaceNumber);
             }
             discussion.put("members",members);
             message.put("payload", discussion);

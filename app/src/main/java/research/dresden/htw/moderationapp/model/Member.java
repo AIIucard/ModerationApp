@@ -1,24 +1,38 @@
 package research.dresden.htw.moderationapp.model;
 
 public class Member {
-    private Integer id;
+    private int id;
     private String title;
     private String name;
     private String organisation;
-    private String description;
+    private String role;
 
-    public Member(Integer id, String title, String name, String organisation, String description){
+    // For Discussion only
+    private int placeNumber;
+
+    public Member(int id, String title, String name, String organisation, String role){
+        this.id = id;
         this.title = title;
         this.name = name;
         this.organisation = organisation;
-        this.description = description;
+        this.role = role;
     }
 
-    public Integer getId() {
+    // For Discussion only
+    public Member(int id, String title, String name, String organisation, String role, int placeNumber){
+        this.id = id;
+        this.title = title;
+        this.name = name;
+        this.organisation = organisation;
+        this.role = role;
+        this.placeNumber = placeNumber;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,12 +60,20 @@ public class Member {
         this.organisation = organisation;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRole() {
+        return role;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public int getPlaceNumber() {
+        return placeNumber;
+    }
+
+    public void setPlaceNumber(int placeNumber) {
+        this.placeNumber = placeNumber;
     }
 
     public String toJsonString() {

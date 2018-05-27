@@ -11,7 +11,10 @@
     <!-- Members-->
     <!-- Discussion-->
     <string name="button_next">Weiter</string>
+
     <!-- Settings-->
+    <string name="button_change_web_socket_uri">WebSocket URI Ändern</string>
+
     <!-- Emulator-->
     <string name="button_send_new_discussion">Neue Diskussion</string>
     <string name="button_send_start_discussion">Diskussion Starten</string>
@@ -43,4 +46,8 @@
     <string name="title_activity_settings">Einstellungen</string>
     <!-- Emulator-->
     <string name="title_activity_emulator">Emulator</string>
+
+    <!-- Labels-->
+    <!-- Settings-->
+    <string name="label_web_socket_uri">WebSocket URI:</string>
 </resources>
