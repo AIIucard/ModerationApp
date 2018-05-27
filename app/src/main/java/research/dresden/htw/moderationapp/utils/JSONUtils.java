@@ -20,22 +20,26 @@ public class JSONUtils {
             discussion.put("title",title);
             discussion.put("duration",duration);
             JSONArray members = new JSONArray();
+
+            //TODO: Sort members by place but not here
             for (Member currentMember: memberList) {
+                JSONArray member = new JSONArray();
                 JSONObject memberTitle = new JSONObject();
                 memberTitle.put("title", currentMember.getTitle().toString());
-                members.put(memberTitle);
+                member.put(memberTitle);
                 JSONObject memberName = new JSONObject();
                 memberName.put("name", currentMember.getName());
-                members.put(memberName);
+                member.put(memberName);
                 JSONObject memberOrganisation = new JSONObject();
                 memberOrganisation.put("organisation", currentMember.getOrganisation());
-                members.put(memberOrganisation);
-                JSONObject memberDescription = new JSONObject();
-                memberDescription.put("description", currentMember.getRole());
-                members.put(memberDescription);
+                member.put(memberOrganisation);
+                JSONObject memberRole = new JSONObject();
+                memberRole.put("role", currentMember.getRole());
+                member.put(memberRole);
                 JSONObject memberPlaceNumber = new JSONObject();
                 memberPlaceNumber.put("placeNumber", currentMember.getPlaceNumber());
-                members.put(memberPlaceNumber);
+                member.put(memberPlaceNumber);
+                members.put(member);
             }
             discussion.put("members",members);
             message.put("payload", discussion);

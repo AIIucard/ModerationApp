@@ -21,6 +21,7 @@ import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdmini
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.activities.members.MemberAdministratonActivity;
 import research.dresden.htw.moderationapp.activities.settings.SettingsActivity;
+import research.dresden.htw.moderationapp.manager.MemberManager;
 import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.Member;
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Remove this later
         Member newMember = new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Sklave");
         members.add(newMember);
-        webSocketURL = "http://141.56.232.9:8989/";
+        webSocketURL = "http://141.56.224.27:8989/";
 
         //TODO: Load Members from XML
 
@@ -116,8 +117,12 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Socket URI from XML
 
         //TODO: Test XMLblablabla
-        // MemberManager memberManager = MemberManager.getInstance();
-        // memberManager.writeToAddressBookXml(getBaseContext().getApplicationContext());
+        /*MemberManager memberManager = MemberManager.getInstance();
+        memberManager.readFromXMLFile(getApplicationContext());
+        ArrayList<Member> memberArrayList = new ArrayList<>();
+        memberArrayList.add(new Member(1, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
+        memberArrayList.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
+        memberManager.writeToXMLFile(getApplicationContext(), memberArrayList);*/
 
         viewModel.setMemberList(members);
         viewModel.setDiscussionList(discussion);
@@ -146,9 +151,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void createWebSocket() {
         try {
-            // Socket mSocket = IO.socket(viewModel.getWebSocketURI().getValue());
-            Socket mSocket = IO.socket("http://141.56.224.35:8989/");
-
+            //Socket mSocket = IO.socket(viewModel.getWebSocketURI().getValue());
+            Socket mSocket = IO.socket("http://141.56.224.27:8989/");
             viewModel.setSocket(mSocket);
             if(mSocket.connected()){
                 Log.d("onCreate", "Connection detected!");

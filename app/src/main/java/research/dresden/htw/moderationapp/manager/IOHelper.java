@@ -2,14 +2,17 @@ package research.dresden.htw.moderationapp.manager;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 /**
  * Created by melardev on 5/21/2017.
@@ -17,56 +20,36 @@ import java.io.InputStreamReader;
 
 public class IOHelper {
 
-    public static String stringFromStream(InputStream is) {
+    public static String readStreamFromFile(Context context, String fileName) {
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-
-            while ((line = reader.readLine()) != null)
-                sb.append(line).append("\n");
-            reader.close();
-            return sb.toString();
+            FileInputStream fis = context.openFileInput(fileName);
+            InputStreamReader isr = new InputStreamReader(fis);
+            char[] inputBuffer = new char[fis.available()];
+            isr.read(inputBuffer);
+            String data = new String(inputBuffer);
+            isr.close();
+            fis.close();
+            Log.d("readFromXMLFile", "Read data: " + data + " from File: " + fileName);
+            return data;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static String stringFromFile(File f) throws IOException {
-        FileInputStream fis = new FileInputStream(f);
-        String str = stringFromStream(fis);
-        fis.close();
-        return str;
-    }
-
-    public static void writeToFile(File f, String str) throws IOException {
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(str.getBytes());
-        fos.close();
-
-    }
-
-    public static void writeToFile(Context context, String fileName, String str) {
+    public static void writeStringToFile(Context context, String fileName, String data) {
         try {
             FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            fos.write(str.getBytes(), 0, str.length());
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            osw.write(data);
+            osw.flush();
+            osw.close();
             fos.close();
+            Log.d("writeStringToFile", "Wrote data: " + data + " to File: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static String stringFromAsset(Context context, String assetFileName) {
-        AssetManager am = context.getAssets();
-        try {
-            InputStream is = am.open(assetFileName);
-            String result = IOHelper.stringFromStream(is);
-            is.close();
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

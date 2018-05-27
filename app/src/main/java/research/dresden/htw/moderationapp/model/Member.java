@@ -10,6 +10,10 @@ public class Member {
     // For Discussion only
     private int placeNumber;
 
+    public Member(){
+
+    }
+
     public Member(int id, String title, String name, String organisation, String role){
         this.id = id;
         this.title = title;

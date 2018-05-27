@@ -1,26 +1,29 @@
 package research.dresden.htw.moderationapp.manager;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Xml;
-import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 
+import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.Member;
-import research.dresden.htw.moderationapp.model.Title;
 
 public class MemberManager {
     private static Object lock = new Object();
     private static MemberManager instance = null;
-    private TextView txtXml;
+    private final String FILENAME = "members.xml";
 
     private MemberManager() {
         // Use getInstance
@@ -36,61 +39,82 @@ public class MemberManager {
         }
         return (instance);
     }
-
-    public void readXmlPullParser(Context context) {
-        XmlPullParserFactory factory;
-        FileInputStream fis = null;
+    public ArrayList<Member> readFromXMLFile(Context context) {
         try {
-            StringBuilder sb = new StringBuilder();
-            factory = XmlPullParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            XmlPullParser xpp = factory.newPullParser();
-            fis = context.openFileInput("testxml.xml"); //TODO: Change FileName
+            ArrayList<Member> memberList = new ArrayList<>();
 
+            FileInputStream fis = null;
+            fis = context.openFileInput(FILENAME);
+            XmlPullParserFactory factory = null;
+            XmlPullParser parser = null;
+            try {
+                factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(true);
+                parser = factory.newPullParser();
+                parser.setInput(fis, null);
+                int eventType = parser.getEventType();
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    Member member = null;
+                    String text = "";
+                    String tagname = parser.getName();
+                    switch (eventType) {
+                    case XmlPullParser.START_TAG:
+                        if (tagname.equalsIgnoreCase("member")) {
+                            // create a new instance of employee
+                            member = new Member();
+                        }
+                    break;
 
-            //xpp.setInput(new ByteArrayInputStream(xmlString.getBytes()),null);
-            int eventType = xpp.getEventType();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_DOCUMENT)
-                    sb.append("[START]");
-                else if (eventType == XmlPullParser.START_TAG)
-                    sb.append("\n<" + xpp.getName() + ">");
-                else if (eventType == XmlPullParser.END_TAG)
-                    sb.append("</" + xpp.getName() + ">");
-                else if (eventType == XmlPullParser.TEXT)
-                    sb.append(xpp.getText());
+                    case XmlPullParser.TEXT:
+                        text = parser.getText();
+                        break;
 
-                eventType = xpp.next();
+                    case XmlPullParser.END_TAG:
+                        if (tagname.equalsIgnoreCase("employee")) {
+                            // add employee object to list
+                            memberList.add(member);
+                        } else if (tagname.equalsIgnoreCase("id")) {
+                            member.setId(Integer.parseInt(text));
+                        } else if (tagname.equalsIgnoreCase("title")) {
+                            member.setTitle(text);
+                        } else if (tagname.equalsIgnoreCase("name")) {
+                            member.setName(text);
+                        } else if (tagname.equalsIgnoreCase("organisation")) {
+                            member.setOrganisation(text);
+                        } else if (tagname.equalsIgnoreCase("role")) {
+                            member.setRole(text);
+                        }
+                        break;
+
+                    default:
+                        break;
+                    }
+                    eventType = parser.next();
+                }
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            txtXml.setText(sb.toString());
-        } catch (XmlPullParserException e) {
+            fis.close();
+            return memberList;
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+        return null;
     }
 
-    public void writeToAddressBookXml(Context context) {
-        ArrayList<Member> memberArrayList = new ArrayList<>();
-        memberArrayList.add(new Member(1, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
-        memberArrayList.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
+    public void writeToXMLFile(Context context, ArrayList<Member> memberList) {
 
         XmlSerializer serializer = Xml.newSerializer();
         StringWriter writer = new StringWriter();
-
         try {
             serializer.setOutput(writer);
             serializer.startDocument("UTF-8", true);
-            serializer.startTag("", "addressbook");
-            for (Member member : memberArrayList) {
+            serializer.startTag("", "MemberList");
+            for (Member member : memberList) {
                 serializer.startTag("", "member");
                 serializer.attribute("", "id", ""+member.getId());
 
@@ -114,14 +138,11 @@ public class MemberManager {
             }
             serializer.endTag("", "addressbook");
             serializer.endDocument();
+            serializer.flush();
             String result = writer.toString();
-            IOHelper.writeToFile(context, "testxml.xml", result);
-            txtXml.setText("From writeToXmlFile\n" + result);
-
-
+            IOHelper.writeStringToFile(context, FILENAME, result);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 }
