@@ -63,7 +63,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="change_web_socket_uri"
+            android:onClick="changeWebSocketURI"
             android:text="@string/button_change_web_socket_uri" />
     </LinearLayout>
 

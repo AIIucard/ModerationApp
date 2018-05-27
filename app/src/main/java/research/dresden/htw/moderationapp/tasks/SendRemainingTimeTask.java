@@ -6,24 +6,20 @@ import com.github.nkzawa.socketio.client.Socket;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-import research.dresden.htw.moderationapp.model.Member;
-import research.dresden.htw.moderationapp.model.SocketSingleton;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendRemainingTimeTask extends AsyncTask<Void, Void, Void> {
-
+    Socket socket;
     private static String timeMessage;
 
-    public SendRemainingTimeTask(String timeMessage){
+    public SendRemainingTimeTask(Socket socket, String timeMessage){
+        this.socket = socket;
         this.timeMessage = timeMessage;
     }
 
     protected Void doInBackground(Void... voids) {
-        Socket webSocket = SocketSingleton.getSocket();
         JSONObject message = JSONUtils.createRemainingTimeJSONMessage(timeMessage);
-        webSocket.emit("message", message);
+        socket.emit("message", message);
         return null;
     }
 }

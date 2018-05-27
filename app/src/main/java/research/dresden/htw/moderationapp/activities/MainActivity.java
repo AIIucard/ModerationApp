@@ -1,6 +1,5 @@
 package research.dresden.htw.moderationapp.activities;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,23 +20,23 @@ import research.dresden.htw.moderationapp.activities.discussion.AddDiscussionAct
 import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdministrationActivity;
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.activities.members.MemberAdministratonActivity;
-import research.dresden.htw.moderationapp.model.DataViewModel;
+import research.dresden.htw.moderationapp.activities.settings.SettingsActivity;
+import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.Member;
-import research.dresden.htw.moderationapp.model.SocketSingleton;
 import research.dresden.htw.moderationapp.model.Title;
 import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private static DataViewModel viewModel;
+    private static AppDataViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewModel = ViewModelProviders.of(this).get(DataViewModel.class);
+        viewModel = AppDataViewModel.getInstance();
 
         initializeDataViewModelFromXML();
 
@@ -46,31 +45,37 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_emulator_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                button_start_emulator_activity();
+                buttonStartEmulatorActivity();
             }
         });
 
         findViewById(R.id.button_new_discussion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                button_start_new_disussion_activity();
+                buttonStartNewDisussionActivity();
             }
         });
 
         findViewById(R.id.button_member_administration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                button_start_member_administration_activity();
+                buttonStartMemberAdministrationActivity();
             }
         });
-
 
         findViewById(R.id.button_discussion_administration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                button_start_discussion_administration_activity();
+                buttonStartDiscussionAdministrationActivity();
             }
         });
+        findViewById(R.id.button_settings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonStartSettingsActivity();
+            }
+        });
+
 
         // Burger Menu
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        new ConnectionTask().execute(SocketSingleton.getSocket());
+        new ConnectionTask().execute(viewModel.getSocket());
     }
 
     private void initializeDataViewModelFromXML(){
@@ -119,26 +124,30 @@ public class MainActivity extends AppCompatActivity {
         viewModel.setWebSocketURI(webSocketURL);
     }
 
-    private void button_start_new_disussion_activity() {
+    private void buttonStartNewDisussionActivity() {
         startActivity(new Intent(getBaseContext(), AddDiscussionActivity.class));
     }
 
-    private void button_start_emulator_activity() {
+    private void buttonStartEmulatorActivity() {
         startActivity(new Intent(getBaseContext(), EmulatorActivity.class));
     }
 
-    private void button_start_member_administration_activity() {
+    private void buttonStartMemberAdministrationActivity() {
         startActivity(new Intent(getBaseContext(), MemberAdministratonActivity.class));
     }
 
-    private void button_start_discussion_administration_activity() {
+    private void buttonStartDiscussionAdministrationActivity() {
         startActivity(new Intent(getBaseContext(), DiscussionAdministrationActivity.class));
+    }
+
+    private void buttonStartSettingsActivity() {
+        startActivity(new Intent(getBaseContext(), SettingsActivity.class));
     }
 
     private void createWebSocket() {
         try {
-            //Socket mSocket = IO.socket(viewModel.getWebSocketURI().getValue());
-            Socket mSocket = IO.socket("http://141.56.232.9:8989/");
+            // Socket mSocket = IO.socket(viewModel.getWebSocketURI().getValue());
+            Socket mSocket = IO.socket("http://141.56.224.35:8989/");
 
             viewModel.setSocket(mSocket);
             if(mSocket.connected()){

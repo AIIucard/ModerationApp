@@ -1,7 +1,6 @@
 package research.dresden.htw.moderationapp.activities.settings;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +14,12 @@ import com.github.nkzawa.socketio.client.Socket;
 import java.net.URISyntaxException;
 
 import research.dresden.htw.moderationapp.R;
-import research.dresden.htw.moderationapp.model.DataViewModel;
-import research.dresden.htw.moderationapp.model.SocketSingleton;
+import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
 public class SettingsActivity  extends AppCompatActivity {
 
-    private static DataViewModel viewModel;
+    private static AppDataViewModel viewModel;
 
     EditText inputWebSocketURIField;
 
@@ -29,7 +27,7 @@ public class SettingsActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        viewModel = ViewModelProviders.of(this).get(DataViewModel.class);
+        viewModel = AppDataViewModel.getInstance();
         inputWebSocketURIField = findViewById(R.id.inputWebSocketURIField);
         inputWebSocketURIField.setText(viewModel.getWebSocketURI().getValue());
 
@@ -46,10 +44,10 @@ public class SettingsActivity  extends AppCompatActivity {
         viewModel.getWebSocketURI().observe(this, webSocketURIObserver);
     }
 
-    public void change_web_socket_uri(View v){
+    public void changeWebSocketURI(View v){
         viewModel.setWebSocketURI(inputWebSocketURIField.getText().toString());
         createWebSocket();
-        new ConnectionTask().execute(SocketSingleton.getSocket());
+        new ConnectionTask().execute(viewModel.getSocket());
     }
 
     private void createWebSocket() {
