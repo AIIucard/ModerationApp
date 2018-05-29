@@ -1,17 +1,42 @@
 package research.dresden.htw.moderationapp.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import javax.annotation.Generated;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Generated("org.jsonschema2pojo")
+@JsonPropertyOrder({
+        "id",
+        "title",
+        "name",
+        "organisation",
+        "role",
+        "placeNumber"
+})
 public class Member {
+    @JsonProperty("id")
     private int id;
+
+    @JsonProperty("title")
     private String title;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("organisation")
     private String organisation;
+
+    @JsonProperty("role")
     private String role;
 
+    @JsonProperty("placeNumber")
     // For Discussion only
     private int placeNumber;
 
-    public Member(){
-
+    public Member() {
+        // Dummy constructor or json parser
     }
 
     public Member(int id, String title, String name, String organisation, String role){
@@ -32,58 +57,123 @@ public class Member {
         this.placeNumber = placeNumber;
     }
 
+    /**
+     *
+     * @return
+     * The ID
+     */
+    @JsonProperty("id")
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     * The ID
+     */
+    @JsonProperty("id")
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     * The title
+     */
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
+     /**
+     *
+     * @param title
+     * The title
+     */
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     *
+     * @return
+     * The name
+     */
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     * The name
+     */
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     * The organisation
+     */
+    @JsonProperty("organisation")
     public String getOrganisation() {
         return organisation;
     }
 
+    /**
+     *
+     * @param organisation
+     * The ID
+     */
+    @JsonProperty("organisation")
     public void setOrganisation(String organisation) {
         this.organisation = organisation;
     }
 
+    /**
+     *
+     * @return
+     * The role
+     */
+    @JsonProperty("role")
     public String getRole() {
         return role;
     }
 
+    /**
+     *
+     * @param role
+     * The role
+     */
+    @JsonProperty("role")
     public void setRole(String role) {
         this.role = role;
     }
 
+    /**
+     *
+     * @return
+     * The place number
+     */
+    @JsonProperty("placeNumber")
     public int getPlaceNumber() {
         return placeNumber;
     }
 
+    /**
+     *
+     * @param placeNumber
+     * The place number
+     */
+    @JsonProperty("placeNumber")
     public void setPlaceNumber(int placeNumber) {
         this.placeNumber = placeNumber;
-    }
-
-    public String toJsonString() {
-        return "{ \"country\": \"ES\",\n" +
-                "    \"name\": \"Valencia\",\n" +
-                "    \"latitude\": 39.466667,\n" +
-                "    \"longitude\": -.366667}";
     }
 }

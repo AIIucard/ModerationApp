@@ -21,7 +21,10 @@ import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdmini
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.activities.members.MemberAdministratonActivity;
 import research.dresden.htw.moderationapp.activities.settings.SettingsActivity;
+import research.dresden.htw.moderationapp.manager.CfgManager;
+import research.dresden.htw.moderationapp.manager.DiscussionManager;
 import research.dresden.htw.moderationapp.manager.MemberManager;
+import research.dresden.htw.moderationapp.model.AppConfig;
 import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.Member;
@@ -103,30 +106,49 @@ public class MainActivity extends AppCompatActivity {
     private void initializeDataViewModelFromXML(){
         ArrayList<Member> members = new ArrayList<Member>();
         ArrayList<Discussion> discussion = new ArrayList<Discussion>();
-        String webSocketURL = "";
+        String webSocketURI = "";
 
         // TODO: Remove this later
-        Member newMember = new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Sklave");
-        members.add(newMember);
-        webSocketURL = "http://141.56.224.27:8989/";
+        // Member Dummys
+        ArrayList<Member> memberArrayListTemp = new ArrayList<>();
+        memberArrayListTemp.add(new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Sklave"));
+        memberArrayListTemp.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
+        memberArrayListTemp.add(new Member(3, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
+        MemberManager memberManagerTemp = MemberManager.getInstance();
+        memberManagerTemp.writeToXMLFile(getApplicationContext(), memberArrayListTemp);
 
-        //TODO: Load Members from XML
+        // TODO: Remove this later
+        // Discussion Dumys
+        ArrayList<Discussion> discussionArrayListTemp = new ArrayList<>();
+        ArrayList<Member> memberArrayListTemp2 = new ArrayList<>();
+        memberArrayListTemp2.add(new Member(1, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung", 2));
+        memberArrayListTemp2.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung", 4));
+        discussionArrayListTemp.add(new Discussion(1, "Runder Tisch", 360, memberArrayListTemp2));
+        DiscussionManager discussionManagerTemp = DiscussionManager.getInstance();
+        discussionManagerTemp.writeToXMLFile(getApplicationContext(), discussionArrayListTemp);
 
-        //TODO: Load Discussion from XML
+        // TODO: Remove this later
+        // Websocket Dummys
+        AppConfig config = new AppConfig("http://141.56.224.27:8989/");
+        CfgManager cfgManagerTemp = CfgManager.getInstance();
+        cfgManagerTemp.writeToJSONFile(getApplicationContext(), config);
 
-        //TODO: Socket URI from XML
-
-        //TODO: Test XMLblablabla
+        //Load Members from XML
         MemberManager memberManager = MemberManager.getInstance();
-        ArrayList<Member> memberArrayList = new ArrayList<>();
-        memberArrayList.add(new Member(1, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
-        memberArrayList.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
-        memberManager.writeToXMLFile(getApplicationContext(), memberArrayList);
-        memberManager.readFromXMLFile(getApplicationContext());
+        members = memberManager.readFromXMLFile(getApplicationContext());
+
+        //Load Discussion from XML
+        DiscussionManager discussionManager = DiscussionManager.getInstance();
+        discussion = discussionManager.readFromXMLFile(getApplicationContext());
+
+        //Load Socket URI from XML
+        CfgManager cfgManager= CfgManager.getInstance();
+        AppConfig cfg = cfgManager.readFromJSONFile(getApplicationContext());
+        webSocketURI = cfg.getWebSocketURI();
 
         viewModel.setMemberList(members);
         viewModel.setDiscussionList(discussion);
-        viewModel.setWebSocketURI(webSocketURL);
+        viewModel.setWebSocketURI(webSocketURI);
     }
 
     private void buttonStartNewDisussionActivity() {

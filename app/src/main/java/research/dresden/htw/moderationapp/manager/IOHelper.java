@@ -20,7 +20,7 @@ import java.io.OutputStreamWriter;
 
 public class IOHelper {
 
-    public static String readStreamFromFile(Context context, String fileName) {
+    public static String readStringFromFile(Context context, String fileName) {
         try {
             FileInputStream fis = context.openFileInput(fileName);
             InputStreamReader isr = new InputStreamReader(fis);
@@ -29,7 +29,7 @@ public class IOHelper {
             String data = new String(inputBuffer);
             isr.close();
             fis.close();
-            Log.d("readFromXMLFile", "Read data: " + data + " from File: " + fileName);
+            Log.d("readStringFromJSONFile", "Read data: " + data + " from File: " + fileName);
             return data;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class IOHelper {
             osw.flush();
             osw.close();
             fos.close();
-            Log.d("writeStringToFile", "Wrote data: " + data + " to File: " + fileName);
+            Log.d("writeStringToJSONFile", "Wrote data: " + data + " to File: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

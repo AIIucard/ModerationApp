@@ -8,35 +8,36 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import research.dresden.htw.moderationapp.model.AppConfig;
 import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.DiscussionList;
 
-public class DiscussionManager {
+public class CfgManager {
     private static Object lock = new Object();
-    private static DiscussionManager instance = null;
-    private final String FILENAME = "discussions.json";
+    private static CfgManager instance = null;
+    private final String FILENAME = "cfg.json";
 
-    private DiscussionManager() {
+    private CfgManager() {
         // Use getInstance
     }
 
-    public static DiscussionManager getInstance() {
+    public static CfgManager getInstance() {
         if (instance == null) {
             synchronized (lock) {
                 if (instance == null) {
-                    instance = new DiscussionManager();
+                    instance = new CfgManager();
                 }
             }
         }
         return (instance);
     }
-    public ArrayList<Discussion> readFromXMLFile(Context context) {
-        String discussionsAsString = IOHelper.readStringFromFile(context, FILENAME);
-        if(discussionsAsString != null) {
+    public AppConfig readFromJSONFile(Context context) {
+        String configAsString = IOHelper.readStringFromFile(context, FILENAME);
+        if(configAsString != null) {
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
-                DiscussionList discussionList = objectMapper.readValue(discussionsAsString, DiscussionList.class);
-                return discussionList.getDiscussionList();
+                AppConfig appConfig = objectMapper.readValue(configAsString, AppConfig.class);
+                return appConfig;
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -46,12 +47,11 @@ public class DiscussionManager {
         return null;
     }
 
-    public void writeToXMLFile(Context context, ArrayList<Discussion> discussionList) {
+    public void writeToJSONFile(Context context, AppConfig cfg) {
         try {
-            DiscussionList discussions = new DiscussionList(discussionList);
             ObjectMapper objectMapper = new ObjectMapper();
-            String discussionsAsString = objectMapper.writeValueAsString(discussions);
-            IOHelper.writeStringToFile(context, FILENAME, discussionsAsString);
+            String configAsString = objectMapper.writeValueAsString(cfg);
+            IOHelper.writeStringToFile(context, FILENAME, configAsString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
