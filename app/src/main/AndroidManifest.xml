@@ -22,7 +22,7 @@
         </activity>
 
         <!-- Members-->
-        <activity android:name=".activities.members.MemberAdministratonActivity"
+        <activity android:name=".activities.members.MemberAdministrationActivity"
          android:label="@string/title_activity_member_administration">
         </activity>
         <activity android:name=".activities.members.AddMemberActivity"

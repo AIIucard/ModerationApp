@@ -30,7 +30,7 @@ public class DiscussionManager {
         }
         return (instance);
     }
-    public ArrayList<Discussion> readFromXMLFile(Context context) {
+    public ArrayList<Discussion> readFromJSONFile(Context context) {
         String discussionsAsString = IOHelper.readStringFromFile(context, FILENAME);
         if(discussionsAsString != null) {
             try {
@@ -46,7 +46,7 @@ public class DiscussionManager {
         return null;
     }
 
-    public void writeToXMLFile(Context context, ArrayList<Discussion> discussionList) {
+    public void writeToJSONFile(Context context, ArrayList<Discussion> discussionList) {
         try {
             DiscussionList discussions = new DiscussionList(discussionList);
             ObjectMapper objectMapper = new ObjectMapper();

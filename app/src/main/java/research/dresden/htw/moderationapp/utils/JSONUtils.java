@@ -12,6 +12,7 @@ import research.dresden.htw.moderationapp.model.Member;
 
 public class JSONUtils {
 
+    // TODO: Use JSON Anotations if time avialable
     public static JSONObject createNewDiscussionJSONMessage(String title, int duration, ArrayList<Member> memberList){
         JSONObject message = new JSONObject();
         try {

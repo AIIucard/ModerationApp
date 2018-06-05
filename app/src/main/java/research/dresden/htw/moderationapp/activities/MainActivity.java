@@ -19,7 +19,7 @@ import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.activities.discussion.AddDiscussionActivity;
 import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdministrationActivity;
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
-import research.dresden.htw.moderationapp.activities.members.MemberAdministratonActivity;
+import research.dresden.htw.moderationapp.activities.members.MemberAdministrationActivity;
 import research.dresden.htw.moderationapp.activities.settings.SettingsActivity;
 import research.dresden.htw.moderationapp.manager.CfgManager;
 import research.dresden.htw.moderationapp.manager.DiscussionManager;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         viewModel = AppDataViewModel.getInstance();
 
-        initializeDataViewModelFromXML();
+        initializeDataViewModelFromJSON();
 
         createWebSocket();
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         new ConnectionTask().execute(viewModel.getSocket());
     }
 
-    private void initializeDataViewModelFromXML(){
+    private void initializeDataViewModelFromJSON(){
         ArrayList<Member> members = new ArrayList<Member>();
         ArrayList<Discussion> discussion = new ArrayList<Discussion>();
         String webSocketURI = "";
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         memberArrayListTemp.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
         memberArrayListTemp.add(new Member(3, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
         MemberManager memberManagerTemp = MemberManager.getInstance();
-        memberManagerTemp.writeToXMLFile(getApplicationContext(), memberArrayListTemp);
+        memberManagerTemp.writeToJSONFile(getApplicationContext(), memberArrayListTemp);
 
         // TODO: Remove this later
         // Discussion Dumys
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         memberArrayListTemp2.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung", 4));
         discussionArrayListTemp.add(new Discussion(1, "Runder Tisch", 360, memberArrayListTemp2));
         DiscussionManager discussionManagerTemp = DiscussionManager.getInstance();
-        discussionManagerTemp.writeToXMLFile(getApplicationContext(), discussionArrayListTemp);
+        discussionManagerTemp.writeToJSONFile(getApplicationContext(), discussionArrayListTemp);
 
         // TODO: Remove this later
         // Websocket Dummys
@@ -133,15 +133,15 @@ public class MainActivity extends AppCompatActivity {
         CfgManager cfgManagerTemp = CfgManager.getInstance();
         cfgManagerTemp.writeToJSONFile(getApplicationContext(), config);
 
-        //Load Members from XML
+        //Load Members from JSON
         MemberManager memberManager = MemberManager.getInstance();
-        members = memberManager.readFromXMLFile(getApplicationContext());
+        members = memberManager.readFromJSONFile(getApplicationContext());
 
-        //Load Discussion from XML
+        //Load Discussion from JSON
         DiscussionManager discussionManager = DiscussionManager.getInstance();
-        discussion = discussionManager.readFromXMLFile(getApplicationContext());
+        discussion = discussionManager.readFromJSONFile(getApplicationContext());
 
-        //Load Socket URI from XML
+        //Load Socket URI from JSON
         CfgManager cfgManager= CfgManager.getInstance();
         AppConfig cfg = cfgManager.readFromJSONFile(getApplicationContext());
         webSocketURI = cfg.getWebSocketURI();
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buttonStartMemberAdministrationActivity() {
-        startActivity(new Intent(getBaseContext(), MemberAdministratonActivity.class));
+        startActivity(new Intent(getBaseContext(), MemberAdministrationActivity.class));
     }
 
     private void buttonStartDiscussionAdministrationActivity() {
@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             String uri = viewModel.getWebSocketURI().getValue();
             Socket mSocket = IO.socket(uri);
-            //Socket mSocket = IO.socket("http://141.56.224.27:8989/");
             viewModel.setSocket(mSocket);
             if(mSocket.connected()){
                 Log.d("onCreate", "Connection detected!");

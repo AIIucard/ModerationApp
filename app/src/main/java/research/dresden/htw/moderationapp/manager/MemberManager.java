@@ -30,7 +30,7 @@ public class MemberManager {
         }
         return (instance);
     }
-    public ArrayList<Member> readFromXMLFile(Context context) {
+    public ArrayList<Member> readFromJSONFile(Context context) {
         String addressBookAsString = IOHelper.readStringFromFile(context, FILENAME);
         if(addressBookAsString != null) {
             try {
@@ -46,7 +46,7 @@ public class MemberManager {
         return null;
     }
 
-    public void writeToXMLFile(Context context, ArrayList<Member> memberList) {
+    public void writeToJSONFile(Context context, ArrayList<Member> memberList) {
 
         try {
             AddressBook addressBook = new AddressBook(memberList);

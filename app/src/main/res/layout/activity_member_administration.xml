@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.members.MemberAdministratonActivity">
+    tools:context=".activities.members.MemberAdministrationActivity">
 
     <ListView
-        android:id="@+id/_dynamic"
+        android:id="@+id/member_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -35,34 +35,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         fab:fab_addButtonColorNormal="@android:color/white"
         fab:fab_addButtonColorPressed="@android:color/holo_red_light"
-        fab:fab_addButtonPlusIconColor="@android:color/darker_gray">
+        fab:fab_addButtonPlusIconColor="@android:color/darker_gray"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            fab:fab_addButtonSize="mini"
             fab:fab_icon="@drawable/ic_sick_add"
             fab:fab_colorNormal="@android:color/holo_green_dark"
             fab:fab_colorPressed="@android:color/holo_green_light"
-            fab:fab_title="Action A" />
+            fab:fab_title="Neu" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            fab:fab_addButtonSize="mini"
             fab:fab_icon="@drawable/ic_sick_edit"
             fab:fab_colorNormal="@android:color/holo_blue_dark"
             fab:fab_colorPressed="@android:color/holo_blue_light"
-            fab:fab_title="Action A" />
+            fab:fab_title="Bearbeiten" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            fab:fab_addButtonSize="mini"
             fab:fab_icon="@drawable/ic_sick_remove"
             fab:fab_colorNormal="@android:color/holo_red_dark"
             fab:fab_colorPressed="@android:color/holo_red_light"
-            fab:fab_title="Action with a very long name that won\'t fit on the screen" />
+            fab:fab_title="Löschen" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

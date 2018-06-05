@@ -68,6 +68,7 @@ public class Discussion {
      * @param title
      * The title
      */
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
@@ -87,6 +88,7 @@ public class Discussion {
      * @param time
      * The time
      */
+    @JsonProperty("time")
     public void setTime(Integer time) {
         this.time = time;
     }
@@ -106,6 +108,7 @@ public class Discussion {
      * @param memberList
      * The members
      */
+    @JsonProperty("members")
     public void setMemberList(ArrayList<Member> memberList) {
         this.memberList = memberList;
     }

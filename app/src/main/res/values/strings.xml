@@ -48,6 +48,16 @@
     <string name="title_activity_emulator">Emulator</string>
 
     <!-- Labels-->
+    <!-- Members-->
+    <string name="id_member_text_view_placeholder">ID</string>
+    <string name="member_icon_description">Teilnehmer</string>
+    <string name="title_member_text_view_placeholder">Titel</string>
+    <string name="name_member_text_view_placeholder">Name</string>
+    <string name="organisation_member_text_view_placeholder">Organisation</string>
+    <string name="role_member_text_view_placeholder">Rolle</string>
+
     <!-- Settings-->
     <string name="label_web_socket_uri">WebSocket URI:</string>
+
+
 </resources>
