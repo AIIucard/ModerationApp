@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import research.dresden.htw.moderationapp.R;
 
-public class AddExsistingMemberActivity extends AppCompatActivity {
+public class AddExistingMemberActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

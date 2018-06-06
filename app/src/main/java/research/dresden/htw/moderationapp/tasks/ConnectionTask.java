@@ -6,7 +6,6 @@ import android.util.Log;
 import com.github.nkzawa.socketio.client.Socket;
 
 public class ConnectionTask extends AsyncTask<Socket, Void, Void> {
-    private Exception exception;
 
     protected Void doInBackground(Socket... webSockets) {
         Socket webSocket = webSockets[0];

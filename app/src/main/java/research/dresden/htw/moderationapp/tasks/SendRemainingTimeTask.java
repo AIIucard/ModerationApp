@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendRemainingTimeTask extends AsyncTask<Void, Void, Void> {
-    Socket socket;
-    private static String timeMessage;
+    private Socket socket;
+    private String timeMessage;
 
     public SendRemainingTimeTask(Socket socket, String timeMessage){
         this.socket = socket;

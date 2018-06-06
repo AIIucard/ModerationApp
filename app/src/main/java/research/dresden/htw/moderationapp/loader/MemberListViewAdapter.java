@@ -1,5 +1,6 @@
 package research.dresden.htw.moderationapp.loader;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,22 +26,24 @@ public class MemberListViewAdapter extends ArrayAdapter<Member>{
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater memberInflater = LayoutInflater.from(getContext());
-        View memberView = memberInflater.inflate(R.layout.member_row, parent, false);
+        @SuppressLint("ViewHolder") View memberView = memberInflater.inflate(R.layout.member_row, parent, false);
         Member memberItem = getItem(position);
 
-        TextView idTextView = (TextView) memberView.findViewById(R.id.id_text_view_member);
-        ImageView imageView = (ImageView) memberView.findViewById(R.id.image_view_member);
-        TextView titleTextView = (TextView) memberView.findViewById(R.id.title_text_view_member);
-        TextView nameTextView = (TextView) memberView.findViewById(R.id.name_text_view_member);
-        TextView organisationTextView = (TextView) memberView.findViewById(R.id.organisation_text_view_member);
-        TextView roleTextView = (TextView) memberView.findViewById(R.id.role_text_view_member);
+        TextView idTextView = memberView.findViewById(R.id.id_text_view_member);
+        ImageView imageView = memberView.findViewById(R.id.image_view_member);
+        TextView titleTextView = memberView.findViewById(R.id.title_text_view_member);
+        TextView nameTextView = memberView.findViewById(R.id.name_text_view_member);
+        TextView organisationTextView = memberView.findViewById(R.id.organisation_text_view_member);
+        TextView roleTextView = memberView.findViewById(R.id.role_text_view_member);
 
-        idTextView.setText(String.valueOf(memberItem.getId()));
-        imageView.setImageResource(R.drawable.member);
-        titleTextView.setText(String.valueOf(memberItem.getTitle()));
-        nameTextView.setText(String.valueOf(memberItem.getName()));
-        organisationTextView.setText(String.valueOf(memberItem.getOrganisation()));
-        roleTextView.setText(String.valueOf(memberItem.getRole()));
+        if (memberItem != null) {
+            idTextView.setText(String.valueOf(memberItem.getId()));
+            imageView.setImageResource(R.drawable.member);
+            titleTextView.setText(String.valueOf(memberItem.getTitle()));
+            nameTextView.setText(String.valueOf(memberItem.getName()));
+            organisationTextView.setText(String.valueOf(memberItem.getOrganisation()));
+            roleTextView.setText(String.valueOf(memberItem.getRole()));
+        }
 
         return memberView;
     }

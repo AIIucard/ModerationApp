@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendEndPauseTask extends AsyncTask<Void, Void, Void> {
-    Socket socket;
+    private Socket socket;
     public SendEndPauseTask(Socket socket){
         this.socket = socket;
     }

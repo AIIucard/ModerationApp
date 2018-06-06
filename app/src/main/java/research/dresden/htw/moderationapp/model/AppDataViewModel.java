@@ -16,10 +16,13 @@ public class AppDataViewModel {
     private static Object lock = new Object();
     private static AppDataViewModel instance = null;
 
+    private MutableLiveData<Member>  lastSelectedMember = new MutableLiveData<>();
+
     private AppDataViewModel() {
         // Use getInstance
     }
 
+    @SuppressWarnings("SynchronizeOnNonFinalField")
     public static AppDataViewModel getInstance() {
         if (instance == null) {
             synchronized (lock) {
@@ -63,5 +66,13 @@ public class AppDataViewModel {
 
     public void setMemberList(ArrayList<Member> memberList) {
         this.memberList.setValue(memberList);
+    }
+
+    public MutableLiveData<Member> getLastSelectedMember() {
+        return lastSelectedMember;
+    }
+
+    public void setLastSelectedMember(Member lastSelectedMember) {
+        this.lastSelectedMember.setValue(lastSelectedMember);
     }
 }

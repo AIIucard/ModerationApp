@@ -2,6 +2,7 @@ package research.dresden.htw.moderationapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                         // set item as selected to persist highlight
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
@@ -104,16 +105,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeDataViewModelFromJSON(){
-        ArrayList<Member> members = new ArrayList<Member>();
-        ArrayList<Discussion> discussion = new ArrayList<Discussion>();
-        String webSocketURI = "";
+        ArrayList<Member> members;
 
         // TODO: Remove this later
         // Member Dummys
         ArrayList<Member> memberArrayListTemp = new ArrayList<>();
-        memberArrayListTemp.add(new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Sklave"));
-        memberArrayListTemp.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung"));
-        memberArrayListTemp.add(new Member(3, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung"));
+        memberArrayListTemp.add(new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Der Sklave"));
+        memberArrayListTemp.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Brett Pid", "Baumschule", "Der geile Stecher"));
+        memberArrayListTemp.add(new Member(3, Title.DIPLOMA_OF_MUSIC, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer"));
         MemberManager memberManagerTemp = MemberManager.getInstance();
         memberManagerTemp.writeToJSONFile(getApplicationContext(), memberArrayListTemp);
 
@@ -139,12 +138,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Load Discussion from JSON
         DiscussionManager discussionManager = DiscussionManager.getInstance();
-        discussion = discussionManager.readFromJSONFile(getApplicationContext());
+        ArrayList<Discussion> discussion = discussionManager.readFromJSONFile(getApplicationContext());
 
         //Load Socket URI from JSON
         CfgManager cfgManager= CfgManager.getInstance();
         AppConfig cfg = cfgManager.readFromJSONFile(getApplicationContext());
-        webSocketURI = cfg.getWebSocketURI();
+        String webSocketURI = cfg.getWebSocketURI();
 
         viewModel.setMemberList(members);
         viewModel.setDiscussionList(discussion);

@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendSilenceTask extends AsyncTask<Void, Void, Void> {
-    Socket socket;
+    private Socket socket;
     public SendSilenceTask(Socket socket){
         this.socket = socket;
     }

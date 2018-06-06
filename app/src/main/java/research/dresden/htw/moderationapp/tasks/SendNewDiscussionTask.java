@@ -12,10 +12,10 @@ import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendNewDiscussionTask extends AsyncTask<Void, Void, Void> {
-    Socket socket;
-    private static String title;
-    private static int duration;
-    private static ArrayList<Member> members;
+    private Socket socket;
+    private String title;
+    private int duration;
+    private ArrayList<Member> members;
 
     public SendNewDiscussionTask(Socket socket, String title, int duration, ArrayList<Member> members){
         this.socket = socket;

@@ -21,7 +21,7 @@ public class SettingsActivity  extends AppCompatActivity {
 
     private static AppDataViewModel viewModel;
 
-    EditText inputWebSocketURIField;
+    private EditText inputWebSocketURIField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

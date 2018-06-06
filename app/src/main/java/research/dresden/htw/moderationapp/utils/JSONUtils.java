@@ -26,7 +26,7 @@ public class JSONUtils {
             for (Member currentMember: memberList) {
                 JSONArray member = new JSONArray();
                 JSONObject memberTitle = new JSONObject();
-                memberTitle.put("title", currentMember.getTitle().toString());
+                memberTitle.put("title", currentMember.getTitle());
                 member.put(memberTitle);
                 JSONObject memberName = new JSONObject();
                 memberName.put("name", currentMember.getName());

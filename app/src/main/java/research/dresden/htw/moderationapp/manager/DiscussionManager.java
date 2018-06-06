@@ -20,6 +20,7 @@ public class DiscussionManager {
         // Use getInstance
     }
 
+    @SuppressWarnings("SynchronizeOnNonFinalField")
     public static DiscussionManager getInstance() {
         if (instance == null) {
             synchronized (lock) {
@@ -37,8 +38,6 @@ public class DiscussionManager {
                 ObjectMapper objectMapper = new ObjectMapper();
                 DiscussionList discussionList = objectMapper.readValue(discussionsAsString, DiscussionList.class);
                 return discussionList.getDiscussionList();
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }

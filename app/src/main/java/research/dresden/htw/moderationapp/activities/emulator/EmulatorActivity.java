@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import research.dresden.htw.moderationapp.R;
@@ -25,9 +24,8 @@ import research.dresden.htw.moderationapp.tasks.SendTopicTask;
 
 public class EmulatorActivity extends AppCompatActivity {
 
-    EditText inputTextField;
-    private static PrintWriter printWriter;
-    static String message = "";
+    private EditText inputTextField;
+    private static String message = "";
     private static AppDataViewModel viewModel;
 
     @Override
@@ -41,7 +39,7 @@ public class EmulatorActivity extends AppCompatActivity {
     public void sendNewDiscussion(View v) {
         Member member1 = new Member(1, Title.DIPLOMA_OF_ARTS, "Simon" ,"HTW ", "Helper", 2);
         Member member2 = new Member(2, Title.DIPLOMA_OF_MUSIC, "Georg" ,"HTW ", "Master", 4);
-        ArrayList<Member> members = new ArrayList<Member>();
+        ArrayList<Member> members = new ArrayList<>();
         members.add(member1);
         members.add(member2);
         if(viewModel.getSocket()== null){

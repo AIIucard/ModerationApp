@@ -20,6 +20,7 @@ public class MemberManager {
         // Use getInstance
     }
 
+    @SuppressWarnings("SynchronizeOnNonFinalField")
     public static MemberManager getInstance() {
         if (instance == null) {
             synchronized (lock) {
@@ -37,8 +38,6 @@ public class MemberManager {
                 ObjectMapper objectMapper = new ObjectMapper();
                 AddressBook addressBook = objectMapper.readValue(addressBookAsString, AddressBook.class);
                 return addressBook.getMemberList();
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }

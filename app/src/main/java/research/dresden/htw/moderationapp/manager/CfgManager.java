@@ -6,11 +6,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import research.dresden.htw.moderationapp.model.AppConfig;
-import research.dresden.htw.moderationapp.model.Discussion;
-import research.dresden.htw.moderationapp.model.DiscussionList;
 
 public class CfgManager {
     private static Object lock = new Object();
@@ -21,6 +18,7 @@ public class CfgManager {
         // Use getInstance
     }
 
+    @SuppressWarnings("SynchronizeOnNonFinalField")
     public static CfgManager getInstance() {
         if (instance == null) {
             synchronized (lock) {
@@ -36,10 +34,7 @@ public class CfgManager {
         if(configAsString != null) {
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
-                AppConfig appConfig = objectMapper.readValue(configAsString, AppConfig.class);
-                return appConfig;
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
+                return objectMapper.readValue(configAsString, AppConfig.class);
             } catch (IOException e) {
                 e.printStackTrace();
             }
