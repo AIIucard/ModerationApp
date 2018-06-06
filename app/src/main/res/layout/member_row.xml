@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/organisation_member_text_view_placeholder"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="18sp" />
 
             <TextView

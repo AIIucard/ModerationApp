@@ -32,12 +32,14 @@ public class MemberListViewAdapter extends ArrayAdapter<Member>{
         ImageView imageView = (ImageView) memberView.findViewById(R.id.image_view_member);
         TextView titleTextView = (TextView) memberView.findViewById(R.id.title_text_view_member);
         TextView nameTextView = (TextView) memberView.findViewById(R.id.name_text_view_member);
+        TextView organisationTextView = (TextView) memberView.findViewById(R.id.organisation_text_view_member);
         TextView roleTextView = (TextView) memberView.findViewById(R.id.role_text_view_member);
 
         idTextView.setText(String.valueOf(memberItem.getId()));
         imageView.setImageResource(R.drawable.member);
         titleTextView.setText(String.valueOf(memberItem.getTitle()));
         nameTextView.setText(String.valueOf(memberItem.getName()));
+        organisationTextView.setText(String.valueOf(memberItem.getOrganisation()));
         roleTextView.setText(String.valueOf(memberItem.getRole()));
 
         return memberView;
