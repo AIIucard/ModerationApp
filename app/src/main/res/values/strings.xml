@@ -55,9 +55,11 @@
     <string name="name_member_text_view_placeholder">Name</string>
     <string name="organisation_member_text_view_placeholder">Organisation</string>
     <string name="role_member_text_view_placeholder">Rolle</string>
+    <string name="delete_question_members">Möchten Sie die ausgewählten Teilnehmer wirklich löschen?</string>
+    <string name="delete_question_member">Möchten Sie den ausgewählten Teilnehmer wirklich löschen?</string>
 
     <!-- Settings-->
     <string name="label_web_socket_uri">WebSocket URI:</string>
-
-
+    <string name="delete_toast_members">Die ausgewählten Teilnehmer wurden gelöscht!</string>
+    <string name="delete_toast_member">Der ausgewählten Teilnehmer %1$s wurde gelöscht!</string>
 </resources>
