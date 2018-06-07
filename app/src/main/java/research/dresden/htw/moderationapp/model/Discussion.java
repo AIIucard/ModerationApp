@@ -33,7 +33,8 @@ public class Discussion {
         // Dummy constructor or json parser
     }
 
-    public Discussion(Integer id, String title, Integer time, ArrayList<Member> memberList){
+    public Discussion(int id, String title, Integer time, ArrayList<Member> memberList){
+        this.id = id;
         this.title = title;
         this.time = time;
         this.memberList = memberList;

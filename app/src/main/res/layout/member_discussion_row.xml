@@ -13,7 +13,19 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/id_text_view_member"
+            android:id="@+id/place_number_text_view_member_discussion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/place_number_member_text_view_placeholder"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            />
+
+        <TextView
+            android:id="@+id/id_text_view_member_discussion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/id_member_text_view_placeholder"
@@ -23,10 +35,9 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/image_view_member"
+            android:id="@+id/image_view_member_discussion"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
             android:contentDescription="@string/member_icon_description"
             android:padding="10dp"
             app:srcCompat="@drawable/member" />
@@ -37,7 +48,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title_text_view_member"
+                android:id="@+id/title_text_view_member_discussion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -47,7 +58,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/name_text_view_member"
+                android:id="@+id/name_text_view_member_discussion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/name_member_text_view_placeholder"
@@ -56,7 +67,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/organisation_text_view_member"
+                android:id="@+id/organisation_text_view_member_discussion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/organisation_member_text_view_placeholder"
@@ -64,7 +75,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/role_text_view_member"
+                android:id="@+id/role_text_view_member_discussion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

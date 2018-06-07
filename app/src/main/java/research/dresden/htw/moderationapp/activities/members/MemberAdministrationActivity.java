@@ -29,6 +29,7 @@ import research.dresden.htw.moderationapp.loader.MemberListViewAdapter;
 import research.dresden.htw.moderationapp.manager.MemberManager;
 import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.IntentType;
+import research.dresden.htw.moderationapp.model.ItemPosition;
 import research.dresden.htw.moderationapp.model.Member;
 
 public class MemberAdministrationActivity extends AppCompatActivity {
@@ -45,7 +46,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
     private ListAdapter memberListAdapter;
 
     private AppDataViewModel dataViewModel;
-    private List<Integer> selectedItemPositionList = new ArrayList<>();
+    private List<ItemPosition> selectedItemPositionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +59,11 @@ public class MemberAdministrationActivity extends AppCompatActivity {
         member_list_view = findViewById(R.id.member_list_view);
         member_list_view.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         member_list_view.setAdapter(memberListAdapter);
-        addButton = findViewById(R.id.fab_action_add);
+        addButton = findViewById(R.id.fab_action_add_member);
         addButton.setEnabled(isAddActive);
-        editButton = findViewById(R.id.fab_action_edit);
+        editButton = findViewById(R.id.fab_action_edit_member);
         editButton.setEnabled(isEditActive);
-        deleteButton = findViewById(R.id.fab_action_delete);
+        deleteButton = findViewById(R.id.fab_action_delete_member);
         deleteButton.setEnabled(isDeleteActive);
         dataViewModel = AppDataViewModel.getInstance();
 
@@ -114,8 +115,8 @@ public class MemberAdministrationActivity extends AppCompatActivity {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Member selectedMember = null;
-                                        for ( Integer selectedItemPosition : selectedItemPositionList) {
-                                            selectedMember = (Member) memberListAdapter.getItem(selectedItemPosition);
+                                        for ( ItemPosition selectedItemPosition : selectedItemPositionList) {
+                                            selectedMember = (Member) memberListAdapter.getItem(selectedItemPosition.getPosition());
                                             ArrayList<Member> memberList = dataViewModel.getMemberList().getValue();
                                             if(memberList != null) {
                                                 for (int i = 0; i < memberList.size(); i++) {
@@ -200,11 +201,11 @@ public class MemberAdministrationActivity extends AppCompatActivity {
                 isDeleteActive = true;
                 break;
         }
-        addButton = findViewById(R.id.fab_action_add);
+        addButton = findViewById(R.id.fab_action_add_member);
         addButton.setEnabled(isAddActive);
-        editButton = findViewById(R.id.fab_action_edit);
+        editButton = findViewById(R.id.fab_action_edit_member);
         editButton.setEnabled(isEditActive);
-        deleteButton = findViewById(R.id.fab_action_delete);
+        deleteButton = findViewById(R.id.fab_action_delete_member);
         deleteButton.setEnabled(isDeleteActive);
     }
 
@@ -214,8 +215,8 @@ public class MemberAdministrationActivity extends AppCompatActivity {
         TextView nameTextView = view.findViewById(R.id.name_text_view_member);
         TextView organisationTextView = view.findViewById(R.id.organisation_text_view_member);
         TextView roleTextView = view.findViewById(R.id.role_text_view_member);
-        if (!selectedItemPositionList.contains(position)) {
-            selectedItemPositionList.add(position);
+        if (!selectedItemPositionList.contains(new ItemPosition(position))) {
+            selectedItemPositionList.add(new ItemPosition(position));
             parent.getChildAt(position).setBackgroundColor(Color.parseColor("#4285f4"));
             idTextView.setTextColor(Color.parseColor("#FFFFFF"));
             titleTextView.setTextColor(Color.parseColor("#FFFFFF"));
@@ -223,7 +224,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
             organisationTextView.setTextColor(Color.parseColor("#FFFFFF"));
             roleTextView.setTextColor(Color.parseColor("#FFFFFF"));
         } else{
-            selectedItemPositionList.remove(Integer.valueOf(position));
+            selectedItemPositionList.remove(new ItemPosition(position));
             parent.getChildAt(position).setBackgroundColor(Color.parseColor("#FFFFFF"));
             idTextView.setTextColor(Color.parseColor("#ff000000"));
             titleTextView.setTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.darker_gray));

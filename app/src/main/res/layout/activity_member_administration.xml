@@ -40,7 +40,7 @@
         fab:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_action_add"
+            android:id="@+id/fab_action_add_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_addButtonSize="mini"
@@ -50,7 +50,7 @@
             fab:fab_title="Neu" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_action_edit"
+            android:id="@+id/fab_action_edit_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_addButtonSize="mini"
@@ -60,7 +60,7 @@
             fab:fab_title="Bearbeiten" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_action_delete"
+            android:id="@+id/fab_action_delete_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_addButtonSize="mini"
@@ -70,6 +70,5 @@
             fab:fab_title="Löschen" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
 
 </android.support.constraint.ConstraintLayout>

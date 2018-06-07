@@ -37,7 +37,7 @@ public class MemberListViewAdapter extends ArrayAdapter<Member>{
         TextView roleTextView = memberView.findViewById(R.id.role_text_view_member);
 
         if (memberItem != null) {
-            idTextView.setText(String.valueOf(memberItem.getId()));
+            idTextView.setText("ID: " + String.valueOf(memberItem.getId()));
             imageView.setImageResource(R.drawable.member);
             titleTextView.setText(String.valueOf(memberItem.getTitle()));
             nameTextView.setText(String.valueOf(memberItem.getName()));

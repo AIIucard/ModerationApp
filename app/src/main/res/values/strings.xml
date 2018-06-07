@@ -8,8 +8,12 @@
     <string name="button_start_discussion_administration_activity">Disskusionsverwaltung</string>
     <string name="button_start_emulator_activity">Emulator</string>
     <string name="button_start_settings_activity">Einstellungen</string>
+
     <!-- Members-->
-    <!-- Discussion-->
+    <string name="button_add_member">Hinzufügen</string>
+    <string name="button_edit_member">Ändern</string>
+
+    <!-- Discussions-->
     <string name="button_next">Weiter</string>
 
     <!-- Settings-->
@@ -34,7 +38,7 @@
     <string name="title_activity_member_administration_add_member">Teilnehmerverwaltung: Neuen Teilnehmer hinzufügen</string>
     <string name="title_activity_member_administration_edit_member">Teilnehmerverwaltung: Teilnehmer bearbeiten</string>
 
-    <!-- Discussion-->
+    <!-- Discussions-->
     <string name="title_activity_discussion_administration">Diskussionsverwaltung</string>
     <string name="title_activity_discussion_administration_add_discussion">Diskussionsverwaltung: Neue Diskussion hinzufügen</string>
     <string name="title_activity_discussion_administration_add_member_administration">Diskussionsverwaltung: Teilnehmer hinzufügen</string>
@@ -67,8 +71,6 @@
     <string name="organisation_hint_add_member">Zugehörige Organisation</string>
     <string name="role_label_add_member">Rolle:</string>
     <string name="role_hint_add_member">Rollenbeschreibung</string>
-    <string name="button_add_member">Hinzufügen</string>
-    <string name="add_toast_member">Der Teilnehmer %1$s mit der ID %2$d wurde hinzugefügt!</string>
     <string name="title_label_edit_member">Titel:</string>
     <string name="name_label_edit_member">Name:</string>
     <string name="name_hint_edit_member">Teilnehmername</string>
@@ -76,16 +78,26 @@
     <string name="organisation_hint_edit_member">Zugehörige Organisation</string>
     <string name="role_label_edit_member">Rolle:</string>
     <string name="role_hint_edit_member">Rollenbeschreibung</string>
-    <string name="button_edit_member">Ändern</string>
-    <string name="edit_toast_member">Der Teilnehmer mit der ID %1$d wurde geändert!</string>
-    <string name="canceled_add_toast_member">Es wurde kein neuer Teilnehmer hinzugefügt!</string>
-    <string name="canceled_edit_toast_member">Der ausgewählte Teilnehmer wurde nicht geändert!</string>
-    <string name="delete_toast_members">Die ausgewählten Teilnehmer wurden gelöscht!</string>
-    <string name="delete_toast_member">Der ausgewählten Teilnehmer %1$s wurde gelöscht!</string>
+
+
+    <!-- Discussions-->
+    <string name="discussion_icon_description">Diskussion</string>
+    <string name="title_discussion_text_view_placeholder">Titel</string>
+
 
     <!-- Settings-->
     <string name="label_web_socket_uri">WebSocket URI:</string>
 
+    <!-- Toasts-->
+    <!-- Members-->
+    <string name="add_toast_member">Der Teilnehmer %1$s mit der ID %2$d wurde hinzugefügt!</string>
+    <string name="edit_toast_member">Der Teilnehmer mit der ID %1$d wurde geändert!</string>
+    <string name="delete_toast_members">Die ausgewählten Teilnehmer wurden gelöscht!</string>
+    <string name="delete_toast_member">Der ausgewählten Teilnehmer %1$s wurde gelöscht!</string>
+    <string name="canceled_add_toast_member">Es wurde kein neuer Teilnehmer hinzugefügt!</string>
+    <string name="canceled_edit_toast_member">Der ausgewählte Teilnehmer wurde nicht geändert!</string>
+    <string name="time_discussion_text_view_placeholder">Zeit in Minuten</string>
+    <string name="place_number_member_text_view_placeholder">Platznummer</string>
 
 
 </resources>

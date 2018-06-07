@@ -17,6 +17,7 @@ public class AppDataViewModel {
     private static AppDataViewModel instance = null;
 
     private MutableLiveData<Member>  lastSelectedMember = new MutableLiveData<>();
+    private MutableLiveData<Discussion>  lastSelectedDiscussion = new MutableLiveData<>();
 
     private AppDataViewModel() {
         // Use getInstance
@@ -74,5 +75,13 @@ public class AppDataViewModel {
 
     public void setLastSelectedMember(Member lastSelectedMember) {
         this.lastSelectedMember.setValue(lastSelectedMember);
+    }
+
+    public MutableLiveData<Discussion> getLastSelectedDiscussion() {
+        return lastSelectedDiscussion;
+    }
+
+    public void setLastSelectedDiscussion(Discussion lastSelectedDiscussion) {
+        this.lastSelectedDiscussion.setValue(lastSelectedDiscussion);
     }
 }
