@@ -12,7 +12,7 @@ import research.dresden.htw.moderationapp.model.AddressBook;
 import research.dresden.htw.moderationapp.model.Member;
 
 public class MemberManager {
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
     private static MemberManager instance = null;
     private final String FILENAME = "members.json";
 

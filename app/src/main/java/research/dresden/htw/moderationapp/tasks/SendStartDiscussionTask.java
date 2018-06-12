@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendStartDiscussionTask extends AsyncTask<Void, Void, Void> {
-    private Socket socket;
+    private final Socket socket;
     public SendStartDiscussionTask(Socket socket){
         this.socket = socket;
     }

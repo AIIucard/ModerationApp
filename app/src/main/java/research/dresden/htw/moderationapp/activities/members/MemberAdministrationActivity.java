@@ -7,10 +7,10 @@ import android.arch.lifecycle.Observer;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -31,6 +31,7 @@ import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.IntentType;
 import research.dresden.htw.moderationapp.model.ItemPosition;
 import research.dresden.htw.moderationapp.model.Member;
+import research.dresden.htw.moderationapp.model.RequestCode;
 
 public class MemberAdministrationActivity extends AppCompatActivity {
 
@@ -42,32 +43,34 @@ public class MemberAdministrationActivity extends AppCompatActivity {
     private FloatingActionButton editButton;
     private FloatingActionButton deleteButton;
 
-    private ListView member_list_view;
+    private final List<ItemPosition> selectedItemPositionList = new ArrayList<>();
     private ListAdapter memberListAdapter;
 
     private AppDataViewModel dataViewModel;
-    private List<ItemPosition> selectedItemPositionList = new ArrayList<>();
+    private ListView memberListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_administration);
 
-        final MutableLiveData<ArrayList<Member>> memberListData = AppDataViewModel.getInstance().getMemberList();
+        dataViewModel = AppDataViewModel.getInstance();
+
+        final MutableLiveData<ArrayList<Member>> memberListData = dataViewModel.getMemberList();
         ArrayList<Member> memberList = memberListData.getValue();
         memberListAdapter = new MemberListViewAdapter(this, memberList);
-        member_list_view = findViewById(R.id.member_list_view);
-        member_list_view.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        member_list_view.setAdapter(memberListAdapter);
+        memberListView = findViewById(R.id.member_list_view);
+        memberListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        memberListView.setAdapter(memberListAdapter);
+
         addButton = findViewById(R.id.fab_action_add_member);
         addButton.setEnabled(isAddActive);
         editButton = findViewById(R.id.fab_action_edit_member);
         editButton.setEnabled(isEditActive);
         deleteButton = findViewById(R.id.fab_action_delete_member);
         deleteButton.setEnabled(isDeleteActive);
-        dataViewModel = AppDataViewModel.getInstance();
 
-        member_list_view.setOnItemClickListener(
+        memberListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
 
                     @Override
@@ -86,7 +89,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isAddActive){
-                    startActivityForResult(new Intent(getBaseContext(), AddMemberActivity.class), 1);
+                    startActivityForResult(new Intent(getBaseContext(), AddMemberActivity.class), RequestCode.MEMBER_ADMINISTRATION_CODE);
                 }
             }
         });
@@ -96,7 +99,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isEditActive){
                     if(selectedItemPositionList.size() == 1){
-                        startActivityForResult(new Intent(getBaseContext(), EditMemberActivity.class), 1);
+                        startActivityForResult(new Intent(getBaseContext(), EditMemberActivity.class), RequestCode.MEMBER_ADMINISTRATION_CODE);
                     }
                 }
             }
@@ -116,25 +119,30 @@ public class MemberAdministrationActivity extends AppCompatActivity {
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Member selectedMember = null;
                                         for ( ItemPosition selectedItemPosition : selectedItemPositionList) {
+                                            boolean isDeleted = false;
                                             selectedMember = (Member) memberListAdapter.getItem(selectedItemPosition.getPosition());
                                             ArrayList<Member> memberList = dataViewModel.getMemberList().getValue();
                                             if(memberList != null) {
                                                 for (int i = 0; i < memberList.size(); i++) {
                                                     if (memberList.get(i).getId() == selectedMember.getId()) {
                                                         memberList.remove(i);
+                                                        isDeleted = true;
                                                     }
                                                 }
                                                 dataViewModel.setMemberList(memberList);
                                                 MemberManager memberManager = MemberManager.getInstance();
                                                 memberManager.writeToJSONFile(getApplicationContext(), memberList);
                                             }
+                                            if (isDeleted) {
+                                                selectedItemPositionList.remove(selectedItemPosition);
+                                            }
                                         }
                                         if(finalSize > 1)
                                             Toast.makeText(MemberAdministrationActivity.this, getString(R.string.delete_toast_members), Toast.LENGTH_LONG).show();
-                                        else
-                                            if(selectedMember != null && selectedMember.getName() != null) {
+                                        else if (selectedMember != null && selectedMember.getName() != null) {
                                                 Toast.makeText(MemberAdministrationActivity.this, getString(R.string.delete_toast_member, selectedMember.getName()), Toast.LENGTH_LONG).show();
                                             }
+                                        updateButtons();
                                         break;
 
                                     case DialogInterface.BUTTON_NEGATIVE:
@@ -161,7 +169,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
 
             @Override
             public void onChanged(@Nullable ArrayList<Member> members) {
-                ((BaseAdapter) member_list_view.getAdapter()).notifyDataSetChanged();
+                ((BaseAdapter) memberListView.getAdapter()).notifyDataSetChanged();
             }
         });
     }
@@ -171,7 +179,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
 
         if(data != null && data.getExtras() != null && data.getExtras().getString("type") != null){
             String resultType = data.getExtras().getString("type");
-            if (resultType != null && requestCode == 1) {
+            if (resultType != null && requestCode == RequestCode.MEMBER_ADMINISTRATION_CODE) {
                 if (resultCode == Activity.RESULT_CANCELED) {
                     if (resultType.equals(IntentType.ADD_RESULT_TYPE)) {
                         Toast.makeText(MemberAdministrationActivity.this, getString(R.string.canceled_add_toast_member), Toast.LENGTH_LONG).show();

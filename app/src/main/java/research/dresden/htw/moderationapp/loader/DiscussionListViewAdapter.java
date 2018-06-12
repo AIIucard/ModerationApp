@@ -12,27 +12,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
 import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.model.Discussion;
-import research.dresden.htw.moderationapp.model.ItemPosition;
 import research.dresden.htw.moderationapp.model.Member;
-import research.dresden.htw.moderationapp.model.SubItemPosition;
 
 public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
 
-    private Context context;
-    private ArrayList<Discussion> discussionList;
-    private ArrayList<SubItemPosition> coloredSubItemPositionList = new ArrayList<>();
+    private final Context context;
+    private final ArrayList<Discussion> discussionList;
 
     public DiscussionListViewAdapter(@NonNull Context context, ArrayList<Discussion> discussionList) {
         this.context = context;
         this.discussionList = discussionList;
-    }
-
-    @Override
-    public Object getChild(int groupPosition, int childPosition) {
-        ArrayList<Member> memberList = discussionList.get(groupPosition).getMemberList();
-        return memberList.get(childPosition);
     }
 
     @Override
@@ -72,21 +64,6 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
                 roleTextView.setText(String.valueOf(memberItem.getRole()));
             }
         }
-        SubItemPosition currentSubItemPosition = null;
-
-        for ( SubItemPosition subItemPosition : coloredSubItemPositionList) {
-            if(subItemPosition.equals(new SubItemPosition(new ItemPosition(groupPosition), childPosition))){
-                currentSubItemPosition = subItemPosition;
-            }
-        }
-        if(currentSubItemPosition != null && currentSubItemPosition.isColored()){
-            memberView.setBackgroundColor(Color.parseColor("#4285f4"));
-            notifyDataSetChanged();
-        } else {
-            memberView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            notifyDataSetChanged();
-        }
-
         return memberView;
     }
 
@@ -99,7 +76,21 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getGroup(int groupPosition) {
-        return discussionList.get(groupPosition);
+        if (discussionList.size() > 0 && discussionList.get(groupPosition) != null) {
+            return discussionList.get(groupPosition);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        if (discussionList.size() > 0 && discussionList.get(groupPosition) != null && discussionList.get(groupPosition).getMemberList() != null) {
+            ArrayList<Member> memberList = discussionList.get(groupPosition).getMemberList();
+            return memberList.get(childPosition);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -114,7 +105,7 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
 
     @SuppressLint("InflateParams")
     @Override
-    public View getGroupView(int groupPosition, boolean isLastChild, View discussionView,
+    public View getGroupView(int groupPosition, boolean isExpanded, View discussionView,
                              ViewGroup parent) {
 
         Discussion discussionItem = (Discussion) getGroup(groupPosition);
@@ -129,16 +120,25 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
             TextView idTextView = discussionView.findViewById(R.id.id_text_view_discussion);
             ImageView imageView = discussionView.findViewById(R.id.image_view_discussion);
             TextView titleTextView = discussionView.findViewById(R.id.title_text_view_discussion);
-            TextView timeView = discussionView.findViewById(R.id.time_text_view_discussion);
+            TextView timeTextView = discussionView.findViewById(R.id.time_text_view_discussion);
             if(discussionItem != null){
                 idTextView.setText(String.valueOf(discussionItem.getId()));
                 imageView.setImageResource(R.drawable.discussion);
                 titleTextView.setText("Thema: " + String.valueOf(discussionItem.getTitle()));
-                timeView.setText("Dauer: " + String.valueOf(discussionItem.getTime()) + " min");
+                timeTextView.setText("Dauer: " + String.valueOf(discussionItem.getTime()) + " min");
+            }
+            if (isExpanded) {
+                discussionView.setBackgroundColor(Color.parseColor("#4285f4"));
+                idTextView.setTextColor(Color.parseColor("#FFFFFF"));
+                titleTextView.setTextColor(Color.parseColor("#FFFFFF"));
+                timeTextView.setTextColor(Color.parseColor("#FFFFFF"));
+            } else {
+                discussionView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                idTextView.setTextColor(Color.parseColor("#ff000000"));
+                titleTextView.setTextColor(Color.parseColor("#ff000000"));
+                timeTextView.setTextColor(Color.parseColor("#a9a9a9"));
             }
         }
-
-
         return discussionView;
     }
 
@@ -150,13 +150,5 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
-    }
-
-    public ArrayList<SubItemPosition> getColoredSubItemPositionList() {
-        return coloredSubItemPositionList;
-    }
-
-    public void setColoredSubItemPositionList(ArrayList<SubItemPosition> coloredSubItemPositionList) {
-        this.coloredSubItemPositionList = coloredSubItemPositionList;
     }
 }

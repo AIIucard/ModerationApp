@@ -41,8 +41,9 @@
         <activity android:name=".activities.discussion.AddDiscussionActivity"
             android:label="@string/title_activity_discussion_administration_add_discussion">
         </activity>
-        <activity android:name=".activities.discussion.AddMemberAdministrationActivity"
-            android:label="@string/title_activity_discussion_administration_add_member_administration">
+        <activity
+            android:name=".activities.discussion.MemberAdministrationDiscussionActivity"
+            android:label="@string/title_activity_discussion_administration_member_administration">
         </activity>
         <activity android:name=".activities.discussion.AddNewMemberActivity"
             android:label="@string/title_activity_discussion_administration_add_new_member">

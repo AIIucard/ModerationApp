@@ -2,16 +2,27 @@ package research.dresden.htw.moderationapp.utils;
 
 import java.util.ArrayList;
 
+import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.Title;
 
 public class AppUtils {
 
-    public static int getNextId(ArrayList<Member> memberList){
+    public static int getNextMemberId(ArrayList<Member> memberList) {
         int highestID = 1;
         for (Member currentMember : memberList) {
             if(currentMember.getId() > highestID){
                 highestID = currentMember.getId();
+            }
+        }
+        return highestID + 1;
+    }
+
+    public static int getNextDiscussionId(ArrayList<Discussion> discussionList) {
+        int highestID = 1;
+        for (Discussion currentDiscussion : discussionList) {
+            if (currentDiscussion.getId() > highestID) {
+                highestID = currentDiscussion.getId();
             }
         }
         return highestID + 1;

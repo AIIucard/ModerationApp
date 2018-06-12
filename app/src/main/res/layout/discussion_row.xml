@@ -7,11 +7,15 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/id_discussion_row_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="35sp">
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingStart="35sp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/id_text_view_discussion"
@@ -36,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:padding="10dp"
             android:orientation="vertical">
 
             <TextView

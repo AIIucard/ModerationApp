@@ -1,7 +1,5 @@
 package research.dresden.htw.moderationapp.model;
 
-import android.content.ClipData;
-
 public class ItemPosition {
 
     private int position;

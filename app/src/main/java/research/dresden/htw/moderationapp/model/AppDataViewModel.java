@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public class AppDataViewModel {
     private Socket socket;
-    private MutableLiveData<String> webSocketURI = new MutableLiveData<>();
-    private MutableLiveData<ArrayList<Discussion>> discussionList = new MutableLiveData<>();
-    private MutableLiveData<ArrayList<Member>> memberList = new MutableLiveData<>();
-
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
+    private final MutableLiveData<String> webSocketURI = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<Discussion>> discussionList = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<Member>> memberList = new MutableLiveData<>();
     private static AppDataViewModel instance = null;
+    private final MutableLiveData<Member> lastSelectedMember = new MutableLiveData<>();
+    private final MutableLiveData<Discussion> lastSelectedDiscussion = new MutableLiveData<>();
 
-    private MutableLiveData<Member>  lastSelectedMember = new MutableLiveData<>();
-    private MutableLiveData<Discussion>  lastSelectedDiscussion = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<Member>> selectedMembersForDiscussionList = new MutableLiveData<>();
 
     private AppDataViewModel() {
         // Use getInstance
@@ -83,5 +83,16 @@ public class AppDataViewModel {
 
     public void setLastSelectedDiscussion(Discussion lastSelectedDiscussion) {
         this.lastSelectedDiscussion.setValue(lastSelectedDiscussion);
+    }
+
+    public MutableLiveData<ArrayList<Member>> getSelectedMembersForDiscussionList() {
+        if (selectedMembersForDiscussionList.getValue() == null) {
+            selectedMembersForDiscussionList.setValue(new ArrayList<Member>());
+        }
+        return selectedMembersForDiscussionList;
+    }
+
+    public void setSelectedMembersForDiscussionList(ArrayList<Member> selectedMembersForDiscussionList) {
+        this.selectedMembersForDiscussionList.setValue(selectedMembersForDiscussionList);
     }
 }

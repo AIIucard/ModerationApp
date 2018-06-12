@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import research.dresden.htw.moderationapp.utils.JSONUtils;
 
 public class SendTopicTask extends AsyncTask<Void, Void, Void> {
-    private Socket socket;
-    private String topic;
+    private final Socket socket;
+    private final String topic;
 
     public SendTopicTask(Socket socket, String topic){
         this.socket = socket;

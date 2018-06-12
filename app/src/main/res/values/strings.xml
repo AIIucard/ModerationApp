@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ModerationApp</string>
 
-    <!-- Buttons-->
+    <!-- ########## Buttons ##########-->
     <!-- Main-->
     <string name="button_start_new_discussion_activity">Neue Disskusion</string>
     <string name="button_start_member_administration_activity">Teilnehmerverwaltung</string>
@@ -14,7 +14,11 @@
     <string name="button_edit_member">Ändern</string>
 
     <!-- Discussions-->
-    <string name="button_next">Weiter</string>
+    <string name="button_continue_add_member">Teilnehmer hinzufügen</string>
+    <string name="button_add_new_member">Neuen Teilnehmer hinzufügen</string>
+    <string name="button_add_existing_member">Ausgewählte Teilnehmer hinzufügen</string>
+    <string name="button_set_places">Weiter zur Platzzuweisung</string>
+    <string name="button_complete_place_assignment">Platzzuweisung abschließen</string>
 
     <!-- Settings-->
     <string name="button_change_web_socket_uri">WebSocket URI Ändern</string>
@@ -29,7 +33,7 @@
     <string name="button_send_topic">Text Senden</string>
     <string name="button_send_silence">Um Ruhe bitten</string>
 
-    <!-- Activity Titles-->
+    <!-- ########## Activity Titles ##########-->
     <!-- Main-->
     <string name="title_activity_main">Moderation</string>
 
@@ -41,7 +45,7 @@
     <!-- Discussions-->
     <string name="title_activity_discussion_administration">Diskussionsverwaltung</string>
     <string name="title_activity_discussion_administration_add_discussion">Diskussionsverwaltung: Neue Diskussion hinzufügen</string>
-    <string name="title_activity_discussion_administration_add_member_administration">Diskussionsverwaltung: Teilnehmer hinzufügen</string>
+    <string name="title_activity_discussion_administration_member_administration">Diskussionsverwaltung: Teilnehmerliste</string>
     <string name="title_activity_discussion_administration_add_existing_member">Diskussionsverwaltung: Bestehenden Teilnehmer hinzufügen</string>
     <string name="title_activity_discussion_administration_add_new_member">Diskussionsverwaltung: Neuen Teilnehmer hinzufügen</string>
     <string name="title_activity_discussion_administration_place_assignment">Diskussionsverwaltung: Platzzuweisung</string>
@@ -51,7 +55,7 @@
     <!-- Emulator-->
     <string name="title_activity_emulator">Emulator</string>
 
-    <!-- Labels-->
+    <!-- ########## Labels ##########-->
     <!-- Main-->
     <string name="title_icon_description">Titel Icon</string>
 
@@ -79,16 +83,29 @@
     <string name="role_label_edit_member">Rolle:</string>
     <string name="role_hint_edit_member">Rollenbeschreibung</string>
 
-
     <!-- Discussions-->
+    <string name="delete_question_discussions">Möchten Sie die ausgewählten Diskussionen wirklich löschen?</string>
+    <string name="delete_question_discussion">Möchten Sie die ausgewählte Diskussion wirklich löschen?</string>
+    <string name="remove_question_members">Möchten Sie die ausgewählten Teilnehmer wirklich von der Teilnehmerliste entfernen?</string>
+    <string name="remove_question_member">Möchten Sie den ausgewählten Teilnehmer wirklich von der Teilnehmerliste entfernen?</string>
     <string name="discussion_icon_description">Diskussion</string>
     <string name="title_discussion_text_view_placeholder">Titel</string>
-
+    <string name="title_label_add_discussion">Thema:</string>
+    <string name="time_discussion_text_view_placeholder">Zeit in Minuten</string>
+    <string name="place_number_member_text_view_placeholder">Platznummer</string>
+    <string name="title_hint_add_discussion">Diskussionsthema</string>
+    <string name="time_label_add_discussion">Dauer(min):</string>
+    <string name="time_hint_add_discussion">Diskussionsdauer in Minuten</string>
+    <string name="place_1_label_add_member">Platz 1:</string>
+    <string name="place_2_label_add_member">Platz 2:</string>
+    <string name="place_3_label_add_member">Platz 3:</string>
+    <string name="place_4_label_add_member">Platz 4:</string>
+    <string name="place_5_label_add_member">Platz 5:</string>
 
     <!-- Settings-->
     <string name="label_web_socket_uri">WebSocket URI:</string>
 
-    <!-- Toasts-->
+    <!-- ########## Toasts ##########-->
     <!-- Members-->
     <string name="add_toast_member">Der Teilnehmer %1$s mit der ID %2$d wurde hinzugefügt!</string>
     <string name="edit_toast_member">Der Teilnehmer mit der ID %1$d wurde geändert!</string>
@@ -96,8 +113,19 @@
     <string name="delete_toast_member">Der ausgewählten Teilnehmer %1$s wurde gelöscht!</string>
     <string name="canceled_add_toast_member">Es wurde kein neuer Teilnehmer hinzugefügt!</string>
     <string name="canceled_edit_toast_member">Der ausgewählte Teilnehmer wurde nicht geändert!</string>
-    <string name="time_discussion_text_view_placeholder">Zeit in Minuten</string>
-    <string name="place_number_member_text_view_placeholder">Platznummer</string>
 
-
+    <!-- Discussions-->
+    <string name="add_toast_discussion">Die Diskussion mit dem Thema %1$s und der ID %2$d wurde hinzugefügt!</string>
+    <string name="add_existing_member_toast_discussion">Es wurde %1$d Teilnehmer der Teilnehmerliste hinzugefügt!</string>
+    <string name="edit_toast_discussion">Die Diskussion mit der ID %1$d wurde geändert!</string>
+    <string name="delete_toast_discussions">Die ausgewählten Diskussionen wurden gelöscht!</string>
+    <string name="delete_toast_discussion">Die ausgewählte Diskussion %1$s wurde gelöscht!</string>
+    <string name="canceled_add_toast_discussion">Es wurde keine neue Diskussion hinzugefügt!</string>
+    <string name="canceled_add_member_toast_discussion">Es wurde keine Teilnehmer der Diskussion hinzugefügt!</string>
+    <string name="canceled_add_new_member_toast_discussion">Es wurde kein neuer Teilnehmer der Teilnehmerliste hinzugefügt!</string>
+    <string name="canceled_add_existing_member_toast_discussion">Es wurde kein existierender Teilnehmer der Teilnehmerliste hinzugefügt!</string>
+    <string name="canceled_place_assignement_toast_discussion">Den Teilnehmern wurden keine Plätze zugewiesen!</string>
+    <string name="canceled_edit_toast_discussion">Die ausgewählte Diskussion wurde nicht geändert!</string>
+    <string name="remove_toast_members">Die ausgewählten Teilnehmer wurden von der Teilnehmerliste entfernt!</string>
+    <string name="remove_toast_member">Der ausgewählten Teilnehmer %1$s wurde von der Teilnehmerliste entfernt!</string>
 </resources>

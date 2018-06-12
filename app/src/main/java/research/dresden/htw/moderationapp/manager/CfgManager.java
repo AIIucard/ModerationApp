@@ -10,7 +10,7 @@ import java.io.IOException;
 import research.dresden.htw.moderationapp.model.AppConfig;
 
 public class CfgManager {
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
     private static CfgManager instance = null;
     private final String FILENAME = "cfg.json";
 

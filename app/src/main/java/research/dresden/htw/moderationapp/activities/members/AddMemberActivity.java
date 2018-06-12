@@ -3,8 +3,8 @@ package research.dresden.htw.moderationapp.activities.members;
 import android.app.Activity;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -46,7 +46,9 @@ public class AddMemberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_member);
 
-        final MutableLiveData<ArrayList<Member>> memberListData = AppDataViewModel.getInstance().getMemberList();
+        dataViewModel = AppDataViewModel.getInstance();
+
+        final MutableLiveData<ArrayList<Member>> memberListData = dataViewModel.getMemberList();
         memberList = memberListData.getValue();
 
         titleSpinner = findViewById(R.id.title_spinner);
@@ -56,8 +58,6 @@ public class AddMemberActivity extends AppCompatActivity {
 
         addMemberButton = findViewById(R.id.button_add_member);
         addMemberButton.setEnabled(false);
-
-        dataViewModel = AppDataViewModel.getInstance();
 
         initSpinner();
 
@@ -145,7 +145,8 @@ public class AddMemberActivity extends AppCompatActivity {
                     organisationEditText = findViewById(R.id.organisation_edit_text_view);
                     roleEditText = findViewById(R.id.role_edit_text_view);
 
-                    Member newMember = new Member(AppUtils.getNextId(memberList), titleSpinner.getSelectedItem().toString(), nameEditText.getText().toString(), organisationEditText.getText().toString(), roleEditText.getText().toString());
+                    // TODO: Check if member exists already
+                    Member newMember = new Member(AppUtils.getNextMemberId(memberList), titleSpinner.getSelectedItem().toString(), nameEditText.getText().toString(), organisationEditText.getText().toString(), roleEditText.getText().toString());
                     memberList.add(newMember);
                     dataViewModel.setMemberList(memberList);
                     MemberManager memberManager = MemberManager.getInstance();
@@ -176,6 +177,7 @@ public class AddMemberActivity extends AppCompatActivity {
             addMemberButton.setEnabled(false);
         }
     }
+
     private void initSpinner() {
         ArrayList<String> titlesAsList = AppUtils.getTitlesAsList();
         ArrayAdapter<String> titleSpinnerAdapter = new ArrayAdapter<>(

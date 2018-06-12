@@ -5,11 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import research.dresden.htw.moderationapp.R;
 
-public class AddMemberAdministrationActivity extends AppCompatActivity  {
+public class EditDiscussionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_member_administration);
+        setContentView(R.layout.activity_edit_discussion);
     }
+
 }

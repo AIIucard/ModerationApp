@@ -1,11 +1,9 @@
 package research.dresden.htw.moderationapp.model;
 
-import android.content.ClipData;
-
-public class SubItemPosition {
+class SubItemPosition {
 
     private ItemPosition itemPosition;
-    private int position;
+    private final int position;
     private boolean isColored = false;
 
     public SubItemPosition(ItemPosition itemPosition, int position) {

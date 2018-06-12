@@ -25,7 +25,6 @@ import research.dresden.htw.moderationapp.tasks.SendTopicTask;
 public class EmulatorActivity extends AppCompatActivity {
 
     private EditText inputTextField;
-    private static String message = "";
     private static AppDataViewModel viewModel;
 
     @Override
@@ -77,8 +76,8 @@ public class EmulatorActivity extends AppCompatActivity {
     }
 
     public void sendTopic(View v) {
-        message = inputTextField.getText().toString();
-        new SendTopicTask(viewModel.getSocket(),message).execute();
+        String message = inputTextField.getText().toString();
+        new SendTopicTask(viewModel.getSocket(), message).execute();
         Toast.makeText(getApplicationContext(), "Topic with Message: " + message + " sendet...", Toast.LENGTH_LONG).show();
     }
 
