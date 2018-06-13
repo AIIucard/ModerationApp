@@ -21,7 +21,9 @@ import research.dresden.htw.moderationapp.model.IntentType;
 import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.SpinnerMemberItem;
 
-public class PlaceAssignmentActivity extends AppCompatActivity {
+public class PlaceAssignmentAddDiscussionActivity extends AppCompatActivity {
+
+    boolean allMembersPlaced = false;
 
     private final String CLOSED = "Geschlossen";
     private final String SPINNER_NUMBER_1 = "SpinnerNumber1";
@@ -55,12 +57,14 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
     private ArrayList<Member> availableTotalMembers = new ArrayList<>();
     private ArrayList<Member> selectedTotalMembers = new ArrayList<>();
 
+    Button completeButton;
+
     private AppDataViewModel dataViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_place_assignment);
+        setContentView(R.layout.activity_place_assignment_add_discussion);
 
         dataViewModel = AppDataViewModel.getInstance();
 
@@ -76,7 +80,7 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
         place4Spinner = findViewById(R.id.place_4_spinner);
         place5Spinner = findViewById(R.id.place_5_spinner);
 
-        Button completeButton = findViewById(R.id.complete_place_assignment_discussion);
+        completeButton = findViewById(R.id.complete_place_assignment_discussion);
 
         initSpinner();
 
@@ -88,9 +92,11 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
                     handleRemoveFromSelection(oldPlace1SpinnerValue);
                     handleSpinnerSelection(parentView, SPINNER_NUMBER_1, checkIfAddAllowed(oldPlace1SpinnerValue));
                     oldPlace1SpinnerValue = (SpinnerMemberItem) parentView.getSelectedItem();
+
                 } else {
                     ignoreSelection = false;
                 }
+                updateButton();
             }
 
             @Override
@@ -110,6 +116,7 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
                 } else {
                     ignoreSelection = false;
                 }
+                updateButton();
             }
 
             @Override
@@ -129,6 +136,7 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
                 } else {
                     ignoreSelection = false;
                 }
+                updateButton();
             }
 
             @Override
@@ -148,6 +156,7 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
                 } else {
                     ignoreSelection = false;
                 }
+                updateButton();
             }
 
             @Override
@@ -167,6 +176,7 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
                 } else {
                     ignoreSelection = false;
                 }
+                updateButton();
             }
 
             @Override
@@ -284,7 +294,7 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
         Collection<Member> currentSelectedMemberList = new ArrayList<>(selectedTotalMembers);
         remainingMemberCollection.removeAll(oldAvailableMemberList);
         remainingMemberCollection.removeAll(currentSelectedMemberList);
-        ArrayList<Member> remainingMemberList = new ArrayList<Member>(remainingMemberCollection);
+        ArrayList<Member> remainingMemberList = new ArrayList<>(remainingMemberCollection);
         return remainingMemberList.get(0);
     }
 
@@ -408,15 +418,21 @@ public class PlaceAssignmentActivity extends AppCompatActivity {
         place5SpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         place5Spinner.setAdapter(place5SpinnerAdapter);
 
-        place1Spinner.setSelection(availableMembersSpinner1.size() - 1);
+        place1Spinner.setSelection(place1SpinnerAdapter.getPosition(new SpinnerMemberItem(CLOSED, null)));
         oldPlace1SpinnerValue = (SpinnerMemberItem) place1Spinner.getSelectedItem();
-        place2Spinner.setSelection(availableMembersSpinner1.size() - 1);
+        place2Spinner.setSelection(place2SpinnerAdapter.getPosition(new SpinnerMemberItem(CLOSED, null)));
         oldPlace2SpinnerValue = (SpinnerMemberItem) place2Spinner.getSelectedItem();
-        place3Spinner.setSelection(availableMembersSpinner1.size() - 1);
+        place3Spinner.setSelection(place3SpinnerAdapter.getPosition(new SpinnerMemberItem(CLOSED, null)));
         oldPlace3SpinnerValue = (SpinnerMemberItem) place3Spinner.getSelectedItem();
-        place4Spinner.setSelection(availableMembersSpinner1.size() - 1);
+        place4Spinner.setSelection(place4SpinnerAdapter.getPosition(new SpinnerMemberItem(CLOSED, null)));
         oldPlace4SpinnerValue = (SpinnerMemberItem) place4Spinner.getSelectedItem();
-        place5Spinner.setSelection(availableMembersSpinner1.size() - 1);
+        place5Spinner.setSelection(place5SpinnerAdapter.getPosition(new SpinnerMemberItem(CLOSED, null)));
         oldPlace5SpinnerValue = (SpinnerMemberItem) place5Spinner.getSelectedItem();
+    }
+
+    private void updateButton() {
+        completeButton = findViewById(R.id.complete_place_assignment_discussion);
+        allMembersPlaced = availableTotalMembers.size() == 0;
+        completeButton.setEnabled(allMembersPlaced);
     }
 }

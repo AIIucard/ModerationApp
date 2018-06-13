@@ -113,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
         memberArrayListTemp.add(new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Der Sklave"));
         memberArrayListTemp.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Brett Pid", "Baumschule", "Der geile Stecher"));
         memberArrayListTemp.add(new Member(3, Title.DIPLOMA_OF_MUSIC, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer"));
+        memberArrayListTemp.add(new Member(4, Title.DIPLOMA_OF_EDUCATION, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller"));
+        memberArrayListTemp.add(new Member(5, Title.DIPLOMA_OF_MUSIC, "Darth Vader", "Imperium", "Lichtschwert Schwinger"));
+        memberArrayListTemp.add(new Member(6, Title.DIPLOMA_OF_SOCIAL_SCIENCES, "Der Pedobär", "Kindergarten", "Der Vertrauenswürdige"));
+        memberArrayListTemp.add(new Member(7, Title.DIPLOMA_OF_MUSIC, "Pinzessin Lillifee", "Feenreich", "Die Matratze"));
         MemberManager memberManagerTemp = MemberManager.getInstance();
         memberManagerTemp.writeToJSONFile(getApplicationContext(), memberArrayListTemp);
 
@@ -120,9 +124,10 @@ public class MainActivity extends AppCompatActivity {
         // Discussion Dumys
         ArrayList<Discussion> discussionArrayListTemp = new ArrayList<>();
         ArrayList<Member> memberArrayListTemp2 = new ArrayList<>();
-        memberArrayListTemp2.add(new Member(1, Title.DIPLOMA_OF_ARTS, "Karl", "HTW", "Hat Ahnung", 2));
-        memberArrayListTemp2.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Simon", "HTW", "Hat Ahnung", 4));
-        discussionArrayListTemp.add(new Discussion(1, "Runder Tisch", 360, memberArrayListTemp2));
+        memberArrayListTemp2.add(new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Der Sklave", 2));
+        memberArrayListTemp2.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Brett Pid", "Baumschule", "Der geile Stecher", 4));
+        memberArrayListTemp2.add(new Member(3, Title.DIPLOMA_OF_MUSIC, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer", 5));
+        discussionArrayListTemp.add(new Discussion(1, "Fliesentisch Verein", 666666, memberArrayListTemp2));
         DiscussionManager discussionManagerTemp = DiscussionManager.getInstance();
         discussionManagerTemp.writeToJSONFile(getApplicationContext(), discussionArrayListTemp);
 

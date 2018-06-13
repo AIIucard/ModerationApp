@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.discussion.PlaceAssignmentActivity">
+    tools:context=".activities.discussion.PlaceAssignmentAddDiscussionActivity">
 
     <Button
-        android:id="@+id/complete_place_assignment_discussion"
+        android:id="@+id/complete_edit_place_assignment_discussion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/button_complete_place_assignment"
+        android:text="@string/button_complete_edit_place_assignment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

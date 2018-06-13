@@ -42,7 +42,7 @@
             android:label="@string/title_activity_discussion_administration_add_discussion">
         </activity>
         <activity
-            android:name=".activities.discussion.MemberAdministrationDiscussionActivity"
+            android:name=".activities.discussion.MemberAdministrationAddDiscussionActivity"
             android:label="@string/title_activity_discussion_administration_member_administration">
         </activity>
         <activity android:name=".activities.discussion.AddNewMemberActivity"
@@ -51,7 +51,17 @@
         <activity android:name=".activities.discussion.AddExistingMemberActivity"
             android:label="@string/title_activity_discussion_administration_add_existing_member">
         </activity>
-        <activity android:name=".activities.discussion.PlaceAssignmentActivity"
+        <activity
+            android:name=".activities.discussion.PlaceAssignmentAddDiscussionActivity"
+            android:label="@string/title_activity_discussion_administration_place_assignment"></activity>
+        <activity
+            android:name=".activities.discussion.EditDiscussionActivity"
+            android:label="@string/title_activity_discussion_administration_edit_discussion"></activity>
+        <activity
+            android:name=".activities.discussion.MemberAdministrationEditDiscussionActivity"
+            android:label="@string/title_activity_discussion_administration_edit_discussion"></activity>
+        <activity
+            android:name=".activities.discussion.PlaceAssignmentEditDiscussionActivity"
             android:label="@string/title_activity_discussion_administration_place_assignment">
         </activity>
 

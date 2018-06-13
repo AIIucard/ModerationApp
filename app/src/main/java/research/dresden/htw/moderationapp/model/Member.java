@@ -46,6 +46,7 @@ public class Member {
         this.name = name;
         this.organisation = organisation;
         this.role = role;
+        placeNumber = -1;
     }
 
     // For Discussion only
@@ -176,6 +177,18 @@ public class Member {
     @JsonProperty("placeNumber")
     public void setPlaceNumber(int placeNumber) {
         this.placeNumber = placeNumber;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        boolean isSame = false;
+
+        if (object != null && object instanceof Member) {
+            Member member = (Member) object;
+            isSame = ((this.id == member.getId()) && (this.title.equals(member.getTitle())) && (this.name.equals(member.getName())) && (this.organisation.equals(member.getOrganisation())) && (this.role.equals(member.getRole())));
+        }
+
+        return isSame;
     }
 
     @Override

@@ -39,4 +39,21 @@ public class AppUtils {
         titleList.add(Title.DIPLOMA_OF_MUSIC);
         return titleList;
     }
+
+    public static boolean isTwoMemberListsWithSameValues(ArrayList<Member> list1, ArrayList<Member> list2) {
+        //null checking
+        if (list1 == null && list2 == null)
+            return true;
+        if ((list1 == null && list2 != null) || (list1 != null && list2 == null))
+            return false;
+
+        if (list1.size() != list2.size())
+            return false;
+        for (Member itemList1 : list1) {
+            if (!list2.contains(itemList1))
+                return false;
+        }
+
+        return true;
+    }
 }

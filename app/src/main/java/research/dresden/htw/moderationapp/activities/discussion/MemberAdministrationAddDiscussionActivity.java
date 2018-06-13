@@ -33,7 +33,7 @@ import research.dresden.htw.moderationapp.model.ItemPosition;
 import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.RequestCode;
 
-public class MemberAdministrationDiscussionActivity extends AppCompatActivity {
+public class MemberAdministrationAddDiscussionActivity extends AppCompatActivity {
 
     private final List<ItemPosition> selectedItemPositionList = new ArrayList<>();
     private Boolean isAddNewActive = true;
@@ -50,7 +50,7 @@ public class MemberAdministrationDiscussionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_administration_discussion);
+        setContentView(R.layout.activity_member_administration_add_discussion);
 
         dataViewModel = AppDataViewModel.getInstance();
 
@@ -132,9 +132,9 @@ public class MemberAdministrationDiscussionActivity extends AppCompatActivity {
                                             }
                                         }
                                         if (finalSize > 1)
-                                            Toast.makeText(MemberAdministrationDiscussionActivity.this, getString(R.string.remove_toast_members), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(MemberAdministrationAddDiscussionActivity.this, getString(R.string.remove_toast_members), Toast.LENGTH_LONG).show();
                                         else if (selectedMember != null && selectedMember.getName() != null) {
-                                            Toast.makeText(MemberAdministrationDiscussionActivity.this, getString(R.string.remove_toast_member, selectedMember.getName()), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(MemberAdministrationAddDiscussionActivity.this, getString(R.string.remove_toast_member, selectedMember.getName()), Toast.LENGTH_LONG).show();
                                         }
                                         updateButtons();
                                         break;
@@ -146,7 +146,7 @@ public class MemberAdministrationDiscussionActivity extends AppCompatActivity {
                             }
                         };
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MemberAdministrationDiscussionActivity.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MemberAdministrationAddDiscussionActivity.this);
                         if (finalSize > 1) {
                             builder.setMessage(getString(R.string.remove_question_members)).setPositiveButton("Ja", dialogClickListener)
                                     .setNegativeButton("Nein", dialogClickListener).show();
@@ -164,7 +164,7 @@ public class MemberAdministrationDiscussionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (dataViewModel.getSelectedMembersForDiscussionList().getValue() != null && dataViewModel.getSelectedMembersForDiscussionList().getValue().size() > 0) {
-                    startActivityForResult(new Intent(getBaseContext(), PlaceAssignmentActivity.class), RequestCode.PLACE_ASSIGNMENT_DISCUSSION_CODE);
+                    startActivityForResult(new Intent(getBaseContext(), PlaceAssignmentAddDiscussionActivity.class), RequestCode.PLACE_ASSIGNMENT_DISCUSSION_CODE);
                 }
             }
         });
@@ -185,15 +185,15 @@ public class MemberAdministrationDiscussionActivity extends AppCompatActivity {
             String resultType = data.getExtras().getString("type");
             if (resultType != null && requestCode == RequestCode.ADD_NEW_MEMBER_DISCUSSION_CODE) {
                 if (resultCode == Activity.RESULT_CANCELED) {
-                    Toast.makeText(MemberAdministrationDiscussionActivity.this, getString(R.string.canceled_add_new_member_toast_discussion), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MemberAdministrationAddDiscussionActivity.this, getString(R.string.canceled_add_new_member_toast_discussion), Toast.LENGTH_LONG).show();
                 }
             } else if (resultType != null && requestCode == RequestCode.ADD_EXISTING_MEMBER_DISCUSSION_CODE) {
                 if (resultCode == Activity.RESULT_CANCELED) {
-                    Toast.makeText(MemberAdministrationDiscussionActivity.this, getString(R.string.canceled_add_existing_member_toast_discussion), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MemberAdministrationAddDiscussionActivity.this, getString(R.string.canceled_add_existing_member_toast_discussion), Toast.LENGTH_LONG).show();
                 }
             } else if (resultType != null && requestCode == RequestCode.PLACE_ASSIGNMENT_DISCUSSION_CODE) {
                 if (resultCode == Activity.RESULT_CANCELED) {
-                    Toast.makeText(MemberAdministrationDiscussionActivity.this, getString(R.string.canceled_place_assignement_toast_discussion), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MemberAdministrationAddDiscussionActivity.this, getString(R.string.canceled_place_assignement_toast_discussion), Toast.LENGTH_LONG).show();
                 } else if (resultCode == Activity.RESULT_OK) {
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);

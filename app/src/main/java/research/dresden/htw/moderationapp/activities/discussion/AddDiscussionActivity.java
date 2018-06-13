@@ -96,7 +96,7 @@ public class AddDiscussionActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(getBaseContext(), MemberAdministrationDiscussionActivity.class), RequestCode.MEMBER_ADMINISTRATION_DISCUSSION_CODE);
+                startActivityForResult(new Intent(getBaseContext(), MemberAdministrationAddDiscussionActivity.class), RequestCode.MEMBER_ADMINISTRATION_DISCUSSION_CODE);
             }
         });
     }

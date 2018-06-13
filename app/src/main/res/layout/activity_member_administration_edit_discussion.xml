@@ -5,34 +5,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.discussion.MemberAdministrationDiscussionActivity">
+    tools:context=".activities.discussion.MemberAdministrationAddDiscussionActivity">
 
     <ListView
         android:id="@+id/member_list_list_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button_set_places"
+        app:layout_constraintBottom_toTopOf="@+id/button_change_places"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_set_places"
+        android:id="@+id/button_change_places"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/button_set_places"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/button_change_places"
+        app:layout_constraintBottom_toTopOf="@+id/button_set_member_changes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_set_member_changes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/button_set_member_changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toStartOf="parent" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/multiple_actions"

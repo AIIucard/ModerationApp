@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import javax.annotation.Generated;
 
+import research.dresden.htw.moderationapp.utils.AppUtils;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
@@ -113,4 +115,17 @@ public class Discussion {
     public void setMemberList(ArrayList<Member> memberList) {
         this.memberList = memberList;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        boolean isSame = false;
+
+        if (object != null && object instanceof Discussion) {
+            Discussion discussion = (Discussion) object;
+            isSame = ((this.id == discussion.getId()) && (this.title.equals(discussion.getTitle())) && (this.time == discussion.getTime()) && AppUtils.isTwoMemberListsWithSameValues(memberList, discussion.getMemberList()));
+        }
+
+        return isSame;
+    }
+
 }
