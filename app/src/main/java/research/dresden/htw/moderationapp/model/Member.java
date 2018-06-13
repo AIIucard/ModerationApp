@@ -3,6 +3,7 @@ package research.dresden.htw.moderationapp.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -175,5 +176,15 @@ public class Member {
     @JsonProperty("placeNumber")
     public void setPlaceNumber(int placeNumber) {
         this.placeNumber = placeNumber;
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += "[" + getId() + "] ";
+        s += getTitle() + "";
+        s += getName() + "; ";
+        s += getOrganisation();
+        return s;
     }
 }
