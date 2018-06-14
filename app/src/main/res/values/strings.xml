@@ -25,6 +25,11 @@
     <string name="button_change_places">Platzzuweisung ändern</string>
     <string name="button_set_member_changes">Übernehmen</string>
 
+    <!-- Discussions_Control-->
+    <string name="button_start_discussion">Diskussion starten</string>
+    <string name="button_end_discussion">Diskussion beenden</string>
+
+    <string name="hint_for_topic"><font color="#d9d7d8">Thema, Frage oder Schlagwort</font></string>
     <!-- Settings-->
     <string name="button_change_web_socket_uri">WebSocket URI Ändern</string>
 
@@ -101,14 +106,14 @@
     <string name="time_discussion_text_view_placeholder">Zeit in Minuten</string>
     <string name="place_number_member_text_view_placeholder">Platznummer</string>
     <string name="title_hint_add_discussion">Diskussionsthema</string>
-    <string name="time_label_add_discussion">Dauer(min):</string>
+    <string name="time_label_add_discussion">Dauer (min):</string>
     <string name="time_hint_add_discussion">Diskussionsdauer in Minuten</string>
     <string name="place_1_label_add_member">Platz 1:</string>
     <string name="place_2_label_add_member">Platz 2:</string>
     <string name="place_3_label_add_member">Platz 3:</string>
     <string name="place_4_label_add_member">Platz 4:</string>
     <string name="place_5_label_add_member">Platz 5:</string>
-    <string name="edit_text_send_topic">Thema, Frage oder Schlagwort</string>
+
     <string name="start_pause_discussion">Pause\nbeginnen</string>
     <string name="end_pause_discussion">Pause\nbeenden</string>
 

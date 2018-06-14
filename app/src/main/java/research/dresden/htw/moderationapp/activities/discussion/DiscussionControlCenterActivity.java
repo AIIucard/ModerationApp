@@ -88,6 +88,8 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
                 textChanged = s.toString().trim().length() != 0;
                 if(textChanged){
                     displaySendButton();
+                }else {
+                    goneSendButton();
                 }
 
             }
@@ -99,9 +101,10 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // Not used
+                // Not Used
             }
         });
+
     }
 
     @Override
@@ -184,8 +187,17 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
 
     public void sendTopic(View v) {
         String message = topicInput.getText().toString();
-        new SendTopicTask(viewModel.getSocket(), message).execute();
-        Toast.makeText(getApplicationContext(), "Topic with Message: " + message + " sendet...", Toast.LENGTH_LONG).show();
+
+        if(! message.equals(""))
+        {
+            new SendTopicTask(viewModel.getSocket(), message).execute();
+            Toast.makeText(getApplicationContext(), "Topic with Message: " + message + " sendet...", Toast.LENGTH_LONG).show();
+            topicInput.setText("");
+        } else {
+            Toast.makeText(getApplicationContext(), "Bitte geben Sie ein Thema ", Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     public void sendSilence(View v) {
@@ -195,6 +207,10 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
 
     public void displaySendButton() {
         sendTopicButton.setVisibility(View.VISIBLE);
+        sendTopicButton.setEnabled(true);
+    }
+    public void goneSendButton() {
+        sendTopicButton.setVisibility(View.GONE);
         sendTopicButton.setEnabled(true);
     }
 }
