@@ -133,7 +133,7 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
                 titleTextView.setTextColor(Color.parseColor("#FFFFFF"));
                 timeTextView.setTextColor(Color.parseColor("#FFFFFF"));
             } else {
-                discussionView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                discussionView.setBackgroundColor(Color.parseColor("#d9d7d8"));
                 idTextView.setTextColor(Color.parseColor("#ff000000"));
                 titleTextView.setTextColor(Color.parseColor("#ff000000"));
                 timeTextView.setTextColor(Color.parseColor("#a9a9a9"));

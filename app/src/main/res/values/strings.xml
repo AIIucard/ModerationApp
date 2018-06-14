@@ -113,6 +113,7 @@
     <string name="place_3_label_add_member">Platz 3:</string>
     <string name="place_4_label_add_member">Platz 4:</string>
     <string name="place_5_label_add_member">Platz 5:</string>
+    <string name="remaining_time_label_discussion">Verbleibende Zeit:</string>
 
     <string name="start_pause_discussion">Pause\nbeginnen</string>
     <string name="end_pause_discussion">Pause\nbeenden</string>
@@ -145,4 +146,5 @@
     <string name="canceled_edit_toast_discussion">Die ausgewählte Diskussion wurde nicht geändert!</string>
     <string name="remove_toast_members">Die ausgewählten Teilnehmer wurden von der Teilnehmerliste entfernt!</string>
     <string name="remove_toast_member">Der ausgewählten Teilnehmer %1$s wurde von der Teilnehmerliste entfernt!</string>
+
 </resources>

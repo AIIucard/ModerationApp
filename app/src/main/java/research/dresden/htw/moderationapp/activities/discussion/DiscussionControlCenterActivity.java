@@ -44,10 +44,13 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
     private ImageButton silenceButton;
 
     private TextView pauseText;
+    private TextView remainingTimeText;
+
+    private TextView labelRemainingTime;
 
     CountDownTimer countRemainingTime = null;
     private Discussion lastSelectedDscussion;
-    private int remainingTime = 1;
+    private int remainingTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
 
         lastSelectedDscussion = dataViewModel.getLastSelectedDiscussion().getValue();
         if (lastSelectedDscussion != null) {
-            remainingTime = lastSelectedDscussion.getTime() * 1000;
+            remainingTime = lastSelectedDscussion.getTime();
         }
 
         startDisButton = findViewById(R.id.startDiscussionButton);
@@ -75,6 +78,10 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
         sendTopicButton = findViewById(R.id.sendButton);
         sendTopicButton.setVisibility(View.GONE);
         sendTopicButton.setEnabled(false);
+        labelRemainingTime = findViewById(R.id.label_remaining_time);
+        labelRemainingTime.setVisibility(View.GONE);
+        remainingTimeText = findViewById(R.id.remaining_time_text_view);
+        remainingTimeText.setVisibility(View.GONE);
 
         pauseText = findViewById(R.id.textview_pause);
 
@@ -128,6 +135,9 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
         startDisButton.setVisibility(View.GONE);
         endDisButton.setVisibility(View.VISIBLE);
 
+        labelRemainingTime.setVisibility(View.VISIBLE);
+        remainingTimeText.setVisibility(View.VISIBLE);
+
         new SendNewDiscussionTask(viewModel.getSocket(), lastSelectedDscussion.getTitle(), lastSelectedDscussion.getTime(), lastSelectedDscussion.getMemberList()).execute();
         Toast.makeText(getApplicationContext(), "Start Disscusion sended...", Toast.LENGTH_LONG).show();
 
@@ -135,6 +145,7 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
 
             public void onTick(long millisUntilFinished) {
                 remainingTime = ((int) (millisUntilFinished) / 60000);
+                remainingTimeText.setText(""+ remainingTime + " Minuten");
             }
 
             public void onFinish() {
@@ -147,7 +158,7 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
         new SendEndDiscussionTask(viewModel.getSocket()).execute();
         Toast.makeText(getApplicationContext(), "End Disscusion sended...", Toast.LENGTH_LONG).show();
 
-        countRemainingTime.start();
+        countRemainingTime.cancel();
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra("type", IntentType.MANAGED_DISCUSSION_RESULT_TYPE);

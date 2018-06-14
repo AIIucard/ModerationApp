@@ -8,27 +8,35 @@
 
     <Button
         android:id="@+id/button_add_new_member"
-        android:layout_width="wrap_content"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_moderation_button"
         android:text="@string/button_add_new_member"
+        android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/newGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.116">
         <!-- Grid Header -->
 
         <TextView
@@ -36,7 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
-            android:text="@string/title_label_add_member" />
+            android:text="@string/title_label_add_member"
+            android:textColor="@color/darkBlue"
+            android:textSize="24sp" />
 
         <Spinner
             android:id="@+id/title_spinner"
@@ -50,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
-            android:text="@string/name_label_add_member" />
+            android:text="@string/name_label_add_member"
+            android:textColor="@color/darkBlue"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/name_edit_text_view"
@@ -65,7 +77,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
-            android:text="@string/organisation_label_add_member" />
+            android:text="@string/organisation_label_add_member"
+            android:textColor="@color/darkBlue"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/organisation_edit_text_view"
@@ -80,7 +94,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
-            android:text="@string/role_label_add_member" />
+            android:text="@string/role_label_add_member"
+            android:textColor="@color/darkBlue"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/role_edit_text_view"

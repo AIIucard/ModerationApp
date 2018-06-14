@@ -255,7 +255,7 @@ public class MemberAdministrationAddDiscussionActivity extends AppCompatActivity
             roleTextView.setTextColor(Color.parseColor("#FFFFFF"));
         } else {
             selectedItemPositionList.remove(new ItemPosition(position));
-            parent.getChildAt(position).setBackgroundColor(Color.parseColor("#FFFFFF"));
+            parent.getChildAt(position).setBackgroundColor(Color.parseColor("#d9d7d8"));
             idTextView.setTextColor(Color.parseColor("#ff000000"));
             titleTextView.setTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.darker_gray));
             nameTextView.setTextColor(Color.parseColor("#ff000000"));

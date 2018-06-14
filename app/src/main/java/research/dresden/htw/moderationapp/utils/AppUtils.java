@@ -31,12 +31,11 @@ public class AppUtils {
     public static ArrayList<String> getTitlesAsList(){
         ArrayList<String> titleList = new ArrayList<>();
         titleList.add("--");
+        titleList.add(Title.WITHOUT);
         titleList.add(Title.DIPLOMA_OF_ARTS);
-        titleList.add(Title.DIPLOMA_OF_LANGUAGE_STUDIES);
-        titleList.add(Title.DIPLOMA_OF_LANGUAGES);
-        titleList.add(Title.DIPLOMA_OF_SOCIAL_SCIENCES);
         titleList.add(Title.DIPLOMA_OF_EDUCATION);
-        titleList.add(Title.DIPLOMA_OF_MUSIC);
+        titleList.add(Title.MASTER_OF_SIENCE);
+        titleList.add(Title.MASTER_OF_ARTS);
         return titleList;
     }
 
