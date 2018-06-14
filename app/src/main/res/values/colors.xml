@@ -8,5 +8,8 @@
     <color name="background">#d9d7d8</color>
     <color name="backgroundTransparent">#99D9D7D8</color>
     <color name="darkBlue">#4b5669</color>
+    <color name="lightgrey">#D0CECF</color>
+    <color name="lightdarkblue">#4d4d4d</color>
+
 
 </resources>

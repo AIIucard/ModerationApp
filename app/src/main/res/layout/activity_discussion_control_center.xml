@@ -30,7 +30,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/rounded_moderation_button"
                 android:text="Diskussion beenden"
                 android:textColor="@android:color/background_light"
 
@@ -151,7 +151,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/rounded_moderation_button"
                 android:onClick="sendStartDiscussion"
                 android:text="Start Diskussion"
                 android:textColor="@android:color/background_light"
@@ -206,7 +206,7 @@
                     android:backgroundTint="@color/background"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Thema, Frage, Schlagwort"
+                    android:text="@string/edit_text_send_topic"
                     android:textColor="@color/background"
                     android:textSize="24sp" />
 

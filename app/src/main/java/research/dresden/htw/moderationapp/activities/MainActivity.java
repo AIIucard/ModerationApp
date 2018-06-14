@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.activities.discussion.AddDiscussionActivity;
 import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdministrationActivity;
+import research.dresden.htw.moderationapp.activities.discussion.DiscussionControlCenterActivity;
 import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.activities.members.MemberAdministrationActivity;
 import research.dresden.htw.moderationapp.activities.settings.SettingsActivity;
@@ -47,12 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         createWebSocket();
 
-        findViewById(R.id.button_emulator_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonStartEmulatorActivity();
-            }
-        });
 
         findViewById(R.id.button_new_discussion).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 buttonStartSettingsActivity();
             }
         });
+
+
 
 
         // Burger Menu
@@ -159,9 +156,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getBaseContext(), AddDiscussionActivity.class));
     }
 
-    private void buttonStartEmulatorActivity() {
-        startActivity(new Intent(getBaseContext(), EmulatorActivity.class));
-    }
 
     private void buttonStartMemberAdministrationActivity() {
         startActivity(new Intent(getBaseContext(), MemberAdministrationActivity.class));
@@ -174,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
     private void buttonStartSettingsActivity() {
         startActivity(new Intent(getBaseContext(), SettingsActivity.class));
     }
+
+
 
     private void createWebSocket() {
         try {

@@ -3,9 +3,9 @@
 
     <!-- ########## Buttons ##########-->
     <!-- Main-->
-    <string name="button_start_new_discussion_activity">Neue Disskusion</string>
+    <string name="button_start_new_discussion_activity">Neue Diskussion</string>
     <string name="button_start_member_administration_activity">Teilnehmerverwaltung</string>
-    <string name="button_start_discussion_administration_activity">Disskusionsverwaltung</string>
+    <string name="button_start_discussion_administration_activity">Diskussionsverwaltung</string>
     <string name="button_start_emulator_activity">Emulator</string>
     <string name="button_start_settings_activity">Einstellungen</string>
 
@@ -108,6 +108,8 @@
     <string name="place_4_label_add_member">Platz 4:</string>
     <string name="place_5_label_add_member">Platz 5:</string>
 
+    <!-- Discussions_Control_Center-->
+    <string name="edit_text_send_topic">Thema, Frage oder Schlagwort</string>
     <!-- Settings-->
     <string name="label_web_socket_uri">WebSocket URI:</string>
 

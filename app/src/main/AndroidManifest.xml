@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/moderationicon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/SickDesign"
         tools:ignore="AllowBackup">
 
         <!-- Main-->
@@ -63,6 +63,9 @@
         <activity
             android:name=".activities.discussion.PlaceAssignmentEditDiscussionActivity"
             android:label="@string/title_activity_discussion_administration_place_assignment">
+        </activity>
+        <activity android:name=".activities.discussion.DiscussionControlCenterActivity"
+            android:label="Moderation">
         </activity>
 
         <!-- Settings-->
