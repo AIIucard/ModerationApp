@@ -40,6 +40,16 @@
         fab:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_action_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_addButtonSize="mini"
+            fab:fab_colorNormal="@android:color/white"
+            fab:fab_colorPressed="@android:color/holo_green_light"
+            fab:fab_icon="@mipmap/ic_start_blue"
+            fab:fab_title="Start Diskussion" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_action_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -58,6 +58,7 @@
 
     <!-- Settings-->
     <string name="title_activity_settings">Einstellungen</string>
+
     <!-- Emulator-->
     <string name="title_activity_emulator">Emulator</string>
 
@@ -107,9 +108,10 @@
     <string name="place_3_label_add_member">Platz 3:</string>
     <string name="place_4_label_add_member">Platz 4:</string>
     <string name="place_5_label_add_member">Platz 5:</string>
-
-    <!-- Discussions_Control_Center-->
     <string name="edit_text_send_topic">Thema, Frage oder Schlagwort</string>
+    <string name="start_pause_discussion">Pause\nbeginnen</string>
+    <string name="end_pause_discussion">Pause\nbeenden</string>
+
     <!-- Settings-->
     <string name="label_web_socket_uri">WebSocket URI:</string>
 
@@ -129,6 +131,7 @@
     <string name="delete_toast_discussions">Die ausgewählten Diskussionen wurden gelöscht!</string>
     <string name="delete_toast_discussion">Die ausgewählte Diskussion %1$s wurde gelöscht!</string>
     <string name="canceled_add_toast_discussion">Es wurde keine neue Diskussion hinzugefügt!</string>
+    <string name="canceled_start_toast_discussion">Es wurde keine Diskussion gestartet!</string>
     <string name="canceled_add_member_toast_discussion">Es wurde keine Teilnehmer der Diskussion hinzugefügt!</string>
     <string name="canceled_edit_member_toast_discussion">Die Teilnehmer der Diskussion wurden nicht geändert!</string>
     <string name="canceled_add_new_member_toast_discussion">Es wurde kein neuer Teilnehmer der Teilnehmerliste hinzugefügt!</string>

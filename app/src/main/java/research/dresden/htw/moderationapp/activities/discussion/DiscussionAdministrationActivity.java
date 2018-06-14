@@ -31,10 +31,12 @@ import research.dresden.htw.moderationapp.model.RequestCode;
 
 public class DiscussionAdministrationActivity extends AppCompatActivity {
 
+    private Boolean isStartDiscussionActive = false;
     private Boolean isAddDiscussionActive = true;
     private Boolean isEditDiscussionActive = false;
     private Boolean isDeleteDiscussionActive = false;
 
+    private FloatingActionButton startButton;
     private FloatingActionButton addButton;
     private FloatingActionButton editButton;
     private FloatingActionButton deleteButton;
@@ -58,6 +60,8 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
         discussionListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         discussionListView.setAdapter(discussionListAdapter);
 
+        startButton = findViewById(R.id.fab_action_start);
+        startButton.setEnabled(isStartDiscussionActive);
         addButton = findViewById(R.id.fab_action_add);
         addButton.setEnabled(isAddDiscussionActive);
         editButton = findViewById(R.id.fab_action_edit);
@@ -84,6 +88,16 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
                     updateButtons();
                     return true;
                 }
+        });
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (isStartDiscussionActive) {
+                    startActivityForResult(new Intent(getBaseContext(), DiscussionControlCenterActivity.class), RequestCode.DISCUSSION_ADMINISTRATION_CODE);
+                }
+            }
         });
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -191,6 +205,8 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
                     } else if (resultType.equals(IntentType.EDIT_RESULT_TYPE)) {
                         Toast.makeText(DiscussionAdministrationActivity.this, getString(R.string.canceled_edit_toast_discussion), Toast.LENGTH_LONG).show();
                     }
+                } else if (resultType.equals(IntentType.MANAGED_DISCUSSION_RESULT_TYPE)) {
+                    Toast.makeText(DiscussionAdministrationActivity.this, getString(R.string.canceled_start_toast_discussion), Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -199,21 +215,26 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
     private void updateButtons() {
         switch (selectedItemPositionList.size()) {
             case 0:
+                isStartDiscussionActive = false;
                 isAddDiscussionActive = true;
                 isEditDiscussionActive = false;
                 isDeleteDiscussionActive = false;
                 break;
 
             case 1:
+                isStartDiscussionActive = true;
                 isEditDiscussionActive = true;
                 isDeleteDiscussionActive = true;
                 break;
 
             default:
+                isStartDiscussionActive = false;
                 isEditDiscussionActive = false;
                 isDeleteDiscussionActive = true;
                 break;
         }
+        startButton = findViewById(R.id.fab_action_start);
+        startButton.setEnabled(isStartDiscussionActive);
         addButton = findViewById(R.id.fab_action_add);
         addButton.setEnabled(isAddDiscussionActive);
         editButton = findViewById(R.id.fab_action_edit);

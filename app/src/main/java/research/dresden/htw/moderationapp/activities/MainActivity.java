@@ -1,5 +1,6 @@
 package research.dresden.htw.moderationapp.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
@@ -19,8 +21,6 @@ import java.util.ArrayList;
 import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.activities.discussion.AddDiscussionActivity;
 import research.dresden.htw.moderationapp.activities.discussion.DiscussionAdministrationActivity;
-import research.dresden.htw.moderationapp.activities.discussion.DiscussionControlCenterActivity;
-import research.dresden.htw.moderationapp.activities.emulator.EmulatorActivity;
 import research.dresden.htw.moderationapp.activities.members.MemberAdministrationActivity;
 import research.dresden.htw.moderationapp.activities.settings.SettingsActivity;
 import research.dresden.htw.moderationapp.manager.CfgManager;
@@ -29,7 +29,9 @@ import research.dresden.htw.moderationapp.manager.MemberManager;
 import research.dresden.htw.moderationapp.model.AppConfig;
 import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.Discussion;
+import research.dresden.htw.moderationapp.model.IntentType;
 import research.dresden.htw.moderationapp.model.Member;
+import research.dresden.htw.moderationapp.model.RequestCode;
 import research.dresden.htw.moderationapp.model.Title;
 import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
@@ -101,6 +103,21 @@ public class MainActivity extends AppCompatActivity {
         new ConnectionTask().execute(viewModel.getSocket());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (data != null && data.getExtras() != null && data.getExtras().getString("type") != null) {
+            String resultType = data.getExtras().getString("type");
+            if (resultType != null && requestCode == RequestCode.ADD_NEW_DISCUSSION_CODE) {
+                if (resultCode == Activity.RESULT_CANCELED) {
+                    if (resultType.equals(IntentType.ADD_RESULT_TYPE)) {
+                        Toast.makeText(MainActivity.this, getString(R.string.canceled_add_toast_discussion), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
+    }
+
     private void initializeDataViewModelFromJSON(){
         ArrayList<Member> members;
 
@@ -153,7 +170,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buttonStartNewDisussionActivity() {
-        startActivity(new Intent(getBaseContext(), AddDiscussionActivity.class));
+        AppDataViewModel.getInstance().setSelectedMembersForDiscussionList(new ArrayList<Member>());
+        startActivityForResult(new Intent(getBaseContext(), AddDiscussionActivity.class), RequestCode.ADD_NEW_DISCUSSION_CODE);
     }
 
 
