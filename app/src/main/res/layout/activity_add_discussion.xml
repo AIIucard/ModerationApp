@@ -8,27 +8,37 @@
 
     <Button
         android:id="@+id/button_continue_add_member"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_width="263dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_moderation_button"
         android:text="@string/button_continue_add_member"
+        android:textColor="@color/background"
+        android:textSize="24sp"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/newGrid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="443dp"
+        android:layout_height="119dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1">
         <!-- Grid Header -->
 
         <TextView
@@ -36,29 +46,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
-            android:text="@string/title_label_add_discussion" />
+            android:text="@string/title_label_add_discussion"
+            android:textColor="@color/lightdarkblue"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/title_edit_text_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_width="312dp"
+            android:layout_height="64dp"
             android:layout_gravity="center"
             android:hint="@string/title_hint_add_discussion"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/time_label_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
-            android:text="@string/time_label_add_discussion" />
+            android:text="@string/time_label_add_discussion"
+            android:textColor="@color/lightdarkblue"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/time_edit_text_view"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="@string/time_hint_add_discussion"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="24sp" />
     </GridLayout>
 </android.support.constraint.ConstraintLayout>
