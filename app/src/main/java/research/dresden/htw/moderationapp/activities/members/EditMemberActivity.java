@@ -150,16 +150,20 @@ public class EditMemberActivity  extends AppCompatActivity {
                     nameEditText = findViewById(R.id.name_edit_text_view);
                     organisationEditText = findViewById(R.id.organisation_edit_text_view);
                     roleEditText = findViewById(R.id.role_edit_text_view);
-
+                    Member newMember = null;
                     for (Member currentMember : memberList) {
                         if(currentMember.getId() == selectedMember.getId()){
                             currentMember.setTitle(titleSpinner.getSelectedItem().toString());
                             currentMember.setName(nameEditText.getText().toString());
                             currentMember.setOrganisation(organisationEditText.getText().toString());
                             currentMember.setRole(roleEditText.getText().toString());
+                            newMember = currentMember;
                         }
                     }
                     dataViewModel.setMemberList(memberList);
+                    if (newMember != null) {
+                        dataViewModel.setLastSelectedMember(newMember);
+                    }
                     MemberManager memberManager = MemberManager.getInstance();
                     memberManager.writeToJSONFile(getApplicationContext(), dataViewModel.getMemberList().getValue());
                     Intent returnIntent = new Intent();

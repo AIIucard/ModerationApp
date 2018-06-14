@@ -122,6 +122,7 @@ public class EditDiscussionActivity extends AppCompatActivity {
                         }
                     }
                     dataViewModel.setDiscussionList(discussionList);
+                    dataViewModel.setLastSelectedDiscussion(discussionToEditTempObj);
                     DiscussionManager discussionManager = DiscussionManager.getInstance();
                     discussionManager.writeToJSONFile(getApplicationContext(), dataViewModel.getDiscussionList().getValue());
                     Intent returnIntent = new Intent();

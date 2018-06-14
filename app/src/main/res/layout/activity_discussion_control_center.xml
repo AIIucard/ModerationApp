@@ -33,7 +33,7 @@
                 android:background="@drawable/rounded_moderation_button"
                 android:text="Diskussion beenden"
                 android:textColor="@android:color/background_light"
-
+                android:onClick="sendEndDiscussion"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
