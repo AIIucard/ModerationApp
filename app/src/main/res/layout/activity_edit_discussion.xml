@@ -8,22 +8,20 @@
 
     <Button
         android:id="@+id/button_continue_edit_member"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        style="@style/main_button_style"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="204dp"
         android:text="@string/button_continue_edit_member"
-        app:layout_constraintBottom_toTopOf="@+id/button_edit_discussion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newGrid" />
 
     <Button
         android:id="@+id/button_edit_discussion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/main_button_style"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -31,7 +29,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_continue_edit_member" />
 
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"

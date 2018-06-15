@@ -20,5 +20,17 @@
         <item name="android:textColorSecondary">?android:attr/textColorSecondary</item>
     </style>
 
+    <style name="main_button_style" parent="android:Widget.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rounded_moderation_button</item>
+        <item name="android:textColor">@android:color/background_light</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+    </style>
 
 </resources>

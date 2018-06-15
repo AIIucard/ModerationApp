@@ -8,15 +8,12 @@
 
     <Button
         android:id="@+id/button_add_new_member"
-        android:layout_width="255dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        style="@style/main_button_style"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_moderation_button"
+        android:layout_marginTop="32dp"
         android:text="@string/button_add_new_member"
-        android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,5 +104,4 @@
             android:inputType="text" />
 
     </GridLayout>
-
 </android.support.constraint.ConstraintLayout>

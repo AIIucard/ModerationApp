@@ -3,7 +3,6 @@ package research.dresden.htw.moderationapp.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +33,6 @@ import research.dresden.htw.moderationapp.tasks.ConnectionTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout mDrawerLayout;
     private static AppDataViewModel viewModel;
 
     @Override
@@ -51,28 +49,28 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_new_discussion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonStartNewDisussionActivity();
+                handleButtonStartNewDisussionActivityClicked();
             }
         });
 
         findViewById(R.id.button_member_administration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonStartMemberAdministrationActivity();
+                handleButtonStartMemberAdministrationActivityClicked();
             }
         });
 
         findViewById(R.id.button_discussion_administration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonStartDiscussionAdministrationActivity();
+                handleButtonStartDiscussionAdministrationActivityClicked();
             }
         });
 
         findViewById(R.id.button_settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonStartSettingsActivity();
+                buttonStartSettingsActivityClicked();
             }
         });
 
@@ -168,21 +166,21 @@ public class MainActivity extends AppCompatActivity {
         viewModel.setWebSocketURI(webSocketURI);
     }
 
-    private void buttonStartNewDisussionActivity() {
+    private void handleButtonStartNewDisussionActivityClicked() {
         AppDataViewModel.getInstance().setSelectedMembersForDiscussionList(new ArrayList<Member>());
         startActivityForResult(new Intent(getBaseContext(), AddDiscussionActivity.class), RequestCode.ADD_NEW_DISCUSSION_CODE);
     }
 
 
-    private void buttonStartMemberAdministrationActivity() {
+    private void handleButtonStartMemberAdministrationActivityClicked() {
         startActivity(new Intent(getBaseContext(), MemberAdministrationActivity.class));
     }
 
-    private void buttonStartDiscussionAdministrationActivity() {
+    private void handleButtonStartDiscussionAdministrationActivityClicked() {
         startActivity(new Intent(getBaseContext(), DiscussionAdministrationActivity.class));
     }
 
-    private void buttonStartSettingsActivity() {
+    private void buttonStartSettingsActivityClicked() {
         startActivity(new Intent(getBaseContext(), SettingsActivity.class));
     }
 

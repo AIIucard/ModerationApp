@@ -24,9 +24,9 @@
 
     <Button
         android:id="@+id/button_set_places"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
+        style="@style/main_button_style"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/button_set_places"
@@ -81,5 +81,4 @@
             fab:fab_title="Teilnehmer entfernen" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
 </android.support.constraint.ConstraintLayout>

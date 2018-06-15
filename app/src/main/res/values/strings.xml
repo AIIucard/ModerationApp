@@ -24,16 +24,6 @@
     <string name="button_complete_edit_place_assignment">Platzzuweisung ändern</string>
     <string name="button_change_places">Platzzuweisung ändern</string>
     <string name="button_set_member_changes">Übernehmen</string>
-
-    <!-- Discussions_Control-->
-    <string name="button_start_discussion">Diskussion starten</string>
-    <string name="button_end_discussion">Diskussion beenden</string>
-
-    <string name="hint_for_topic"><font color="#d9d7d8">Thema, Frage oder Schlagwort</font></string>
-    <!-- Settings-->
-    <string name="button_change_web_socket_uri">WebSocket URI Ändern</string>
-
-    <!-- Emulator-->
     <string name="button_send_new_discussion">Neue Diskussion</string>
     <string name="button_send_start_discussion">Diskussion Starten</string>
     <string name="button_send_remaining_time">Verbleibende Zeit</string>
@@ -42,6 +32,14 @@
     <string name="button_send_end_discussion">Diskussion Beenden</string>
     <string name="button_send_topic">Text Senden</string>
     <string name="button_send_silence">Um Ruhe bitten</string>
+
+    <!-- Discussions_Control-->
+    <string name="button_start_discussion">Diskussion starten</string>
+    <string name="button_end_discussion">Diskussion beenden</string>
+
+    <string name="hint_for_topic"><font color="#d9d7d8">Thema, Frage oder Schlagwort</font></string>
+    <!-- Settings-->
+    <string name="button_change_web_socket_uri">WebSocket URI Ändern</string>
 
     <!-- ########## Activity Titles ##########-->
     <!-- Main-->
@@ -63,9 +61,6 @@
 
     <!-- Settings-->
     <string name="title_activity_settings">Einstellungen</string>
-
-    <!-- Emulator-->
-    <string name="title_activity_emulator">Emulator</string>
 
     <!-- ########## Labels ##########-->
     <!-- Main-->
@@ -114,7 +109,6 @@
     <string name="place_4_label_add_member">Platz 4:</string>
     <string name="place_5_label_add_member">Platz 5:</string>
     <string name="remaining_time_label_discussion">Verbleibende Zeit:</string>
-
     <string name="start_pause_discussion">Pause\nbeginnen</string>
     <string name="end_pause_discussion">Pause\nbeenden</string>
 

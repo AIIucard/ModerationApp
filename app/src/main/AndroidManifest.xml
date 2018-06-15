@@ -53,13 +53,13 @@
         </activity>
         <activity
             android:name=".activities.discussion.PlaceAssignmentAddDiscussionActivity"
-            android:label="@string/title_activity_discussion_administration_place_assignment"></activity>
+            android:label="@string/title_activity_discussion_administration_place_assignment" />
         <activity
             android:name=".activities.discussion.EditDiscussionActivity"
-            android:label="@string/title_activity_discussion_administration_edit_discussion"></activity>
+            android:label="@string/title_activity_discussion_administration_edit_discussion" />
         <activity
             android:name=".activities.discussion.MemberAdministrationEditDiscussionActivity"
-            android:label="@string/title_activity_discussion_administration_edit_discussion"></activity>
+            android:label="@string/title_activity_discussion_administration_edit_discussion" />
         <activity
             android:name=".activities.discussion.PlaceAssignmentEditDiscussionActivity"
             android:label="@string/title_activity_discussion_administration_place_assignment">
@@ -72,14 +72,5 @@
         <activity android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>
-
-        <!-- Emulator-->
-        <activity android:name=".activities.emulator.EmulatorActivity"
-            android:label="@string/title_activity_emulator" >
-        </activity>
-
-
-
     </application>
-
 </manifest>

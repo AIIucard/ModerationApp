@@ -80,5 +80,4 @@
             fab:fab_title="Löschen" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
 </android.support.constraint.ConstraintLayout>

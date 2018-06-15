@@ -24,18 +24,12 @@
 
             <Button
                 android:id="@+id/endDiscussionButton"
-                android:layout_width="326dp"
-                android:layout_height="61dp"
+                style="@style/main_button_style"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_moderation_button"
                 android:text="@string/button_end_discussion"
-                android:textAllCaps="false"
-                android:textColor="@android:color/background_light"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:onClick="sendEndDiscussion"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -147,19 +141,13 @@
 
             <Button
                 android:id="@+id/startDiscussionButton"
-                android:layout_width="326dp"
-                android:layout_height="61dp"
+                style="@style/main_button_style"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_moderation_button"
                 android:onClick="sendStartDiscussion"
                 android:text="@string/button_start_discussion"
-                android:textAllCaps="false"
-                android:textColor="@android:color/background_light"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -286,6 +274,4 @@
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
-
-
 </android.support.constraint.ConstraintLayout>
