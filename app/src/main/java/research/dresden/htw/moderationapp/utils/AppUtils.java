@@ -32,10 +32,10 @@ public class AppUtils {
         ArrayList<String> titleList = new ArrayList<>();
         titleList.add("--");
         titleList.add(Title.WITHOUT);
-        titleList.add(Title.DIPLOMA_OF_ARTS);
-        titleList.add(Title.DIPLOMA_OF_EDUCATION);
-        titleList.add(Title.MASTER_OF_SIENCE);
-        titleList.add(Title.MASTER_OF_ARTS);
+        titleList.add(Title.BACHELOR);
+        titleList.add(Title.MASTER);
+        titleList.add(Title.DIPLOM);
+        titleList.add(Title.DOCTOR);
         return titleList;
     }
 
@@ -43,7 +43,7 @@ public class AppUtils {
         //null checking
         if (list1 == null && list2 == null)
             return true;
-        if ((list1 == null && list2 != null) || (list1 != null && list2 == null))
+        if (list1 == null || list2 == null)
             return false;
 
         if (list1.size() != list2.size())

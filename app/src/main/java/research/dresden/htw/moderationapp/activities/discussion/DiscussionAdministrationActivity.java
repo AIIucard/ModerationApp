@@ -79,7 +79,7 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
                     } else {
                         parent.collapseGroup(groupPosition);
                     }
-                    if (discussionListAdapter.getSelectedItemsList().size() == 1) {
+                    if (discussionListAdapter.getNumberOfSelectedItems() == 1) {
                         Discussion selectedDiscussion = (Discussion) discussionListAdapter.getGroup(groupPosition);
                         dataViewModel.setLastSelectedDiscussion(selectedDiscussion);
                     }

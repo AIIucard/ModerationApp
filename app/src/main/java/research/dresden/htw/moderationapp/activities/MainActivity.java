@@ -107,16 +107,16 @@ public class MainActivity extends AppCompatActivity {
         memberArrayListTemp.add(new Member(6, Title.DIPLOMA_OF_SOCIAL_SCIENCES, "Der Pedobär", "Kindergarten", "Der Vertrauenswürdige"));
         memberArrayListTemp.add(new Member(7, Title.DIPLOMA_OF_MUSIC, "Pinzessin Lillifee", "Feenreich", "Die Matratze"));
         */
-        memberArrayListTemp.add(new Member(1, Title.CLOSE_TO_MASTER_OF_ARTS, "Charlie", "HTW Dresden", "Creates Fancy Stuff"));
-        memberArrayListTemp.add(new Member(2, Title.RPOF_OF_ARTS, "Simon", "HTW Dresden", "Neue Inspiration"));
-        memberArrayListTemp.add(new Member(3, Title.RPOF_OF_SIENCE, "Georg", "HTW Dresden", "Ruhepol"));
-        memberArrayListTemp.add(new Member(4, Title.CLOSE_TO_MASTER_OF_SIENCE, "Stefan", "HTW Dresden", "Hackerman"));
-        memberArrayListTemp.add(new Member(5, Title.DIPLOMA_OF_MUSIC, "Fabian", "HTW Dresden", "Hackerman"));
-        memberArrayListTemp.add(new Member(6, Title.CLOSE_TO_MASTER_OF_SIENCE, "Max", "HTW Dresden", "Handler Creator hat Ahnung"));
-        memberArrayListTemp.add(new Member(7, Title.CLOSE_TO_MASTER_OF_ARTS, "Shuqi", "HTW Dresden", "Quality AppDesigner"));
-        memberArrayListTemp.add(new Member(8, Title.CLOSE_TO_MASTER_OF_SIENCE, "Kay", "HTW Dresden", "Hackerman"));
-        memberArrayListTemp.add(new Member(9, Title.CLOSE_TO_MASTER_OF_ARTS, "Paul", "HTW Dresden", "Crafter"));
-        memberArrayListTemp.add(new Member(10, Title.RPOF_OF_SIENCE, "Denise", "HTW Dresden", "Fuck google Ask him"));
+        memberArrayListTemp.add(new Member(1, Title.BACHELOR, "Charlie", "HTW Dresden", "Creates Fancy Stuff"));
+        memberArrayListTemp.add(new Member(2, Title.DOCTOR, "Simon", "HTW Dresden", "Neue Inspiration"));
+        memberArrayListTemp.add(new Member(3, Title.DOCTOR, "Georg", "HTW Dresden", "Ruhepol"));
+        memberArrayListTemp.add(new Member(4, Title.BACHELOR, "Stefan", "HTW Dresden", "Hackerman"));
+        memberArrayListTemp.add(new Member(5, Title.BACHELOR, "Fabian", "HTW Dresden", "Hackerman"));
+        memberArrayListTemp.add(new Member(6, Title.BACHELOR, "Max", "HTW Dresden", "Handler Creator hat Ahnung"));
+        memberArrayListTemp.add(new Member(7, Title.BACHELOR, "Shuqi", "HTW Dresden", "Quality AppDesigner"));
+        memberArrayListTemp.add(new Member(8, Title.BACHELOR, "Kay", "HTW Dresden", "Hackerman"));
+        memberArrayListTemp.add(new Member(9, Title.BACHELOR, "Paul", "HTW Dresden", "Crafter"));
+        memberArrayListTemp.add(new Member(10, Title.MASTER, "Denise", "HTW Dresden", "Fuck google Ask him"));
 
         MemberManager memberManagerTemp = MemberManager.getInstance();
         memberManagerTemp.writeToJSONFile(getApplicationContext(), memberArrayListTemp);

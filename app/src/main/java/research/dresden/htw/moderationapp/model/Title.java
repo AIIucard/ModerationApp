@@ -1,7 +1,11 @@
 package research.dresden.htw.moderationapp.model;
 
 public class Title {
-    public static final String WITHOUT = " ";
+    public static final String WITHOUT = "Ohne";
+    public static final String BACHELOR = "Bachelor";
+    public static final String MASTER = "Master";
+    public static final String DIPLOM = "Diplom";
+    public static final String DOCTOR = "Dr.";
     public static final String DIPLOMA_OF_ARTS = "Dip.Arts";
     public static final String DIPLOMA_OF_LANGUAGE_STUDIES = "Dip.Lang.Stud.";
     public static final String DIPLOMA_OF_LANGUAGES = "Dip.Lang";
