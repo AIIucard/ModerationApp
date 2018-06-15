@@ -180,7 +180,7 @@ public class MemberAdministrationEditDiscussionActivity extends AppCompatActivit
 
             @Override
             public void onClick(View v) {
-                if (dataViewModel.getSelectedMembersForDiscussionList().getValue() != null && dataViewModel.getSelectedMembersForDiscussionList().getValue().size() > 0) {
+                if (dataViewModel.getSelectedMembersForDiscussionList().getValue() != null && dataViewModel.getSelectedMembersForDiscussionList().getValue().size() > 0 && dataViewModel.getDiscussionToEditTempObj().getValue() != null) {
                     startActivityForResult(new Intent(getBaseContext(), PlaceAssignmentEditDiscussionActivity.class), RequestCode.PLACE_ASSIGNMENT_DISCUSSION_CODE);
                 }
             }
@@ -263,14 +263,6 @@ public class MemberAdministrationEditDiscussionActivity extends AppCompatActivit
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("type", IntentType.EDIT_RESULT_TYPE);
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-        finish();
-    }
-
     private void updateButtons() {
         switch (selectedItemPositionList.size()) {
             case 0:
@@ -335,5 +327,13 @@ public class MemberAdministrationEditDiscussionActivity extends AppCompatActivit
                 }
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", IntentType.EDIT_RESULT_TYPE);
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }
