@@ -13,4 +13,12 @@
     <color name="text_normal">#464646</color>
     <color name="text_light">#ffffffff</color>
     <color name="hint_normal">#919090</color>
+    <color name="member_row_background_color">#e4e4e4</color>
+    <color name="member_row_border_color">#2a394d</color>
+    <color name="member_row_id_color">#4d4d4d</color>
+    <color name="member_row_title_color">#525252</color>
+    <color name="member_row_name_color">#4d4d4d</color>
+    <color name="member_row_organisation_color">#939393</color>
+    <color name="member_row_role_color">#939393</color>
+
 </resources>

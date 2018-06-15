@@ -114,14 +114,6 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("type", IntentType.MANAGED_DISCUSSION_RESULT_TYPE);
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-        finish();
-    }
-
     public void sendStartDiscussion(View v) {
         isStartActive = false;
         startDisButton.setEnabled(false);
@@ -220,8 +212,17 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
         sendTopicButton.setVisibility(View.VISIBLE);
         sendTopicButton.setEnabled(true);
     }
+
     public void goneSendButton() {
         sendTopicButton.setVisibility(View.GONE);
         sendTopicButton.setEnabled(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", IntentType.MANAGED_DISCUSSION_RESULT_TYPE);
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }

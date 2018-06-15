@@ -176,14 +176,6 @@ public class EditMemberActivity  extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("type", IntentType.EDIT_RESULT_TYPE);
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-        finish();
-    }
-
     private void updateEditButton() {
         editMemberButton = findViewById(R.id.button_edit_member);
         if(isTitleChanged || isNameChanged || isOrganisationChanged || isRoleChanged) {
@@ -212,5 +204,13 @@ public class EditMemberActivity  extends AppCompatActivity {
             if (organisationEditText != null) organisationEditText.setText(oldOrganisation);
             if (roleEditText != null) roleEditText.setText(oldRole);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", IntentType.EDIT_RESULT_TYPE);
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }

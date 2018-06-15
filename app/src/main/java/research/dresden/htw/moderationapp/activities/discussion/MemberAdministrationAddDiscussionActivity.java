@@ -209,14 +209,6 @@ public class MemberAdministrationAddDiscussionActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-        finish();
-    }
-
     private void updateButtons() {
         switch (selectedItemPositionList.size()) {
             case 0:
@@ -262,5 +254,13 @@ public class MemberAdministrationAddDiscussionActivity extends AppCompatActivity
             organisationTextView.setTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.darker_gray));
             roleTextView.setTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.darker_gray));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }

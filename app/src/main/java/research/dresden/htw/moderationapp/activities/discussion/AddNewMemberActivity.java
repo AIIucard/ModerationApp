@@ -167,14 +167,6 @@ public class AddNewMemberActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-        finish();
-    }
-
     private void updateAddButton() {
         addNewMemberButton = findViewById(R.id.button_add_new_member);
         if (isTitleSet && isNameSet && isOrganisationSet && isRoleSet) {
@@ -192,5 +184,13 @@ public class AddNewMemberActivity extends AppCompatActivity {
         if (titleSpinner != null) {
             titleSpinner.setAdapter(titleSpinnerAdapter);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }

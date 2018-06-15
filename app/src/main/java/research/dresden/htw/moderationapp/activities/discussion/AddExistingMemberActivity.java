@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +29,7 @@ public class AddExistingMemberActivity extends AppCompatActivity {
     private final List<ItemPosition> selectedItemPositionList = new ArrayList<>();
     private Boolean isAddMemberActive = false;
     private Button addMemberButton;
-    private ListAdapter existingMemberListAdapter;
+    private MemberListViewAdapter existingMemberListAdapter;
     private AppDataViewModel dataViewModel;
     private ArrayList<Member> selectedMembersForDiscussionList;
 
@@ -54,7 +53,7 @@ public class AddExistingMemberActivity extends AppCompatActivity {
         }
         existingMemberListAdapter = new MemberListViewAdapter(this, existingMemberList);
         ListView existingMemberListView = findViewById(R.id.existing_member_list_view);
-        existingMemberListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        existingMemberListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         existingMemberListView.setAdapter(existingMemberListAdapter);
 
         addMemberButton = findViewById(R.id.button_add_existing_member);
@@ -91,14 +90,6 @@ public class AddExistingMemberActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);
-        setResult(Activity.RESULT_CANCELED, returnIntent);
-        finish();
     }
 
     private void updateButtons() {
@@ -138,5 +129,13 @@ public class AddExistingMemberActivity extends AppCompatActivity {
             organisationTextView.setTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.darker_gray));
             roleTextView.setTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.darker_gray));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("type", IntentType.ADD_RESULT_TYPE);
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }

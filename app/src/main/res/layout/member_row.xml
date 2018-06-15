@@ -2,77 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="top"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/rounded_list_view_row"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:paddingStart="50dp">
+
+    <TextView
+        android:id="@+id/id_text_view_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id_member_text_view_placeholder"
+        android:textAlignment="center"
+        android:textColor="@color/member_row_id_color"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/image_view_member"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/member_icon_description"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        app:srcCompat="@drawable/member" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/id_text_view_member"
+            android:id="@+id/title_text_view_member"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/id_member_text_view_placeholder"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:text="@string/title_member_text_view_placeholder"
+            android:textColor="@color/member_row_title_color"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/name_text_view_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name_member_text_view_placeholder"
+            android:textColor="@color/member_row_name_color"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/image_view_member"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/member_icon_description"
-            android:padding="10dp"
-            app:srcCompat="@drawable/member" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/organisation_text_view_member"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text="@string/organisation_member_text_view_placeholder"
+            android:textColor="@color/member_row_organisation_color"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/title_text_view_member"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/title_member_text_view_placeholder"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/role_text_view_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/role_member_text_view_placeholder"
+            android:textColor="@color/member_row_role_color"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/name_text_view_member"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/name_member_text_view_placeholder"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/organisation_text_view_member"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/organisation_member_text_view_placeholder"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/role_text_view_member"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/role_member_text_view_placeholder"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="18sp" />
-
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
