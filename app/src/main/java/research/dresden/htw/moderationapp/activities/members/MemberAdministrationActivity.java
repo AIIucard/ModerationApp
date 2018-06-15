@@ -70,7 +70,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         memberListAdapter.handleSelectionMember(position);
                         if (memberListAdapter.getNumberOfSelectedItems() == 1) {
-                            Member selectedMember = (Member) memberListAdapter.getItem(position);
+                            Member selectedMember = memberListAdapter.getItem(position);
                             dataViewModel.setLastSelectedMember(selectedMember);
                         }
                         memberListAdapter.notifyDataSetChanged();

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,18 @@ import research.dresden.htw.moderationapp.model.Member;
 
 public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
 
-    private final Context context;
+    int numberOfSelectedItems = 0;
+    private ArrayList<Boolean> isPositionSelectedList;
+    private Context context;
     private final ArrayList<Discussion> discussionList;
 
     public DiscussionListViewAdapter(@NonNull Context context, ArrayList<Discussion> discussionList) {
         this.context = context;
         this.discussionList = discussionList;
+        isPositionSelectedList = new ArrayList<>();
+        for (int i = 0; i < discussionList.size(); ++i) {
+            isPositionSelectedList.add(false);
+        }
     }
 
     @Override
@@ -127,16 +134,18 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
                 titleTextView.setText("Thema: " + String.valueOf(discussionItem.getTitle()));
                 timeTextView.setText("Dauer: " + String.valueOf(discussionItem.getTime()) + " min");
             }
-            if (isExpanded) {
+
+            if (isPositionSelectedList.get(groupPosition) && isExpanded) {
                 discussionView.setBackgroundColor(Color.parseColor("#4285f4"));
                 idTextView.setTextColor(Color.parseColor("#FFFFFF"));
                 titleTextView.setTextColor(Color.parseColor("#FFFFFF"));
                 timeTextView.setTextColor(Color.parseColor("#FFFFFF"));
             } else {
-                discussionView.setBackgroundColor(Color.parseColor("#d9d7d8"));
-                idTextView.setTextColor(Color.parseColor("#ff000000"));
-                titleTextView.setTextColor(Color.parseColor("#ff000000"));
-                timeTextView.setTextColor(Color.parseColor("#a9a9a9"));
+                discussionView.setBackground(ContextCompat.getDrawable(context, R.drawable.rounded_list_view_row));
+                idTextView.setTextColor(ContextCompat.getColor(context, R.color.list_view_row_id_color));
+                titleTextView.setTextColor(ContextCompat.getColor(context, R.color.discussion_row_title_color));
+                timeTextView.setTextColor(ContextCompat.getColor(context, R.color.discussion_row_time_color));
+
             }
         }
         return discussionView;
@@ -150,5 +159,34 @@ public class DiscussionListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    public void handleAddDiscussion() {
+        isPositionSelectedList.add(false);
+    }
+
+    public void handleRemoveDiscussion(int position) {
+        if (position < isPositionSelectedList.size()) {
+            isPositionSelectedList.remove(position);
+        }
+    }
+
+    public void handleSelectionDiscussion(int position) {
+        if (position < isPositionSelectedList.size()) {
+            if (!isPositionSelectedList.get(position)) {
+                ++numberOfSelectedItems;
+            } else {
+                --numberOfSelectedItems;
+            }
+            isPositionSelectedList.set(position, !isPositionSelectedList.get(position));
+        }
+    }
+
+    public int getNumberOfSelectedItems() {
+        return numberOfSelectedItems;
+    }
+
+    public ArrayList<Boolean> getSelectedItemsList() {
+        return isPositionSelectedList;
     }
 }

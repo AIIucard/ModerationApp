@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import research.dresden.htw.moderationapp.R;
 import research.dresden.htw.moderationapp.loader.DiscussionListViewAdapter;
@@ -25,7 +24,6 @@ import research.dresden.htw.moderationapp.manager.DiscussionManager;
 import research.dresden.htw.moderationapp.model.AppDataViewModel;
 import research.dresden.htw.moderationapp.model.Discussion;
 import research.dresden.htw.moderationapp.model.IntentType;
-import research.dresden.htw.moderationapp.model.ItemPosition;
 import research.dresden.htw.moderationapp.model.Member;
 import research.dresden.htw.moderationapp.model.RequestCode;
 
@@ -44,7 +42,6 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
     private DiscussionListViewAdapter discussionListAdapter;
 
     private AppDataViewModel dataViewModel;
-    private final List<ItemPosition> selectedItemPositionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +52,10 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
 
         final MutableLiveData<ArrayList<Discussion>> discussionListData = dataViewModel.getDiscussionList();
         ArrayList<Discussion> discussionList = discussionListData.getValue();
-        discussionListAdapter = new DiscussionListViewAdapter(this, discussionList);
-        ExpandableListView discussionListView = findViewById(R.id.discussion_expandable_list_view);
+        if (discussionList != null) {
+            discussionListAdapter = new DiscussionListViewAdapter(this, discussionList);
+        }
+        final ExpandableListView discussionListView = findViewById(R.id.discussion_expandable_list_view);
         discussionListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         discussionListView.setAdapter(discussionListAdapter);
 
@@ -74,18 +73,18 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
 
                 @Override
                 public boolean onGroupClick(ExpandableListView parent, View view, int groupPosition, long id) {
-                    if (!selectedItemPositionList.contains(new ItemPosition(groupPosition))) {
-                        selectedItemPositionList.add(new ItemPosition(groupPosition));
+                    discussionListAdapter.handleSelectionDiscussion(groupPosition);
+                    if (discussionListAdapter.getSelectedItemsList().get(groupPosition)) {
                         parent.expandGroup(groupPosition);
                     } else {
-                        selectedItemPositionList.remove(new ItemPosition(groupPosition));
                         parent.collapseGroup(groupPosition);
                     }
-                    if(selectedItemPositionList.size() == 1){
+                    if (discussionListAdapter.getSelectedItemsList().size() == 1) {
                         Discussion selectedDiscussion = (Discussion) discussionListAdapter.getGroup(groupPosition);
                         dataViewModel.setLastSelectedDiscussion(selectedDiscussion);
                     }
                     updateButtons();
+                    discussionListAdapter.notifyDataSetChanged();
                     return true;
                 }
         });
@@ -116,7 +115,7 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEditDiscussionActive) {
-                    if (selectedItemPositionList.size() == 1) {
+                    if (discussionListAdapter.getSelectedItemsList().size() == 1) {
                         startActivityForResult(new Intent(getBaseContext(), EditDiscussionActivity.class), RequestCode.DISCUSSION_ADMINISTRATION_CODE);
                     }
                 }
@@ -127,9 +126,9 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                int size = selectedItemPositionList.size();
+                int size = discussionListAdapter.getSelectedItemsList().size();
                 if (isDeleteDiscussionActive) {
-                    if (!selectedItemPositionList.isEmpty()) {
+                    if (size != 0) {
                         final int finalSize = size;
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
@@ -137,23 +136,26 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
                                 switch (which) {
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Discussion selectedDiscussion = null;
-                                        for (ItemPosition selectedItemPosition : selectedItemPositionList) {
-                                            boolean isDeleted = false;
-                                            selectedDiscussion = (Discussion) discussionListAdapter.getGroup(selectedItemPosition.getPosition());
-                                            ArrayList<Discussion> discussionList = dataViewModel.getDiscussionList().getValue();
-                                            if (discussionList != null) {
-                                                for (int i = 0; i < discussionList.size(); i++) {
-                                                    if (discussionList.get(i).getId().equals(selectedDiscussion.getId())) {
-                                                        discussionList.remove(i);
-                                                        isDeleted = true;
+                                        for (int itemPosition = 0; itemPosition < discussionListAdapter.getNumberOfSelectedItems(); ++itemPosition) {
+                                            if (discussionListAdapter.getSelectedItemsList().get(itemPosition)) {
+                                                boolean isDeleted = false;
+                                                selectedDiscussion = (Discussion) discussionListAdapter.getGroup(itemPosition);
+                                                ArrayList<Discussion> discussionList = dataViewModel.getDiscussionList().getValue();
+                                                if (discussionList != null) {
+                                                    for (int i = 0; i < discussionList.size(); i++) {
+                                                        if (discussionList.get(i).getId().equals(selectedDiscussion.getId())) {
+                                                            discussionList.remove(i);
+                                                            isDeleted = true;
+                                                        }
                                                     }
+                                                    dataViewModel.setDiscussionList(discussionList);
+                                                    DiscussionManager discussionManager = DiscussionManager.getInstance();
+                                                    discussionManager.writeToJSONFile(getApplicationContext(), discussionList);
                                                 }
-                                                dataViewModel.setDiscussionList(discussionList);
-                                                DiscussionManager discussionManager = DiscussionManager.getInstance();
-                                                discussionManager.writeToJSONFile(getApplicationContext(), discussionList);
-                                            }
-                                            if (isDeleted) {
-                                                selectedItemPositionList.remove(selectedItemPosition);
+                                                if (isDeleted) {
+                                                    discussionListAdapter.handleRemoveDiscussion(itemPosition);
+                                                    discussionListAdapter.notifyDataSetChanged();
+                                                }
                                             }
                                         }
                                         if (finalSize > 1)
@@ -205,6 +207,10 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
                     } else if (resultType.equals(IntentType.EDIT_RESULT_TYPE)) {
                         Toast.makeText(DiscussionAdministrationActivity.this, getString(R.string.canceled_edit_toast_discussion), Toast.LENGTH_LONG).show();
                     }
+                } else if (resultCode == Activity.RESULT_OK) {
+                    if (resultType.equals(IntentType.ADD_RESULT_TYPE)) {
+                        discussionListAdapter.handleAddDiscussion();
+                    }
                 } else if (resultType.equals(IntentType.MANAGED_DISCUSSION_RESULT_TYPE)) {
                     Toast.makeText(DiscussionAdministrationActivity.this, getString(R.string.canceled_start_toast_discussion), Toast.LENGTH_LONG).show();
                 }
@@ -213,7 +219,7 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
     }
 
     private void updateButtons() {
-        switch (selectedItemPositionList.size()) {
+        switch (discussionListAdapter.getNumberOfSelectedItems()) {
             case 0:
                 isStartDiscussionActive = false;
                 isAddDiscussionActive = true;

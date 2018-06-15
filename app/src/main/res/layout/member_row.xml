@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/id_member_text_view_placeholder"
         android:textAlignment="center"
-        android:textColor="@color/member_row_id_color"
+        android:textColor="@color/list_view_row_id_color"
         android:textSize="30sp"
         android:textStyle="bold" />
 

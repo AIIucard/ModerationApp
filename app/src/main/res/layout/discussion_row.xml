@@ -1,65 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_discussion_row_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="top"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/rounded_list_view_row"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:paddingStart="50dp">
 
-    <LinearLayout
-        android:id="@+id/id_discussion_row_layout"
+    <TextView
+        android:id="@+id/id_text_view_discussion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="35sp"
-        android:paddingTop="10dp">
+        android:text="@string/id_member_text_view_placeholder"
+        android:textAlignment="center"
+        android:textColor="@color/list_view_row_id_color"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/image_view_discussion"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/discussion_icon_description"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        app:srcCompat="@drawable/discussion" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/id_text_view_discussion"
+            android:id="@+id/title_text_view_discussion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/id_member_text_view_placeholder"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:text="@string/title_discussion_text_view_placeholder"
+            android:textColor="@color/discussion_row_title_color"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/image_view_discussion"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/discussion_icon_description"
-            android:padding="10dp"
-            app:srcCompat="@drawable/discussion" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/time_text_view_discussion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text="@string/time_discussion_text_view_placeholder"
+            android:textColor="@color/discussion_row_time_color"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/title_text_view_discussion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title_discussion_text_view_placeholder"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/time_text_view_discussion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/time_discussion_text_view_placeholder"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="18sp" />
-
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

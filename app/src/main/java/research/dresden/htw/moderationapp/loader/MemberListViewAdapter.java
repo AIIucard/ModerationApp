@@ -63,7 +63,7 @@ public class MemberListViewAdapter extends ArrayAdapter<Member>{
             roleTextView.setTextColor(Color.parseColor("#FFFFFF"));
         } else {
             memberView.setBackground(ContextCompat.getDrawable(context, R.drawable.rounded_list_view_row));
-            idTextView.setTextColor(ContextCompat.getColor(context, R.color.member_row_id_color));
+            idTextView.setTextColor(ContextCompat.getColor(context, R.color.list_view_row_id_color));
             titleTextView.setTextColor(ContextCompat.getColor(context, R.color.member_row_title_color));
             nameTextView.setTextColor(ContextCompat.getColor(context, R.color.member_row_name_color));
             organisationTextView.setTextColor(ContextCompat.getColor(context, R.color.member_row_organisation_color));
