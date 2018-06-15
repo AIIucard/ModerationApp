@@ -107,7 +107,7 @@ public class MemberAdministrationAddDiscussionActivity extends AppCompatActivity
                                 switch (which) {
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Member selectedMember = null;
-                                        for (int itemPosition = 0; itemPosition < selectedMemberListAdapter.getNumberOfSelectedItems(); ++itemPosition) {
+                                        for (int itemPosition = 0; itemPosition < selectedMemberListAdapter.getSelectedItemsList().size(); ++itemPosition) {
                                             if (selectedMemberListAdapter.getSelectedItemsList().get(itemPosition)) {
                                                 boolean isRemoved = false;
                                                 selectedMember = selectedMemberListAdapter.getItem(itemPosition);

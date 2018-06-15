@@ -136,7 +136,7 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
                                 switch (which) {
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Discussion selectedDiscussion = null;
-                                        for (int itemPosition = 0; itemPosition < discussionListAdapter.getNumberOfSelectedItems(); ++itemPosition) {
+                                        for (int itemPosition = 0; itemPosition < discussionListAdapter.getSelectedItemsList().size(); ++itemPosition) {
                                             if (discussionListAdapter.getSelectedItemsList().get(itemPosition)) {
                                                 boolean isDeleted = false;
                                                 selectedDiscussion = (Discussion) discussionListAdapter.getGroup(itemPosition);

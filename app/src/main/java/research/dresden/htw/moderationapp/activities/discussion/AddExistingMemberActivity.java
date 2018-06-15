@@ -71,7 +71,7 @@ public class AddExistingMemberActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isAddMemberActive) {
                     if (existingMemberListAdapter.getNumberOfSelectedItems() > 0) {
-                        for (int itemPosition = 0; itemPosition < existingMemberListAdapter.getNumberOfSelectedItems(); ++itemPosition) {
+                        for (int itemPosition = 0; itemPosition < existingMemberListAdapter.getSelectedItemsList().size(); ++itemPosition) {
                             if (existingMemberListAdapter.getSelectedItemsList().get(itemPosition)) {
                                 Member selectedMember = existingMemberListAdapter.getItem(itemPosition);
                                 selectedMembersForDiscussionList.add(selectedMember);

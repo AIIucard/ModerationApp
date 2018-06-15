@@ -112,7 +112,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
                                         Member selectedMember = null;
-                                        for (int itemPosition = 0; itemPosition < memberListAdapter.getNumberOfSelectedItems(); ++itemPosition) {
+                                        for (int itemPosition = 0; itemPosition < memberListAdapter.getSelectedItemsList().size(); ++itemPosition) {
                                             if (memberListAdapter.getSelectedItemsList().get(itemPosition)) {
                                                 boolean isDeleted = false;
                                                 selectedMember = memberListAdapter.getItem(itemPosition);
