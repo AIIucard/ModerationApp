@@ -35,11 +35,13 @@
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/newGrid"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
         android:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,31 +50,23 @@
 
         <TextView
             android:id="@+id/title_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/title_label_add_discussion" />
 
         <EditText
             android:id="@+id/title_edit_text_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/main_edit_text_style"
             android:hint="@string/title_hint_add_discussion"
             android:inputType="text" />
 
         <TextView
             android:id="@+id/time_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/time_label_add_discussion" />
 
         <EditText
             android:id="@+id/time_edit_text_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/main_edit_text_style"
             android:hint="@string/time_hint_add_discussion"
             android:inputType="number" />
     </GridLayout>

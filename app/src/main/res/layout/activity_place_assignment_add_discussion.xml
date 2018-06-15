@@ -26,6 +26,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
         android:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,73 +36,48 @@
 
         <TextView
             android:id="@+id/place_1_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/place_1_label_add_member" />
 
         <Spinner
             android:id="@+id/place_1_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
+            style="@style/main_spinner_style" />
 
         <TextView
             android:id="@+id/place_2_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/place_2_label_add_member" />
 
         <Spinner
             android:id="@+id/place_2_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
+            style="@style/main_spinner_style" />
 
         <TextView
             android:id="@+id/place_3_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/place_3_label_add_member" />
 
         <Spinner
             android:id="@+id/place_3_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
+            style="@style/main_spinner_style" />
 
         <TextView
             android:id="@+id/place_4_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/place_4_label_add_member" />
 
         <Spinner
             android:id="@+id/place_4_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
+            style="@style/main_spinner_style" />
 
         <TextView
             android:id="@+id/place_5_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/place_5_label_add_member" />
 
         <Spinner
             android:id="@+id/place_5_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
+            style="@style/main_spinner_style" />
 
     </GridLayout>
 </android.support.constraint.ConstraintLayout>

@@ -10,4 +10,7 @@
     <color name="darkBlue">#4b5669</color>
     <color name="lightgrey">#D0CECF</color>
     <color name="lightdarkblue">#4d4d4d</color>
+    <color name="text_normal">#464646</color>
+    <color name="text_light">#ffffffff</color>
+    <color name="hint_normal">#919090</color>
 </resources>

@@ -9,8 +9,6 @@
     <Button
         android:id="@+id/button_add_member"
         style="@style/main_button_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
@@ -23,11 +21,13 @@
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/newGrid"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
         android:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,60 +36,43 @@
 
         <TextView
             android:id="@+id/title_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/title_label_add_member" />
 
         <Spinner
             android:id="@+id/title_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"/>
+            style="@style/main_spinner_style" />
 
         <TextView
             android:id="@+id/name_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/name_label_add_member" />
 
         <EditText
             android:id="@+id/name_edit_text_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/main_edit_text_style"
             android:hint="@string/name_hint_add_member"
             android:inputType="text" />
 
         <TextView
             android:id="@+id/organisation_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/organisation_label_add_member" />
 
         <EditText
             android:id="@+id/organisation_edit_text_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/main_edit_text_style"
             android:hint="@string/organisation_hint_add_member"
             android:inputType="text" />
 
         <TextView
             android:id="@+id/role_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
+            style="@style/main_text_view_style"
             android:text="@string/role_label_add_member" />
 
         <EditText
             android:id="@+id/role_edit_text_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/main_edit_text_style"
             android:hint="@string/role_hint_add_member"
             android:inputType="text" />
 

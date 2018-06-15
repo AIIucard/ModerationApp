@@ -363,28 +363,28 @@ public class PlaceAssignmentAddDiscussionActivity extends AppCompatActivity {
         availableMembersSpinnerPlace5.add(new SpinnerMemberItem(CLOSED, null));
 
         spinnerAdapterPlace1 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, availableMembersSpinnerPlace1);
-        spinnerAdapterPlace1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                this, R.layout.spinner_item, availableMembersSpinnerPlace1);
+        spinnerAdapterPlace1.setDropDownViewResource(R.layout.spinner_drop_down_item);
         spinnerPlace1.setAdapter(spinnerAdapterPlace1);
 
         spinnerAdapterPlace2 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, availableMembersSpinnerPlace2);
-        spinnerAdapterPlace2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                this, R.layout.spinner_item, availableMembersSpinnerPlace2);
+        spinnerAdapterPlace2.setDropDownViewResource(R.layout.spinner_drop_down_item);
         spinnerPlace2.setAdapter(spinnerAdapterPlace2);
 
         spinnerAdapterPlace3 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, availableMembersSpinnerPlace3);
-        spinnerAdapterPlace3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                this, R.layout.spinner_item, availableMembersSpinnerPlace3);
+        spinnerAdapterPlace3.setDropDownViewResource(R.layout.spinner_drop_down_item);
         spinnerPlace3.setAdapter(spinnerAdapterPlace3);
 
         spinnerAdapterPlace4 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, availableMembersSpinnerPlace4);
-        spinnerAdapterPlace4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                this, R.layout.spinner_item, availableMembersSpinnerPlace4);
+        spinnerAdapterPlace4.setDropDownViewResource(R.layout.spinner_drop_down_item);
         spinnerPlace4.setAdapter(spinnerAdapterPlace4);
 
         spinnerAdapterPlace5 = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, availableMembersSpinnerPlace5);
-        spinnerAdapterPlace5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                this, R.layout.spinner_item, availableMembersSpinnerPlace5);
+        spinnerAdapterPlace5.setDropDownViewResource(R.layout.spinner_drop_down_item);
         spinnerPlace5.setAdapter(spinnerAdapterPlace5);
 
         spinnerPlace1.setSelection(spinnerAdapterPlace1.getPosition(new SpinnerMemberItem(CLOSED, null)));

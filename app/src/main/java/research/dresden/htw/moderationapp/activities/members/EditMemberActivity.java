@@ -201,8 +201,8 @@ public class EditMemberActivity  extends AppCompatActivity {
 
             ArrayList<String> titlesAsList = AppUtils.getTitlesAsList();
             ArrayAdapter<String> titleSpinnerAdapter = new ArrayAdapter<>(
-                    this, android.R.layout.simple_spinner_item, titlesAsList);
-            titleSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    this, R.layout.spinner_item, titlesAsList);
+            titleSpinnerAdapter.setDropDownViewResource(R.layout.spinner_drop_down_item);
             if (titleSpinner != null) {
                 titleSpinner.setAdapter(titleSpinnerAdapter);
                 int spinnerPosition = titleSpinnerAdapter.getPosition(oldTitle);
