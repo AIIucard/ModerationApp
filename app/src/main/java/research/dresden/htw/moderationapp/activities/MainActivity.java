@@ -131,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
         discussionArrayListTemp.add(new Discussion(1, "Runder Tisch Beispiel", 370, memberArrayListTemp2));
         */
-        memberArrayListTemp2.add(new Member(1, Title.CLOSE_TO_MASTER_OF_ARTS, "Charlie", "HTW Dresden", "Creates Fancy Stuff", 1));
+        memberArrayListTemp2.add(new Member(1, Title.CLOSE_TO_MASTER_OF_ARTS, "Dennis", "HTW Dresden", "Creates Fancy Stuff", 1));
         memberArrayListTemp2.add(new Member(3, Title.RPOF_OF_SIENCE, "Kay", "HTW Dresden", "Ruhepol", 2));
-        memberArrayListTemp2.add(new Member(2, Title.RPOF_OF_ARTS, "Antje<3", "HTW Dresden", "Neue Inspiration",3));
+        memberArrayListTemp2.add(new Member(2, Title.RPOF_OF_ARTS, "Georg", "HTW Dresden", "Neue Inspiration", 3));
         memberArrayListTemp2.add(new Member(6, Title.CLOSE_TO_MASTER_OF_SIENCE, "Max", "HTW Dresden", "Handler Creator hat Ahnung",4));
         memberArrayListTemp2.add(new Member(4, Title.CLOSE_TO_MASTER_OF_SIENCE, "Stefan", "HTW Dresden", "Hackerman",5));
         discussionArrayListTemp.add(new Discussion(1, "Runder Tisch Beispiel", 10, memberArrayListTemp2));
