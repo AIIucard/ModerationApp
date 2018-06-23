@@ -141,4 +141,6 @@
     <string name="remove_toast_members">Die ausgewählten Teilnehmer wurden von der Teilnehmerliste entfernt!</string>
     <string name="remove_toast_member">Der ausgewählten Teilnehmer %1$s wurde von der Teilnehmerliste entfernt!</string>
 
+    <!-- Settings-->
+    <string name="changed_websocket_toast_settings">Der Websocket wurde geändert!</string>
 </resources>

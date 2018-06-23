@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
@@ -31,23 +32,21 @@ public class SettingsActivity  extends AppCompatActivity {
         inputWebSocketURIField = findViewById(R.id.inputWebSocketURIField);
         inputWebSocketURIField.setText(viewModel.getWebSocketURI().getValue());
 
-        // Create the observer which updates the UI.
-        final Observer<String> webSocketURIObserver = new Observer<String>() {
+        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+        viewModel.getWebSocketURI().observe(this, new Observer<String>() {
 
             @Override
             public void onChanged(@Nullable final String newURI) {
                 inputWebSocketURIField.setText(newURI);
             }
-        };
-
-        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        viewModel.getWebSocketURI().observe(this, webSocketURIObserver);
+        });
     }
 
     public void changeWebSocketURI(View v){
         viewModel.setWebSocketURI(inputWebSocketURIField.getText().toString());
         createWebSocket();
         new ConnectionTask().execute(viewModel.getSocket());
+        Toast.makeText(SettingsActivity.this, getString(R.string.changed_websocket_toast_settings), Toast.LENGTH_LONG).show();
     }
 
     private void createWebSocket() {

@@ -209,7 +209,7 @@ public class PlaceAssignmentAddDiscussionActivity extends AppCompatActivity {
             totalSelectedMembers.add(memberToRemove);
         }
 
-        // Get the missing Member from the old selection and at to available Members
+        // Get the missing Member from the old selection and add to available Members
         if (isAddToTotalAvailableMembersAllowed) {
             memberToAdd = getMissingMember();
             if (memberToAdd != null) {
@@ -231,11 +231,21 @@ public class PlaceAssignmentAddDiscussionActivity extends AppCompatActivity {
 
     private void updateSpinnerData(String currentSpinner, Member memberToRemove, Member memberToAdd, boolean isAddAllowed) {
         if (memberToRemove != null) {
+
+            // Check if I am current Spinner
             if (!currentSpinner.equals(SPINNER_PLACE_1)) {
+
+                // Save selected Spinner Value and Position
                 previousSpinnerValuePlace1 = (SpinnerMemberItem) spinnerPlace1.getSelectedItem();
                 int oldItemSelectionPosition = spinnerAdapterPlace1.getPosition(previousSpinnerValuePlace1);
+
+                // Remove Member from available SpinnerData
                 availableMembersSpinnerPlace1.remove(new SpinnerMemberItem(memberToRemove.toString(), memberToRemove));
+
+                //Check if saved Spinner Position is different after Remove
                 if (oldItemSelectionPosition != spinnerAdapterPlace1.getPosition(previousSpinnerValuePlace1)) {
+
+                    // Update Selected Position
                     isReSelectedSpinnerPlace1 = true;
                     spinnerPlace1.setSelection(spinnerAdapterPlace1.getPosition(previousSpinnerValuePlace1));
                 }
@@ -278,11 +288,21 @@ public class PlaceAssignmentAddDiscussionActivity extends AppCompatActivity {
             }
         }
         if (memberToAdd != null && isAddAllowed && !totalSelectedMembers.contains(memberToAdd)) {
+
+            // Check if I am current Spinner
             if (!currentSpinner.equals(SPINNER_PLACE_1)) {
+
+                // Save selected Spinner Value and Position
                 previousSpinnerValuePlace1 = (SpinnerMemberItem) spinnerPlace1.getSelectedItem();
                 int oldItemSelectionPosition = spinnerAdapterPlace1.getPosition(previousSpinnerValuePlace1);
+
+                // Add Member to available SpinnerData
                 availableMembersSpinnerPlace1.add(new SpinnerMemberItem(memberToAdd.toString(), memberToAdd));
+
+                //Check if saved Spinner Position is different after Add
                 if (oldItemSelectionPosition != spinnerAdapterPlace1.getPosition(previousSpinnerValuePlace1)) {
+
+                    // Update Selected Position
                     isReSelectedSpinnerPlace1 = true;
                     spinnerPlace1.setSelection(spinnerAdapterPlace1.getPosition(previousSpinnerValuePlace1));
                 }

@@ -73,6 +73,7 @@ public class MemberListViewAdapter extends ArrayAdapter<Member>{
     }
 
     public void handleAddMember() {
+        // Add new list item for new member with selection false
         isPositionSelectedList.add(false);
     }
 

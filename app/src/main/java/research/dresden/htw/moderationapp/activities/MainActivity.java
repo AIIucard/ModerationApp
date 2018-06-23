@@ -98,25 +98,23 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Remove this later
         // Member Dummys
         ArrayList<Member> memberArrayListTemp = new ArrayList<>();
-        /*
-        memberArrayListTemp.add(new Member(1, Title.DIPLOMA_OF_LANGUAGE_STUDIES, "Hans Wurst", "HTW Dresden", "Der Sklave"));
-        memberArrayListTemp.add(new Member(2, Title.DIPLOMA_OF_ARTS, "Brett Pid", "Baumschule", "Der geile Stecher"));
-        memberArrayListTemp.add(new Member(3, Title.DIPLOMA_OF_MUSIC, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer"));
-        memberArrayListTemp.add(new Member(4, Title.DIPLOMA_OF_EDUCATION, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller"));
-        memberArrayListTemp.add(new Member(5, Title.DIPLOMA_OF_MUSIC, "Darth Vader", "Imperium", "Lichtschwert Schwinger"));
-        memberArrayListTemp.add(new Member(6, Title.DIPLOMA_OF_SOCIAL_SCIENCES, "Der Pedobär", "Kindergarten", "Der Vertrauenswürdige"));
-        memberArrayListTemp.add(new Member(7, Title.DIPLOMA_OF_MUSIC, "Pinzessin Lillifee", "Feenreich", "Die Matratze"));
-        */
-        memberArrayListTemp.add(new Member(1, Title.BACHELOR, "Charlie", "HTW Dresden", "Creates Fancy Stuff"));
-        memberArrayListTemp.add(new Member(2, Title.DOCTOR, "Simon", "HTW Dresden", "Neue Inspiration"));
-        memberArrayListTemp.add(new Member(3, Title.DOCTOR, "Georg", "HTW Dresden", "Ruhepol"));
-        memberArrayListTemp.add(new Member(4, Title.BACHELOR, "Stefan", "HTW Dresden", "Hackerman"));
-        memberArrayListTemp.add(new Member(5, Title.BACHELOR, "Fabian", "HTW Dresden", "Hackerman"));
-        memberArrayListTemp.add(new Member(6, Title.BACHELOR, "Max", "HTW Dresden", "Handler Creator hat Ahnung"));
-        memberArrayListTemp.add(new Member(7, Title.BACHELOR, "Shuqi", "HTW Dresden", "Quality AppDesigner"));
-        memberArrayListTemp.add(new Member(8, Title.BACHELOR, "Kay", "HTW Dresden", "Hackerman"));
-        memberArrayListTemp.add(new Member(9, Title.BACHELOR, "Paul", "HTW Dresden", "Crafter"));
-        memberArrayListTemp.add(new Member(10, Title.MASTER, "Denise", "HTW Dresden", "Fuck google Ask him"));
+        memberArrayListTemp.add(new Member(1, Title.MASTER, "Hans Wurst", "HTW Dresden", "Der Sklave"));
+        memberArrayListTemp.add(new Member(2, Title.BACHELOR, "Brett Pid", "Baumschule", "Der geile Stecher"));
+        memberArrayListTemp.add(new Member(3, Title.DIPLOM, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer"));
+        memberArrayListTemp.add(new Member(4, Title.WITHOUT, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller"));
+        memberArrayListTemp.add(new Member(5, Title.WITHOUT, "Darth Vader", "Imperium", "Lichtschwert Schwinger"));
+        memberArrayListTemp.add(new Member(6, Title.DOCTOR, "Der Pedobär", "Kindergarten", "Der Vertrauenswürdige"));
+        memberArrayListTemp.add(new Member(7, Title.DOCTOR, "Pinzessin Lillifee", "Feenreich", "Die Matratze"));
+//        memberArrayListTemp.add(new Member(1, Title.BACHELOR, "Charlie", "HTW Dresden", "Creates Fancy Stuff"));
+//        memberArrayListTemp.add(new Member(2, Title.DOCTOR, "Simon", "HTW Dresden", "Neue Inspiration"));
+//        memberArrayListTemp.add(new Member(3, Title.DOCTOR, "Georg", "HTW Dresden", "Ruhepol"));
+//        memberArrayListTemp.add(new Member(4, Title.BACHELOR, "Stefan", "HTW Dresden", "Hackerman"));
+//        memberArrayListTemp.add(new Member(5, Title.BACHELOR, "Fabian", "HTW Dresden", "Hackerman"));
+//        memberArrayListTemp.add(new Member(6, Title.BACHELOR, "Max", "HTW Dresden", "Handler Creator hat Ahnung"));
+//        memberArrayListTemp.add(new Member(7, Title.BACHELOR, "Shuqi", "HTW Dresden", "Quality AppDesigner"));
+//        memberArrayListTemp.add(new Member(8, Title.BACHELOR, "Kay", "HTW Dresden", "Hackerman"));
+//        memberArrayListTemp.add(new Member(9, Title.BACHELOR, "Paul", "HTW Dresden", "Crafter"));
+//        memberArrayListTemp.add(new Member(10, Title.MASTER, "Denise", "HTW Dresden", "Fuck google Ask him"));
 
         MemberManager memberManagerTemp = MemberManager.getInstance();
         memberManagerTemp.writeToJSONFile(getApplicationContext(), memberArrayListTemp);
@@ -131,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
         discussionArrayListTemp.add(new Discussion(1, "Runder Tisch Beispiel", 370, memberArrayListTemp2));
         */
-        memberArrayListTemp2.add(new Member(1, Title.CLOSE_TO_MASTER_OF_ARTS, "Dennis", "HTW Dresden", "Creates Fancy Stuff", 1));
-        memberArrayListTemp2.add(new Member(3, Title.RPOF_OF_SIENCE, "Kay", "HTW Dresden", "Ruhepol", 2));
-        memberArrayListTemp2.add(new Member(2, Title.RPOF_OF_ARTS, "Georg", "HTW Dresden", "Neue Inspiration", 3));
-        memberArrayListTemp2.add(new Member(6, Title.CLOSE_TO_MASTER_OF_SIENCE, "Max", "HTW Dresden", "Handler Creator hat Ahnung",4));
-        memberArrayListTemp2.add(new Member(4, Title.CLOSE_TO_MASTER_OF_SIENCE, "Stefan", "HTW Dresden", "Hackerman",5));
+        memberArrayListTemp2.add(new Member(1, Title.MASTER, "Hans Wurst", "HTW Dresden", "Der Sklave", 1));
+        memberArrayListTemp2.add(new Member(2, Title.BACHELOR, "Brett Pid", "Baumschule", "Der geile Stecher", 2));
+        memberArrayListTemp2.add(new Member(3, Title.DIPLOM, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer", 3));
+        memberArrayListTemp2.add(new Member(4, Title.WITHOUT, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller", 4));
+        memberArrayListTemp2.add(new Member(5, Title.WITHOUT, "Darth Vader", "Imperium", "Lichtschwert Schwinger", 5));
         discussionArrayListTemp.add(new Discussion(1, "Runder Tisch Beispiel", 10, memberArrayListTemp2));
 
 
@@ -144,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: Remove this later
         // Websocket Dummys
-        AppConfig config = new AppConfig("http://141.56.224.27:8989/");
+        AppConfig config = new AppConfig("http://141.56.227.41:8989/");
         CfgManager cfgManagerTemp = CfgManager.getInstance();
         cfgManagerTemp.writeToJSONFile(getApplicationContext(), config);
 

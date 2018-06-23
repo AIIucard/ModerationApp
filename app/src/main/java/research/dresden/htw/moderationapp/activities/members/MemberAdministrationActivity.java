@@ -119,7 +119,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
                                                 ArrayList<Member> memberList = dataViewModel.getMemberList().getValue();
                                                 if (memberList != null) {
                                                     for (int j = 0; j < memberList.size(); j++) {
-                                                        if (selectedMember != null && memberList.get(j).getId() == selectedMember.getId()) {
+                                                        if (selectedMember != null && memberList.get(j).equals(selectedMember)) {
                                                             memberList.remove(j);
                                                             isDeleted = true;
                                                         }
