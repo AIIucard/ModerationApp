@@ -115,7 +115,7 @@ public class DiscussionAdministrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEditDiscussionActive) {
-                    if (discussionListAdapter.getSelectedItemsList().size() == 1) {
+                    if (discussionListAdapter.getNumberOfSelectedItems() == 1) {
                         startActivityForResult(new Intent(getBaseContext(), EditDiscussionActivity.class), RequestCode.DISCUSSION_ADMINISTRATION_CODE);
                     }
                 }
