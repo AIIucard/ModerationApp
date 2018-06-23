@@ -50,10 +50,12 @@ public class MemberAdministrationActivity extends AppCompatActivity {
         dataViewModel = AppDataViewModel.getInstance();
 
         final MutableLiveData<ArrayList<Member>> memberListData = dataViewModel.getMemberList();
+        // Get Data from Observer Object
         final ArrayList<Member> memberList = memberListData.getValue();
         memberListAdapter = new MemberListViewAdapter(this, memberList);
         memberListView = findViewById(R.id.member_list_view);
         memberListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        // Add Member List Adapter to List View
         memberListView.setAdapter(memberListAdapter);
 
         addButton = findViewById(R.id.fab_action_add_member);
@@ -162,6 +164,7 @@ public class MemberAdministrationActivity extends AppCompatActivity {
             }
         });
 
+        // On observable Object change: Notify Observer and repaint List View
         dataViewModel.getMemberList().observe(this, new Observer<ArrayList<Member>>() {
 
             @Override
