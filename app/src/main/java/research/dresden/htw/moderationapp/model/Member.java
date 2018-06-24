@@ -195,7 +195,7 @@ public class Member {
     public String toString() {
         String s = "";
         s += "[" + getId() + "] ";
-        s += getTitle() + "";
+        s += getTitle() + " ";
         s += getName() + "; ";
         s += getOrganisation();
         return s;
