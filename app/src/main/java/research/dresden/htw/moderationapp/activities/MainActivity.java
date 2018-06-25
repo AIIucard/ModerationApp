@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Member> memberArrayListTemp = new ArrayList<>();
         memberArrayListTemp.add(new Member(1, Title.MASTER, "Hans Wurst", "HTW Dresden", "Der Sklave"));
         memberArrayListTemp.add(new Member(2, Title.BACHELOR, "Brett Pid", "Baumschule", "Der geile Stecher"));
-        memberArrayListTemp.add(new Member(3, Title.DIPLOM, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer"));
-        memberArrayListTemp.add(new Member(4, Title.WITHOUT, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller"));
-        memberArrayListTemp.add(new Member(5, Title.WITHOUT, "Darth Vader", "Imperium", "Lichtschwert Schwinger"));
-        memberArrayListTemp.add(new Member(6, Title.DOCTOR, "Der Pedobär", "Kindergarten", "Der Vertrauenswürdige"));
-        memberArrayListTemp.add(new Member(7, Title.DOCTOR, "Pinzessin Lillifee", "Feenreich", "Die Matratze"));
+        memberArrayListTemp.add(new Member(3, Title.WITHOUT, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller"));
+        memberArrayListTemp.add(new Member(4, Title.WITHOUT, "Darth Vader", "Imperium", "Lichtschwert Schwinger"));
+        memberArrayListTemp.add(new Member(5, Title.DOCTOR, "Error 404", "Internet", "Shiiiiit"));
+        memberArrayListTemp.add(new Member(6, Title.DOCTOR, "Krooooooßartig", "DFB", "Fussballgott"));
+        memberArrayListTemp.add(new Member(7, Title.DIPLOM, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer"));
 //        memberArrayListTemp.add(new Member(1, Title.BACHELOR, "Charlie", "HTW Dresden", "Creates Fancy Stuff"));
 //        memberArrayListTemp.add(new Member(2, Title.DOCTOR, "Simon", "HTW Dresden", "Neue Inspiration"));
 //        memberArrayListTemp.add(new Member(3, Title.DOCTOR, "Georg", "HTW Dresden", "Ruhepol"));
@@ -129,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
 
         discussionArrayListTemp.add(new Discussion(1, "Runder Tisch Beispiel", 370, memberArrayListTemp2));
         */
-        memberArrayListTemp2.add(new Member(1, Title.MASTER, "Hans Wurst", "HTW Dresden", "Der Sklave", 1));
-        memberArrayListTemp2.add(new Member(2, Title.BACHELOR, "Brett Pid", "Baumschule", "Der geile Stecher", 2));
-        memberArrayListTemp2.add(new Member(3, Title.DIPLOM, "Thorsten Brotkahst", "Hacker", "Der Brotkahst Reziewer", 3));
-        memberArrayListTemp2.add(new Member(4, Title.WITHOUT, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller", 4));
-        memberArrayListTemp2.add(new Member(5, Title.WITHOUT, "Darth Vader", "Imperium", "Lichtschwert Schwinger", 5));
-        discussionArrayListTemp.add(new Discussion(1, "Runder Tisch Beispiel", 10, memberArrayListTemp2));
+        memberArrayListTemp.add(new Member(1, Title.MASTER, "Hans Wurst", "HTW Dresden", "Der Sklave", 1));
+        memberArrayListTemp.add(new Member(2, Title.BACHELOR, "Brett Pid", "Baumschule", "Der geile Stecher", 2));
+        memberArrayListTemp.add(new Member(3, Title.WITHOUT, "Knecht Ruprecht", "Harz 4 AG", "Der Chiller", 3));
+        memberArrayListTemp.add(new Member(4, Title.WITHOUT, "Darth Vader", "Imperium", "Lichtschwert Schwinger", 4));
+        memberArrayListTemp.add(new Member(5, Title.DOCTOR, "Error 404", "Internet", "Shiiiiit", 5));
+        discussionArrayListTemp.add(new Discussion(1, "Selbsthilfe Gruppe", 10, memberArrayListTemp2));
 
 
         DiscussionManager discussionManagerTemp = DiscussionManager.getInstance();
