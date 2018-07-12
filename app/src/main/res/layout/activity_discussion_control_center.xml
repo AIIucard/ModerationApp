@@ -177,6 +177,7 @@
                     android:paddingEnd="10dp"
                     android:text="@string/remaining_time_label_discussion"
                     android:textAlignment="textEnd"
+                    android:textColor="@color/darkBlue"
                     android:textSize="24sp" />
 
                 <TextView
@@ -186,6 +187,7 @@
                     android:layout_weight="1"
                     android:paddingStart="10dp"
                     android:textSize="24sp"
+                    android:textColor="@color/darkBlue"
                     tools:layout_editor_absoluteX="265dp"
                     tools:layout_editor_absoluteY="560dp" />
             </LinearLayout>
@@ -204,8 +206,10 @@
                 android:focusableInTouchMode="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@color/darkBlue" />
 
             <LinearLayout
@@ -227,6 +231,7 @@
 
                 <EditText
                     android:id="@+id/topicInput"
+                    android:inputType="textMultiLine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -234,7 +239,6 @@
                     android:ems="10"
                     android:focusableInTouchMode="true"
                     android:hint="@string/hint_for_topic"
-                    android:inputType="textPersonName"
                     android:textColor="@color/background"
                     android:textSize="24sp" />
 
