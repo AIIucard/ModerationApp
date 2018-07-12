@@ -86,7 +86,7 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
         pauseText = findViewById(R.id.textview_pause);
 
         topicInput = findViewById(R.id.topicInput);
-
+        //Dynamisch eingeblendeter SendButton on Textchange
         topicInput.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -174,7 +174,7 @@ public class DiscussionControlCenterActivity extends AppCompatActivity {
     public void sendStartPause(View v) {
         if (!isPauseActive) {
             isPauseActive = true;
-            pauseButton.setImageResource(R.mipmap.endpauseic);
+            pauseButton.setImageResource(R.mipmap.endpause_ic);
             pauseText.setText(getString(R.string.end_pause_discussion));
 
             new SendStartPauseTask(viewModel.getSocket()).execute();
