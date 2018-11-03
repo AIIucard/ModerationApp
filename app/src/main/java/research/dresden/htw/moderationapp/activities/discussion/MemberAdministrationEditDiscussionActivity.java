@@ -56,8 +56,10 @@ public class MemberAdministrationEditDiscussionActivity extends AppCompatActivit
         setContentView(R.layout.activity_member_administration_edit_discussion);
 
         dataViewModel = AppDataViewModel.getInstance();
-
         discussionToEditTempObj = dataViewModel.getDiscussionToEditTempObj().getValue();
+
+        isAddNewActive = discussionToEditTempObj.getMemberList().size() < 5;
+        isAddExistingActive = discussionToEditTempObj.getMemberList().size() < 5;
 
         addNewButton = findViewById(R.id.fab_action_add_new_member);
         addNewButton.setEnabled(isAddNewActive);
@@ -284,6 +286,8 @@ public class MemberAdministrationEditDiscussionActivity extends AppCompatActivit
                 isMemberChanged = true;
             }
         }
+        isAddNewActive = discussionToEditTempObj.getMemberList().size() < 5;
+        isAddExistingActive = discussionToEditTempObj.getMemberList().size() < 5;
         addNewButton = findViewById(R.id.fab_action_add_new_member);
         addNewButton.setEnabled(isAddNewActive);
         addExistingButton = findViewById(R.id.fab_action_add_existing_member);
